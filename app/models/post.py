@@ -1,5 +1,6 @@
 from time import timezone
 from .db import db
+from .user import User
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime
 from .like import likes
@@ -31,8 +32,9 @@ class Post(db.Model):
       'caption': self.caption,
       'created_at': self.created_at,
       'updated_at': self.updated_at,
-      'owner' : self.onwer,
-      'comments': self.comments,
-      'post_likes': self.post_likes
+      'ownerUsername': User.query.get(self.user_id).username
+      # 'owner' : self.owner,
+      # 'comments': self.comments,
+      # 'post_likes': self.post_likes
 
     }

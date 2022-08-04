@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import CreatePost from './components/CreatePost';
+import HomePage from './components/Splash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,7 +43,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>Instashow</h1>
+          <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/new-post'>
+          <CreatePost/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
