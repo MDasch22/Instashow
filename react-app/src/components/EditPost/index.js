@@ -1,23 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { thunkEditPost, thunkGetSinglePost, thunkLoadAllPosts } from '../../store/posts';
+import { thunkEditPost, thunkDeletePost } from '../../store/posts';
 
-export default function EditPost() {
+export default function EditPost({setTrigger}) {
   const dispatch = useDispatch()
   const history = useHistory()
   const { post_id } = useParams()
 
   const post = useSelector(state => state.post[post_id])
+  const user = useSelector(state => state.user[post.ownerUsername])
 
   const [errors, setErrors] = useState([])
   const [caption, setCaption] = useState(post.caption)
   const [isSubmitted , setIsSubmitted] = useState(false)
-
-
-  useEffect(() => {
-    dispatch(thunkGetSinglePost(post_id))
-  },[dispatch])
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -33,17 +29,19 @@ export default function EditPost() {
     const edited_post = await dispatch(thunkEditPost(post_id, caption))
 
     if(edited_post) {
-      alert ("Post was edited")
-      return history.push('/')
+      setTrigger(false)
+      return history.push(`/post/${post.id}`)
     }
 
-  }
-  const cancel =() => {
-    history.push(`/${post.ownerUsername}`)
   }
 
   const updateCaption = async(e) => {
      setCaption(e.target.value)
+  }
+
+  const onDelete = (e) => {
+    dispatch(thunkDeletePost(post_id))
+    history.push(`/${user.username}`)
   }
 
 
@@ -66,8 +64,8 @@ export default function EditPost() {
           required
 
         />
-        <button type='submit'>Edit Post</button>
-        <button onClick={cancel}>Cancel</button>
+        <button type='submit'>Finished</button>
+        <button onClick={onDelete}>Delete</button>
 
       </form>
     </div>
