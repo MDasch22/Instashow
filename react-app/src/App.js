@@ -10,6 +10,8 @@ import CreatePost from './components/CreatePost';
 import HomePage from './components/Splash';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import EditPost from './components/EditPost';
+import { thunkLoadAllPosts } from './store/posts';
+import SinglePost from './components/SinglePost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +21,7 @@ function App() {
 
   useEffect(() => {
     (async() => {
+      await dispatch(thunkLoadAllPosts());
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -47,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/post/new' exact={true}>
           <CreatePost/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/post/:post_id' exact={true}>
+          <SinglePost />
         </ProtectedRoute>
         <ProtectedRoute path='/post/:post_id/edit' exact={true}>
           <EditPost />

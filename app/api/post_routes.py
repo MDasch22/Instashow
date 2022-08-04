@@ -17,7 +17,7 @@ def get_all_post():
 
   return {'all_posts': posts}
 
-
+# GET SINGLE POST BY ID
 @post_routes.route('/<int:post_id>')
 @login_required
 def get_single_post(post_id):
@@ -25,7 +25,7 @@ def get_single_post(post_id):
   return post.to_dict()
 
 
-# GET ALL POST BY USER_ID
+# GET ALL POST BY USERNAME
 @post_routes.route('/<username>')
 # @login_required
 def view_posts(username):
@@ -73,7 +73,7 @@ def create_post():
     db.session.commit()
     return new_post.to_dict()
 
-
+#EDIT POST BY ID
 @post_routes.route('/<int:post_id>/edit', methods=['PUT'])
 @login_required
 def edit_user_post(post_id):
@@ -89,3 +89,12 @@ def edit_user_post(post_id):
     return post_to_edit.to_dict()
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@post_routes.route('/<int:post_id>/delete', methods=['DELETE'])
+@login_required
+def delete_post(post_id):
+  deleted_post = Post.query.get(post_id)
+  db.session.delete(deleted_post)
+  db.session.commit()
+  return deleted_post.to_dict()
