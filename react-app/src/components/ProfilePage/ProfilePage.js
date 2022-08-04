@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink } from 'react-router-dom';
-import { thunkLoadUserPosts } from '../../store/posts';
+import { thunkDeletePost, thunkLoadUserPosts } from '../../store/posts';
 import { thunkGetUser } from '../../store/user';
 
 import './ProfilePage.css'
@@ -19,7 +19,6 @@ function ProfilePage() {
     dispatch(thunkGetUser(username))
     dispatch(thunkLoadUserPosts(username))
   },[dispatch, username])
-
 
   if(!user) return null
 
@@ -42,6 +41,7 @@ function ProfilePage() {
             <NavLink to={`/post/${post.id}/edit`}>
               Edit
             </NavLink>
+            <button onClick={() => dispatch(thunkDeletePost(post.id))}>Delete</button>
           </div>
           )}
         )}

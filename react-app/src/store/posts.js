@@ -6,6 +6,7 @@ const GET_SINGLE_POST = 'posts/getSinglePost'
 const LOAD_USER_POSTS = 'posts/loadUserPosts'
 const CREATE_POST = 'posts/createPost'
 const EDIT_POST = 'posts/editPost'
+const DELETE_POST = 'posts/deletePost'
 
 // ----------------------------------------------------------ACTION
 
@@ -41,6 +42,13 @@ export const actionEditPost = (post) => {
   return {
     type: EDIT_POST,
     post
+  }
+}
+
+export const actionDeletePost = (postId) => {
+  return {
+    type: DELETE_POST,
+    postId
   }
 }
 
@@ -106,9 +114,23 @@ export const thunkEditPost = (post_id, caption) => async(dispatch) => {
     dispatch(actionEditPost(data))
     return data
   }
+  else {
+    const error = await response.json()
+    return error
+  }
 }
 
+export const thunkDeletePost = (post_id) => async(dispatch) => {
+  const response = await fetch(`/api/posts/${post_id}/delete`, {
+    method: 'DELETE',
+  })
 
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionDeletePost(post_id))
+    return data
+  }
+}
 
 // ----------------------------------------------------------REDUCER
 
@@ -144,6 +166,9 @@ const postReducer = (state = initialState, action) => {
       newState[action.post.id] = action.post
       return newState
 
+    case DELETE_POST:
+      delete newState[action.postId]
+      return newState
 
     default:
       return state;

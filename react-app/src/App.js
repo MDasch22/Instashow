@@ -10,6 +10,7 @@ import CreatePost from './components/CreatePost';
 import HomePage from './components/Splash';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import EditPost from './components/EditPost';
+import { thunkLoadAllPosts } from './store/posts';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -19,6 +20,7 @@ function App() {
 
   useEffect(() => {
     (async() => {
+      await dispatch(thunkLoadAllPosts());
       await dispatch(authenticate());
       setLoaded(true);
     })();
