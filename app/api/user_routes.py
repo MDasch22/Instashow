@@ -17,3 +17,10 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route("/profile/<username>")
+@login_required
+def get_user(username):
+    user = User.query.filter(username == username).first()
+    return user.to_dict()

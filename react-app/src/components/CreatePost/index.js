@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { thunkCreatePost } from '../../store/posts'
 
 export default function CreatePost() {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const [errors, setErrors] = useState([])
   const [image, setImage] = useState(null)
@@ -21,7 +23,8 @@ export default function CreatePost() {
     const new_post = await dispatch(thunkCreatePost(formData))
 
     if(new_post){
-      return alert("post was created")
+      alert("post was created")
+      return history.push('/')
     }
   }
 

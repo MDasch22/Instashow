@@ -1,16 +1,22 @@
-import CreatePost from "../components/CreatePost"
+
+// ---------------------------------------------------------- TYPE
 
 const LOAD_ALL_POST = 'posts/loadAllPosts'
-
+const LOAD_USER_POSTS = 'posts/loadUserPosts'
 const CREATE_POST = 'posts/createPost'
 
-
-
-
+// ----------------------------------------------------------ACTION
 
 export const actionLoadAllPosts = (posts) => {
   return {
     type: LOAD_ALL_POST,
+    posts
+  }
+}
+
+export const actionLoadUserPosts = (posts) => {
+  return {
+    type: LOAD_USER_POSTS,
     posts
   }
 }
@@ -22,9 +28,7 @@ export const actionCreatePost = (post) => {
   }
 }
 
-
-
-
+// ----------------------------------------------------------THUNKS
 
 export const thunkLoadAllPosts = () => async(dispatch) => {
   const response = await fetch('/api/posts/')
@@ -36,6 +40,15 @@ export const thunkLoadAllPosts = () => async(dispatch) => {
   }
 }
 
+export const thunkLoadUserPosts = (username) => async(dispatch) => {
+  const response = await fetch (`/api/posts/${username}`)
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(actionLoadUserPosts(data))
+    return data
+  }
+}
 
 export const thunkCreatePost = (formData) => async(dispatch) => {
   const response = await fetch('/api/posts/new', {
@@ -56,8 +69,7 @@ export const thunkCreatePost = (formData) => async(dispatch) => {
 
 
 
-
-
+// ----------------------------------------------------------REDUCER
 
 const initialState = {}
 
@@ -69,15 +81,22 @@ const postReducer = (state = initialState, action) => {
       action.posts.all_posts.forEach(post => {
         newState[post.id] = post
       })
-      return newState
+      return newState;
+
+    case LOAD_USER_POSTS:
+      newState = {}
+      action.posts.user_posts.forEach(post => {
+        newState[post.id] = post
+      })
+      return newState;
 
     case CREATE_POST:
       newState[action.post.id] = action.post
-      return newState
+      return newState;
 
 
     default:
-      return state
+      return state;
   }
 }
 

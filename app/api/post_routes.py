@@ -16,19 +16,19 @@ def get_all_post():
   return {'all_posts': posts}
 
 
-# GET ALL POST BY USERNAME
+# GET ALL POST BY USER_ID
 @post_routes.route('/<username>')
-@login_required
+# @login_required
 def view_posts(username):
-  user = User.query.filter_by(username=username).all()
-  users_posts = Post.query.filter_by(Post.user_id == user.id).all()
+  user = User.query.filter(username == username).first()
+  users_posts = Post.query.filter(Post.user_id == user.id).all()
   posts = [post.to_dict() for post in users_posts]
 
   return {'user_posts': posts}
 
 
 # CREATE A NEW POST
-@post_routes.route('/new', methods=['POST'])
+@post_routes.route('/new', methods=['GET','POST'])
 @login_required
 def create_post():
 

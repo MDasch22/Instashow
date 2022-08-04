@@ -7,7 +7,7 @@ export default function HomePage() {
   const sessionUser = useSelector(state => state.session.user)
   const allPosts = useSelector(state => Object.values(state.post))
 
-  console.log(allPosts)
+  allPosts.reverse()
 
   useEffect(() => {
     dispatch(thunkLoadAllPosts())
@@ -18,13 +18,13 @@ export default function HomePage() {
       <div>
         {allPosts.map(post => {
         return (
-          <>
+          <div key={post.id}>
             <img src={post.image} style={{width: 400, height: 300}} alt='post-image'></img>
             <div>{post.created_at}</div>
             <div>{post.ownerUsername}</div>
             <div>{post.caption}</div>
 
-          </>
+          </div>
           )
         }) }
       </div>
