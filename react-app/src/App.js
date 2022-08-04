@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import CreatePost from './components/CreatePost';
 import HomePage from './components/Splash';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import EditPost from './components/EditPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/post/new' exact={true}>
           <CreatePost/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/post/:post_id/edit' exact={true}>
+          <EditPost />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

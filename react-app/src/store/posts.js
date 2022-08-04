@@ -2,8 +2,10 @@
 // ---------------------------------------------------------- TYPE
 
 const LOAD_ALL_POST = 'posts/loadAllPosts'
+const GET_SINGLE_POST = 'posts/getSinglePost'
 const LOAD_USER_POSTS = 'posts/loadUserPosts'
 const CREATE_POST = 'posts/createPost'
+const EDIT_POST = 'posts/editPost'
 
 // ----------------------------------------------------------ACTION
 
@@ -11,6 +13,13 @@ export const actionLoadAllPosts = (posts) => {
   return {
     type: LOAD_ALL_POST,
     posts
+  }
+}
+
+export const actionGetSinglePost = (post) => {
+  return {
+    type: GET_SINGLE_POST,
+    post
   }
 }
 
@@ -28,6 +37,13 @@ export const actionCreatePost = (post) => {
   }
 }
 
+export const actionEditPost = (post) => {
+  return {
+    type: EDIT_POST,
+    post
+  }
+}
+
 // ----------------------------------------------------------THUNKS
 
 export const thunkLoadAllPosts = () => async(dispatch) => {
@@ -39,6 +55,17 @@ export const thunkLoadAllPosts = () => async(dispatch) => {
     return data
   }
 }
+
+export const thunkGetSinglePost = (post_id) => async(dispatch) => {
+  const response = await fetch(`/api/posts/${post_id}`)
+
+  if(response.ok){
+    const data = await response.json()
+    dispatch(actionGetSinglePost(data))
+    return data
+  }
+}
+
 
 export const thunkLoadUserPosts = (username) => async(dispatch) => {
   const response = await fetch (`/api/posts/${username}`)
@@ -67,6 +94,20 @@ export const thunkCreatePost = (formData) => async(dispatch) => {
   }
 }
 
+export const thunkEditPost = (post_id, caption) => async(dispatch) => {
+  const response = await fetch(`/api/posts/${post_id}/edit`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({caption})
+  })
+
+  if(response.ok){
+    const data = await response.json()
+    dispatch(actionEditPost(data))
+    return data
+  }
+}
+
 
 
 // ----------------------------------------------------------REDUCER
@@ -83,6 +124,11 @@ const postReducer = (state = initialState, action) => {
       })
       return newState;
 
+    case GET_SINGLE_POST:
+      newState = {}
+      newState[action.post.id] = action.post
+      return newState
+
     case LOAD_USER_POSTS:
       newState = {}
       action.posts.user_posts.forEach(post => {
@@ -93,6 +139,10 @@ const postReducer = (state = initialState, action) => {
     case CREATE_POST:
       newState[action.post.id] = action.post
       return newState;
+
+    case EDIT_POST:
+      newState[action.post.id] = action.post
+      return newState
 
 
     default:

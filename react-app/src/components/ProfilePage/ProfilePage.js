@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { thunkLoadUserPosts } from '../../store/posts';
 import { thunkGetUser } from '../../store/user';
 
@@ -39,6 +39,9 @@ function ProfilePage() {
             <div>{post.created_at}</div>
             <div>{post.ownerUsername}</div>
             <div>{post.caption}</div>
+            <NavLink to={`/post/${post.id}/edit`}>
+              Edit
+            </NavLink>
           </div>
           )}
         )}

@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from flask_wtf.csrf import validate_csrf
+from app.forms.edit_post import EditPostForm
 from app.models import db, User, Post
+from app.api.auth_routes import validation_errors_to_error_messages
 from app.aws_upload_helper import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 post_routes = Blueprint('posts', __name__)
@@ -14,6 +16,13 @@ def get_all_post():
   posts = [post.to_dict() for post in allPosts]
 
   return {'all_posts': posts}
+
+
+@post_routes.route('/<int:post_id>')
+@login_required
+def get_single_post(post_id):
+  post = Post.query.get(post_id)
+  return post.to_dict()
 
 
 # GET ALL POST BY USER_ID
@@ -63,3 +72,20 @@ def create_post():
     db.session.add(new_post)
     db.session.commit()
     return new_post.to_dict()
+
+
+@post_routes.route('/<int:post_id>/edit', methods=['PUT'])
+@login_required
+def edit_user_post(post_id):
+  form = EditPostForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  post_to_edit = Post.query.get(post_id)
+
+  if form.validate_on_submit():
+
+    post_to_edit.caption = form.data['caption']
+
+    db.session.commit()
+    return post_to_edit.to_dict()
+  else:
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
