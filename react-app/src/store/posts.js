@@ -4,10 +4,15 @@
 const LOAD_ALL_POST = 'posts/loadAllPosts'
 const GET_SINGLE_POST = 'posts/getSinglePost'
 const LOAD_USER_POSTS = 'posts/loadUserPosts'
+
 const CREATE_POST = 'posts/createPost'
-const CREATE_COMMENT = 'posts/createComment'
+
 const EDIT_POST = 'posts/editPost'
 const DELETE_POST = 'posts/deletePost'
+
+const CREATE_COMMENT = 'posts/createComment'
+const EDIT_COMMENT = 'posts/editComment'
+const DELETE_COMMENT = 'posts/deleteComment'
 
 // ----------------------------------------------------------ACTION
 
@@ -39,12 +44,6 @@ export const actionCreatePost = (post) => {
   }
 }
 
-export const actionCreateComment = (post) => {
-  return {
-    type: CREATE_COMMENT,
-    post
-  }
-}
 
 export const actionEditPost = (post) => {
   return {
@@ -57,6 +56,29 @@ export const actionDeletePost = (postId) => {
   return {
     type: DELETE_POST,
     postId
+  }
+}
+
+export const actionCreateComment = (post) => {
+  return {
+    type: CREATE_COMMENT,
+    post
+  }
+}
+
+export const actionEditComment = (post) => {
+  return {
+    type: EDIT_COMMENT,
+    post
+  }
+}
+
+export const actionDeleteComment = (postId, commentId) => {
+  return {
+    type: DELETE_COMMENT,
+    postId,
+    commentId,
+
   }
 }
 
@@ -110,29 +132,6 @@ export const thunkCreatePost = (formData) => async(dispatch) => {
   }
 }
 
-export const thunkCreateComment = (postId, new_comment) => async(dispatch) => {
-  // console.log("this is the postId: ", postId)
-  // console.log('this is the new_comment: ', new_comment)
-  const response = await fetch('/api/comments/new', {
-    method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      postId,
-      new_comment
-    })
-  })
-  console.log("this is the body being fetched: ", response.body)
-  console.log("This is the response: ", response)
-  if(response.ok) {
-    const data = await response.json()
-    dispatch(actionCreateComment(data))
-    return data
-  }
-  else {
-    const error = await response.json()
-    return error
-  }
-}
 
 export const thunkEditPost = (post_id, caption) => async(dispatch) => {
   const response = await fetch(`/api/posts/${post_id}/edit`, {
@@ -164,6 +163,67 @@ export const thunkDeletePost = (post_id) => async(dispatch) => {
   }
 }
 
+export const thunkCreateComment = (postId, new_comment) => async(dispatch) => {
+
+  const response = await fetch('/api/comments/new', {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      postId,
+      new_comment
+    })
+  })
+
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionCreateComment(data))
+    return data
+  }
+  else {
+    const error = await response.json()
+    return error
+  }
+}
+
+export const thunkEditComment = (postId, edited_comment) => async(dispatch) => {
+  const response = await fetch('/api/comments/new', {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      postId,
+      edited_comment
+    })
+  })
+
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionCreateComment(data))
+    return data
+  }
+  else {
+    const error = await response.json()
+    return error
+  }
+}
+
+export const thunkDeleteComment = (postId, commentId) => async(dispatch) => {
+  // console.log('THIS IS THE POSTiD : ', postId)
+  // console.log("This is the comment Id: ", commentId)
+  const response = await fetch(`/api/comments/${commentId}/delete`, {
+    method: 'DELETE',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      postId,
+      commentId
+    })
+  })
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionDeleteComment(data))
+  }
+}
+
+
 // ----------------------------------------------------------REDUCER
 
 const initialState = {}
@@ -194,16 +254,24 @@ const postReducer = (state = initialState, action) => {
       newState[action.post.id] = action.post
       return newState;
 
-    case CREATE_COMMENT:
-      newState[action.post.id] = action.post
-      return newState
-
     case EDIT_POST:
       newState[action.post.id] = action.post
       return newState
 
     case DELETE_POST:
       delete newState[action.postId]
+      return newState
+
+    case CREATE_COMMENT:
+      newState[action.post.id] = action.post
+      return newState
+
+    case EDIT_COMMENT:
+      newState[action.post.id] = action.post
+      return newState
+
+    case DELETE_COMMENT:
+      delete newState[action.postId].comments[action.commentId]
       return newState
 
     default:

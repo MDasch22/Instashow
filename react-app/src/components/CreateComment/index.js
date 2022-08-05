@@ -12,10 +12,7 @@ export default function CreateCommentForm({postId}) {
     e.preventDefault()
 
     const new_comment = comment;
-    console.log("this is the new comment:  ", new_comment)
-    console.log(postId)
     const created_comment = await dispatch(thunkCreateComment(postId, new_comment))
-
 
     if(created_comment){
       setComment('');

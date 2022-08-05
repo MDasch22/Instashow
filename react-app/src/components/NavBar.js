@@ -9,13 +9,13 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
         {sessionUser && (
         <>
+          <li>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              Instashow
+            </NavLink>
+          </li>
           <li>
             <NavLink to='/post/new' exact={true} activeClassName='active'>
               Create a Post

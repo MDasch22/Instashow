@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams, NavLink } from 'react-router-dom'
 import Modal from 'react-modal'
-import { thunkGetSinglePost } from '../../store/posts'
+import { thunkGetSinglePost, thunkDeleteComment } from '../../store/posts'
 import EditPost from '../EditPost'
 import CreateCommentForm from '../CreateComment'
 
@@ -19,17 +19,17 @@ export default function SinglePost() {
   const [submitted , setSubmitted] = useState(false)
 
   useEffect(() => {
-
     dispatch(thunkGetSinglePost(post_id))
-  },[dispatch])
+  },[dispatch, post_id])
+
 
   Modal.setAppElement('body');
 
-  function openEditForm() {
+  function openEditPostForm() {
     setShowEditPost(true)
   }
 
-  function closeEditForm() {
+  function closeEditPostForm() {
     setShowEditPost(false)
   }
 
@@ -76,9 +76,9 @@ if(!post) return null
       <div>{post.owner.username}</div>
       <div>{post.caption}</div>
       <div className='edit-modal'>
-        <button onClick={openEditForm}>Edit</button>
+        <button onClick={openEditPostForm}>Edit</button>
         <Modal isOpen={showEditPost} style={formStyles}>
-          <button onClick={closeEditForm}>X</button>
+          <button onClick={closeEditPostForm}>X</button>
           <EditPost setTrigger={setShowEditPost}/>
         </Modal>
       </div>
@@ -88,6 +88,12 @@ if(!post) return null
           <div>
             <div>{comment.user.username}</div>
             <div>{comment.comment}</div>
+            {sessionUser.id === comment.user_id && (
+              <>
+                <button>Edit</button>
+                <button onClick={() => dispatch(thunkDeleteComment(post_id, comment.id))}>Delete</button>
+              </>
+            )}
           </div>
           )}
         )}
