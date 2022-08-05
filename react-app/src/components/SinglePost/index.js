@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams, NavLink } from 'react-router-dom'
 import Modal from 'react-modal'
-import { thunkGetSinglePost, thunkDeletePost } from '../../store/posts'
+import { thunkGetSinglePost } from '../../store/posts'
 import EditPost from '../EditPost'
+import CreateCommentForm from '../CreateComment'
+
 
 export default function SinglePost() {
   const dispatch = useDispatch()
@@ -11,10 +13,13 @@ export default function SinglePost() {
   const { post_id } = useParams()
 
   const post = useSelector(state => state.post[post_id])
+  const sessionUser = useSelector(state => state.session.user)
 
   const [showEditPost, setShowEditPost] = useState(false)
+  const [submitted , setSubmitted] = useState(false)
 
   useEffect(() => {
+
     dispatch(thunkGetSinglePost(post_id))
   },[dispatch])
 
@@ -61,14 +66,14 @@ export default function SinglePost() {
     }
 };
 
-
+if(!post) return null
 
   return (
     <div>
       <img src={post.image} style={{width: 500 ,height: 500}} alt='post-image'></img>
-      <img src={post.ownerProfilePic} style={{width: 70 ,height: 70}} alt='post-profile-pic'></img>
+      <img src={post.owner.profile_pic} style={{width: 70 ,height: 70}} alt='post-profile-pic'></img>
       <div>{post.created_at}</div>
-      <div>{post.ownerUsername}</div>
+      <div>{post.owner.username}</div>
       <div>{post.caption}</div>
       <div className='edit-modal'>
         <button onClick={openEditForm}>Edit</button>
@@ -77,11 +82,20 @@ export default function SinglePost() {
           <EditPost setTrigger={setShowEditPost}/>
         </Modal>
       </div>
+      <div>
+        {post.comments && post.comments.map(comment => {
+        return (
+          <div>
+            <div>{comment.user.username}</div>
+            <div>{comment.comment}</div>
+          </div>
+          )}
+        )}
+      </div>
+      <div>
+          <CreateCommentForm postId={post_id}/>
+      </div>
 
-      {/* <NavLink to={`/post/${post.id}/edit`}>
-        Edit
-      </NavLink>
-      <button onClick={() => dispatch(thunkDeletePost(post.id))}>Delete</button> */}
     </div>
   )
 }

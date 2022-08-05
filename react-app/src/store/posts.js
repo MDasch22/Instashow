@@ -5,6 +5,7 @@ const LOAD_ALL_POST = 'posts/loadAllPosts'
 const GET_SINGLE_POST = 'posts/getSinglePost'
 const LOAD_USER_POSTS = 'posts/loadUserPosts'
 const CREATE_POST = 'posts/createPost'
+const CREATE_COMMENT = 'posts/createComment'
 const EDIT_POST = 'posts/editPost'
 const DELETE_POST = 'posts/deletePost'
 
@@ -34,6 +35,13 @@ export const actionLoadUserPosts = (posts) => {
 export const actionCreatePost = (post) => {
   return {
     type: CREATE_POST,
+    post
+  }
+}
+
+export const actionCreateComment = (post) => {
+  return {
+    type: CREATE_COMMENT,
     post
   }
 }
@@ -102,6 +110,30 @@ export const thunkCreatePost = (formData) => async(dispatch) => {
   }
 }
 
+export const thunkCreateComment = (postId, new_comment) => async(dispatch) => {
+  // console.log("this is the postId: ", postId)
+  // console.log('this is the new_comment: ', new_comment)
+  const response = await fetch('/api/comments/new', {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      postId,
+      new_comment
+    })
+  })
+  console.log("this is the body being fetched: ", response.body)
+  console.log("This is the response: ", response)
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionCreateComment(data))
+    return data
+  }
+  else {
+    const error = await response.json()
+    return error
+  }
+}
+
 export const thunkEditPost = (post_id, caption) => async(dispatch) => {
   const response = await fetch(`/api/posts/${post_id}/edit`, {
     method: 'PUT',
@@ -161,6 +193,10 @@ const postReducer = (state = initialState, action) => {
     case CREATE_POST:
       newState[action.post.id] = action.post
       return newState;
+
+    case CREATE_COMMENT:
+      newState[action.post.id] = action.post
+      return newState
 
     case EDIT_POST:
       newState[action.post.id] = action.post

@@ -1,3 +1,4 @@
+from app.models.user import User
 from .db import db
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime
@@ -25,6 +26,6 @@ class Comment(db.Model):
       'comment': self.comment,
       'created_at': self.created_at,
       'updated_at': self.updated_at,
-      'user': self.user,
-      'post': self.post
+      'user': self.user.to_dict()
+      # 'post': self.post
     }
