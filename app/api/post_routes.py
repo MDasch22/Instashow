@@ -27,7 +27,7 @@ def get_single_post(post_id):
 
 # GET ALL POST BY USERNAME
 @post_routes.route('/<username>')
-# @login_required
+@login_required
 def view_posts(username):
   user = User.query.filter(username == username).first()
   users_posts = Post.query.filter(Post.user_id == user.id).all()
@@ -90,7 +90,7 @@ def edit_user_post(post_id):
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-
+#  DELETING POST BE post_id
 @post_routes.route('/<int:post_id>/delete', methods=['DELETE'])
 @login_required
 def delete_post(post_id):

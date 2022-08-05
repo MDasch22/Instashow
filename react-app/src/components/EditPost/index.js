@@ -15,7 +15,7 @@ export default function EditPost({setTrigger}) {
   const [caption, setCaption] = useState(post.caption)
   const [isSubmitted , setIsSubmitted] = useState(false)
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
     let errors = []
@@ -26,7 +26,7 @@ export default function EditPost({setTrigger}) {
 
     if(errors.length) return alert("Cannot edit the snack")
 
-    const edited_post = await dispatch(thunkEditPost(post_id, caption))
+    const edited_post = dispatch(thunkEditPost(post_id, caption))
 
     if(edited_post) {
       setTrigger(false)
@@ -35,7 +35,7 @@ export default function EditPost({setTrigger}) {
 
   }
 
-  const updateCaption = async(e) => {
+  const updateCaption = (e) => {
      setCaption(e.target.value)
   }
 

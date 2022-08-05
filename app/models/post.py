@@ -32,10 +32,8 @@ class Post(db.Model):
       'caption': self.caption,
       'created_at': self.created_at,
       'updated_at': self.updated_at,
-      'ownerUsername': User.query.get(self.user_id).username,
-      'ownerProfilePic': User.query.get(self.user_id).profile_pic,
-      # 'owner' : self.owner,
-      # 'comments': self.comments,
+      'owner': self.owner.to_dict(),
+      'comments': [comment.to_dict() for comment in self.comments]
       # 'post_likes': self.post_likes
 
     }

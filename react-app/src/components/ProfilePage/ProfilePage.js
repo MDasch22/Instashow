@@ -44,7 +44,7 @@ function ProfilePage() {
                  <img src={post.image} style={{width: 400, height: 300}} alt='post-image'></img>
                 </NavLink>
                 <div>{post.created_at}</div>
-                <div>{post.ownerUsername}</div>
+                <div>{post.owner.username}</div>
                 <div>{post.caption}</div>
               </div>
             </>
