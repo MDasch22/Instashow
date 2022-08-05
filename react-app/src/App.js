@@ -21,7 +21,9 @@ function App() {
 
   useEffect(() => {
     (async() => {
-      await dispatch(thunkLoadAllPosts());
+      if(sessionUser){
+        await dispatch(thunkLoadAllPosts());
+      }
       await dispatch(authenticate());
       setLoaded(true);
     })();
