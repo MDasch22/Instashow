@@ -10,4 +10,4 @@ def comment_len(form, field):
 
 class CreateComment(FlaskForm):
   postId = IntegerField('postId')
-  new_comment = TextAreaField('comment', validators=[comment_len])
+  new_comment = TextAreaField('comment', validators=[ DataRequired(), comment_len])
