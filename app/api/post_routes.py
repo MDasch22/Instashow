@@ -101,6 +101,8 @@ def delete_post(post_id):
   db.session.commit()
   return deleted_post.to_dict()
 
+
+# GET ALL COMMENTS BY POST ID
 @post_routes.route('/<int:post_id>/comments')
 @login_required
 def get_post_comments(post_id):
@@ -110,16 +112,16 @@ def get_post_comments(post_id):
   return {'comments': all_comments}
 
 
-
-@post_routes.route('/<int:postId>/comments/new', methods=['POST', 'GET'])
+# CREATE NEW COMMENT ON POST
+@post_routes.route('/<int:post_id>/comments/new', methods=['POST', 'GET'])
 @login_required
-def post_comment(postId):
+def post_comment(post_id):
     form = CreateComment()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_comment = Comment(
             user_id=form.data['user_id'],
-            post_id=postId,
+            post_id=post_id,
             comment=form.data['comment']
         )
 
@@ -128,3 +130,22 @@ def post_comment(postId):
         return new_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# LIKING A POST
+@post_routes.route('/like/<int:post_id>', methods=['PUT'])
+@login_required
+def like_post(post_id):
+  post = Post.query.get(post_id)
+  post.like(current_user)
+  db.session.commit()
+  return post.to_dict()
+
+# UNLIKING A POST
+@post_routes.route('/unlike/<int:post_id>', methods=['PUT'])
+@login_required
+def unlike_post(post_id):
+  post = Post.query.get(post_id)
+  post.unlike(current_user)
+  db.session.commit()
+  return post.to_dict()

@@ -223,6 +223,32 @@ export const thunkDeleteComment = (postId, commentId) => async(dispatch) => {
   }
 }
 
+export const thunkAddLike = (post_id) => async(dispatch) => {
+  const response = await fetch(`/api/posts/like/${post_id}`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+  })
+
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionEditPost(data))
+    return data;
+  }
+}
+
+export const thunkDeleteLike = (post_id) => async(dispatch) => {
+  const response = await fetch (`/api/posts/unlike/${post_id}`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'}
+  })
+
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionEditPost(data))
+    return data;
+  }
+}
+
 
 // ----------------------------------------------------------REDUCER
 

@@ -1,0 +1,18 @@
+.like-button{
+  background-color: white;
+  border: none;
+}
+
+.unlike-button{
+  background-color: white;
+  border: none;
+}
+
+
+#like{
+  color: lightgray;
+}
+
+#unlike{
+  color: rgb(240, 70, 70);
+}
