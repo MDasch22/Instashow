@@ -1,41 +1,42 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkGetComments } from '../../store/comment';
-import CreateCommentForm from '../CreateComment';
 import { thunkDeleteComment } from '../../store/comment'
+import EditCommentForm from '../EditComment';
 
-export default function Comments({postId}) {
+export default function Comments({postId, comment}) {
   const dispatch = useDispatch();
 
-  const comments = useSelector(state => Object.values(state.comment))
   const sessionUser = useSelector(state => state.session.user)
 
-  useEffect(() => {
-    dispatch(thunkGetComments(postId))
-  }, [dispatch, postId])
+  const [showEditCommentForm, setShowEditCommentForm] = useState(false)
+
 
 
   return (
     <div>
       <div>
-        {comments.map(comment => {
-          return (
+          <img src={comment.user.profile_pic} style={{width: 20 ,height: 20}} alt='comment-profile-pic'></img>
+          <div>
+            <div>{comment.user.username}</div>
+          </div>
+          {!showEditCommentForm ?
             <div>
-              <img src={comment.user.profile_pic} style={{width: 20 ,height: 20}} alt='comment-profile-pic'></img>
-              <div>{comment.user.username}</div>
-              <div> {comment.comment} </div>
-              {sessionUser.id === comment.user.id && (
-                <>
-                  <button>Edit</button>
-                  <button onClick={() => dispatch(thunkDeleteComment(comment.id))}>Delete</button>
-                </>
-              )}
+              <>
+                <div> {comment.comment} </div>
+                {comment.user_id === sessionUser.id && (
+                  <>
+                    <button onClick={() => setShowEditCommentForm(true)}>Edit</button>
+                    <button onClick={() => dispatch(thunkDeleteComment(comment.id))}>Delete</button>
+                  </>
+                )}
+
+              </>
             </div>
-        )}
-        )}
-      </div>
-      <div>
-        <CreateCommentForm postId={postId}/>
+            :
+            <>
+              <EditCommentForm postId={postId} currentComment={comment} closeForm={() => setShowEditCommentForm(false)}/>
+            </>
+          }
       </div>
     </div>
   )

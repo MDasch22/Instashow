@@ -18,7 +18,6 @@ export default function SinglePost() {
   const comments = useSelector(state => Object.values(state.comment))
   const sessionUser = useSelector(state => state.session.user)
 
-  console.log(comments)
 
   const [showEditPost, setShowEditPost] = useState(false)
   const [submitted , setSubmitted] = useState(false)
@@ -90,7 +89,16 @@ if(!comments) return null
         </Modal>
       </div>
       <div>
-        <Comments postId={post_id}/>
+        {comments.map(comment => {
+          return(
+            <div>
+              <Comments postId={post_id}comment={comment}/>
+            </div>
+          )}
+        )}
+      </div>
+      <div>
+        <CreateCommentForm postId={post_id}/>
       </div>
     </div>
   )

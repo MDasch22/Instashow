@@ -39,7 +39,7 @@ export const actionDeleteComment = (commentId) => {
 // ----------------------------------------------------------THUNKS
 
 export const thunkGetComments = (post_id) => async(dispatch) => {
-  const response = await fetch(`/api/comments/${post_id}`)
+  const response = await fetch(`/api/posts/${post_id}/comments`)
 
   if(response.ok) {
     const data = await response.json()
@@ -49,15 +49,14 @@ export const thunkGetComments = (post_id) => async(dispatch) => {
 }
 
 
-export const thunkCreateComment = (postId, new_comment) => async(dispatch) => {
+export const thunkCreateComment = (postId, data) => async(dispatch) => {
 
-  const response = await fetch('/api/comments/new', {
+  const response = await fetch(`/api/posts/${postId}/comments/new`, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      postId,
-      new_comment
-    })
+    body: JSON.stringify(
+      data
+    )
   })
 
   if(response.ok) {
@@ -73,26 +72,20 @@ export const thunkCreateComment = (postId, new_comment) => async(dispatch) => {
   }
 }
 
-export const thunkEditComment = (commentId, edited_comment) => async(dispatch) => {
+export const thunkEditComment = (commentId, comment) => async dispatch => {
   const response = await fetch(`/api/comments/${commentId}/edit`, {
-    method: "PUT",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      commentId,
-      edited_comment
-    })
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({comment})
   })
 
-  if(response.ok) {
-    const data = await response.json()
-    dispatch(actionCreateComment(data))
-    return data
-  }
-  else {
-    const error = await response.json()
-    return error
+  if (response.ok) {
+      const data = await response.json();
+      dispatch(actionEditComment(data));
+      return data
   }
 }
+
 
 export const thunkDeleteComment = (commentId) => async(dispatch) => {
   const response = await fetch(`/api/comments/${commentId}/delete`, {
@@ -121,6 +114,10 @@ const commentReducer = (state = initialState, action) => {
       return newState
 
     case CREATE_COMMENT:
+      newState[action.comment.id] = action.comment
+      return newState
+
+    case EDIT_COMMENT:
       newState[action.comment.id] = action.comment
       return newState
 
