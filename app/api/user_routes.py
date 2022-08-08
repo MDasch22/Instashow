@@ -22,5 +22,5 @@ def user(id):
 @user_routes.route("/profile/<username>")
 @login_required
 def get_user(username):
-    user = User.query.filter(username == username).first()
+    user = User.query.filter(User.username == username).first()
     return user.to_dict()

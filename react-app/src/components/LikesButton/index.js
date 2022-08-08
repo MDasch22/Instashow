@@ -11,7 +11,7 @@ export default function LikeButton({post}) {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    if(post.likes.includes(user => user.username === sessionUser.username)){
+    if(post.likes.find(user => user.username === sessionUser.username)){
       setLike(true)
     }
   }, [post.likes, sessionUser.username])
@@ -41,7 +41,12 @@ export default function LikeButton({post}) {
 
       )}
 
-      {post.likes.length >= 1 && (
+      {post.likes.length === 1 && (
+        <>
+          <div>{post.likes.length} like</div>
+        </>
+      )}
+      {post.likes.length > 1 && (
         <>
           <div>{post.likes.length} likes</div>
         </>

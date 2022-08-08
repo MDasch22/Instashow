@@ -1,0 +1,47 @@
+.nav{
+  margin: 0;
+  width: 100%;
+}
+
+.nav-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 0;
+  align-items: center;
+  border-bottom: 2px solid lightgray;
+  list-style: none;
+}
+
+#nav-bar-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+#instashow-logged-in{
+  text-decoration: none;
+}
+
+#instashow{
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+}
+
+
+#nav-bar-bttns{
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+
+#nav-bar-profile-bttn{
+  border-radius: 50%;
+}
+
+#home-button{
+  color: black;
+}

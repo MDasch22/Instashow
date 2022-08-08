@@ -31,7 +31,7 @@ def get_single_post(post_id):
 @post_routes.route('/<username>')
 @login_required
 def view_posts(username):
-  user = User.query.filter(username == username).first()
+  user = User.query.filter(User.username == username).first()
   users_posts = Post.query.filter(Post.user_id == user.id).all()
   posts = [post.to_dict() for post in users_posts]
 

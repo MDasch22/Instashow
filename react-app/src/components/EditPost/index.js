@@ -51,6 +51,21 @@ export default function EditPost({setTrigger}) {
   return (
     <div>
       <h1>Edit Post</h1>
+      {isSubmitted && errors.length > 0 && (
+              <div className="errorHandling">
+                <div className="errorTitle">
+                  Please fix the following errors before submitting:
+                </div>
+                <ul className="errors">
+                  {errors.map((error) => (
+                    <ul key={error} id="error">
+                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                      {error}
+                    </ul>
+                  ))}
+                </ul>
+              </div>
+        )}
       <img src={post.image} style={{width: 400 ,height: 400}} alt='edit-image'></img>
       <form onSubmit={handleSubmit}>
         <div>

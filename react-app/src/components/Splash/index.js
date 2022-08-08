@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { thunkLoadAllPosts } from '../../store/posts'
 
 export default function HomePage() {
@@ -19,9 +20,14 @@ export default function HomePage() {
         {allPosts.map(post => {
         return (
           <div key={post.id}>
-            <img src={post.image} style={{width: 400, height: 300}} alt='post-image'></img>
+            <NavLink to={`/post/${post.id}`}>
+              <img src={post.image} style={{width: 400, height: 300}} alt='post-image'></img>
+            </NavLink>
             <div>{post.created_at}</div>
-            <div>{post.ownerUsername}</div>
+            <NavLink to={`/${post.owner.username}`}>
+              <img src={post.owner.profile_pic} style={{width:30, height:30}}></img>
+            </NavLink>
+            <div>{post.owner.username}</div>
             <div>{post.caption}</div>
 
           </div>
