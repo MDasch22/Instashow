@@ -7,6 +7,7 @@ import EditPost from '../EditPost'
 import CreateCommentForm from '../CreateComment'
 import { thunkGetComments, thunkDeleteComment } from '../../store/comment'
 import Comments from '../Comments'
+import LikeButton from '../LikesButton'
 
 
 export default function SinglePost() {
@@ -77,6 +78,7 @@ if(!comments) return null
   return (
     <div>
       <img src={post.image} style={{width: 500 ,height: 500}} alt='post-image'></img>
+      <LikeButton post={post}/>
       <img src={post.owner.profile_pic} style={{width: 70 ,height: 70}} alt='post-profile-pic'></img>
       <div>{post.created_at}</div>
       <div>{post.owner.username}</div>
