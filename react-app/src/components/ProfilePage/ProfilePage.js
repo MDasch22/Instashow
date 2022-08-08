@@ -17,7 +17,6 @@ function ProfilePage() {
   const users_posts = useSelector(state => Object.values(state.post))
   users_posts.reverse()
 
-  console.log("THIS IS THE USERNAME:", username)
 
   useEffect(() => {
     dispatch(thunkGetUser(username))

@@ -16,11 +16,10 @@ class Post(db.Model):
   updated_at = db.Column(DateTime(timezone=True), onupdate=func.now())
 
   owner = db.relationship("User", back_populates="user_posts")
-  comments = db.relationship("Comment", back_populates="post")
+  comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
   post_likes = db.relationship("User",
       secondary=likes,
       back_populates='user_likes',
-      cascade="all, delete"
   )
 
 # USERS THAT LIKE POST

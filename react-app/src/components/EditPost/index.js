@@ -8,6 +8,7 @@ export default function EditPost({setTrigger}) {
   const history = useHistory()
   const { post_id } = useParams()
 
+
   const post = useSelector(state => state.post[post_id])
   const sessionUser = useSelector(state => state.session.user)
   const user = useSelector(state => state.user[post.ownerUsername])
@@ -40,8 +41,8 @@ export default function EditPost({setTrigger}) {
      setCaption(e.target.value)
   }
 
-  const onDelete = (e) => {
-    dispatch(thunkDeletePost(post_id))
+  const onDelete = async(e) => {
+    await dispatch(thunkDeletePost(post_id))
     history.push(`/${sessionUser.username}`)
   }
 
