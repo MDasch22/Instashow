@@ -1,8 +1,10 @@
+from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from flask_wtf.csrf import validate_csrf
 from app.forms.edit_post import EditPostForm
-from app.models import db, User, Post
+from app.forms.create_comment import CreateComment
+from app.models import db, User, Post, Comment
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.aws_upload_helper import (upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -98,3 +100,31 @@ def delete_post(post_id):
   db.session.delete(deleted_post)
   db.session.commit()
   return deleted_post.to_dict()
+
+@post_routes.route('/<int:post_id>/comments')
+@login_required
+def get_post_comments(post_id):
+  post = Post.query.get(post_id)
+  comments = post.comments
+  all_comments = [comment.to_dict() for comment in comments]
+  return {'comments': all_comments}
+
+
+
+@post_routes.route('/<int:postId>/comments/new', methods=['POST', 'GET'])
+@login_required
+def post_comment(postId):
+    form = CreateComment()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_comment = Comment(
+            user_id=form.data['user_id'],
+            post_id=postId,
+            comment=form.data['comment']
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

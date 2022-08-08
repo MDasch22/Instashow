@@ -8,6 +8,5 @@ def caption_len(field, form):
     raise ValidationError("Caption must be at least 5 characters")
 
 
-
 class EditPostForm(FlaskForm):
   caption = TextAreaField('caption', validators=[DataRequired()])

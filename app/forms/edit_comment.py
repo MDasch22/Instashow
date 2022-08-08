@@ -2,13 +2,13 @@ from flask_wtf import FlaskForm
 from wtforms import TextAreaField, IntegerField
 from wtforms.validators import DataRequired, ValidationError
 
-def comment_len(form, field):
+
+def comment_len(field, form):
   comment = field.data
   print("THIS IS THE COMMENT: ", comment)
   if(len(comment) < 5):
     raise ValidationError("Comment must be at least 5 characters.")
 
-class CreateComment(FlaskForm):
-  user_id = IntegerField('user_id')
+class EditComment(FlaskForm):
   postId = IntegerField('postId')
-  comment = TextAreaField('comment', validators=[ DataRequired(), comment_len])
+  edited_comment = TextAreaField('edited_comment', validators=[ DataRequired(), comment_len])

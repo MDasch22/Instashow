@@ -207,8 +207,8 @@ export const thunkEditComment = (postId, edited_comment) => async(dispatch) => {
 }
 
 export const thunkDeleteComment = (postId, commentId) => async(dispatch) => {
-  // console.log('THIS IS THE POSTiD : ', postId)
-  // console.log("This is the comment Id: ", commentId)
+  console.log('THIS IS THE POSTiD : ', postId)
+  console.log("This is the comment Id: ", commentId)
   const response = await fetch(`/api/comments/${commentId}/delete`, {
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'},
@@ -271,7 +271,7 @@ const postReducer = (state = initialState, action) => {
       return newState
 
     case DELETE_COMMENT:
-      delete newState[action.postId].comments[action.commentId]
+      delete newState[action.postId]?.comments[action.commentId]
       return newState
 
     default:

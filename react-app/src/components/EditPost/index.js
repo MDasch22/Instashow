@@ -9,6 +9,7 @@ export default function EditPost({setTrigger}) {
   const { post_id } = useParams()
 
   const post = useSelector(state => state.post[post_id])
+  const sessionUser = useSelector(state => state.session.user)
   const user = useSelector(state => state.user[post.ownerUsername])
 
   const [errors, setErrors] = useState([])
@@ -41,7 +42,7 @@ export default function EditPost({setTrigger}) {
 
   const onDelete = (e) => {
     dispatch(thunkDeletePost(post_id))
-    history.push(`/${user.username}`)
+    history.push(`/${sessionUser.username}`)
   }
 
 

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams, NavLink } from 'react-router-dom'
 import Modal from 'react-modal'
-import { thunkGetSinglePost, thunkDeleteComment } from '../../store/posts'
+import { thunkGetSinglePost } from '../../store/posts'
 import EditPost from '../EditPost'
 import CreateCommentForm from '../CreateComment'
+import { thunkGetComments, thunkDeleteComment } from '../../store/comment'
+import Comments from '../Comments'
 
 
 export default function SinglePost() {
@@ -13,13 +15,16 @@ export default function SinglePost() {
   const { post_id } = useParams()
 
   const post = useSelector(state => state.post[post_id])
+  const comments = useSelector(state => Object.values(state.comment))
   const sessionUser = useSelector(state => state.session.user)
+
 
   const [showEditPost, setShowEditPost] = useState(false)
   const [submitted , setSubmitted] = useState(false)
 
   useEffect(() => {
     dispatch(thunkGetSinglePost(post_id))
+    dispatch(thunkGetComments(post_id))
   },[dispatch, post_id])
 
 
@@ -67,6 +72,7 @@ export default function SinglePost() {
 };
 
 if(!post) return null
+if(!comments) return null
 
   return (
     <div>
@@ -83,25 +89,17 @@ if(!post) return null
         </Modal>
       </div>
       <div>
-        {post.comments && post.comments.map(comment => {
-        return (
-          <div>
-            <div>{comment.user.username}</div>
-            <div>{comment.comment}</div>
-            {sessionUser.id === comment.user_id && (
-              <>
-                <button>Edit</button>
-                <button onClick={() => dispatch(thunkDeleteComment(post_id, comment.id))}>Delete</button>
-              </>
-            )}
-          </div>
+        {comments.map(comment => {
+          return(
+            <div>
+              <Comments postId={post_id}comment={comment}/>
+            </div>
           )}
         )}
       </div>
       <div>
-          <CreateCommentForm postId={post_id}/>
+        <CreateCommentForm postId={post_id}/>
       </div>
-
     </div>
   )
 }
