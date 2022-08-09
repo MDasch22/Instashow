@@ -9,11 +9,18 @@ export default function HomePage() {
   const allPosts = useSelector(state => Object.values(state.post))
 
   // GETTING POST BY USER FOLLOWING
-  const followingPost = allPosts.filter(post => {
+  let followingPost = allPosts.filter(post => {
     if(sessionUser.following.map(user => user.id).includes(post.user_id)){
       return post
     }
   })
+
+  // GETTING DEMO USER POST IF NEW USER HAS NO FOLLOWERS
+  const demoPost = allPosts.filter(post => post.user_id === 1)
+  if(sessionUser.following.length === 0) {
+    followingPost = demoPost
+  }
+
 
   followingPost.reverse()
 
