@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { thunkEditUser } from '../../store/session'
+import UpdateProfileImg from '../UpdateProfileImg'
 
 export default function EditProfile({user}) {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { username } = useParams()
 
   const [errors, setErrors] = useState([])
   const [email , setEmail] = useState(user.email)
   const [fullname , setFullname] = useState(user.fullname)
   const [userName, setUserName] = useState(user.username)
   const [bio, setBio] = useState(user.bio)
+  const [showImage , setShowImage] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   const userId = user.id
@@ -30,7 +31,6 @@ export default function EditProfile({user}) {
     }
 
   }
-
 
   const updateEmail = async(e) => {
     setEmail(e.target.value)
@@ -53,11 +53,23 @@ export default function EditProfile({user}) {
     return history.push('/')
   }
 
-  if(!user) return null
-
   return (
     <div>
       <h1>Edit Profile</h1>
+      <div>
+        <div>
+          <img src={profilePic} alt='profile-pic'></img>
+        </div>
+        <div>
+          <div>
+            {!showImage ?
+              <button onClick={() => setShowImage(true)}>Change profile</button>
+              :
+              <UpdateProfileImg id={userId}/>
+            }
+          </div>
+        </div>
+      </div>
       <form onSubmit={onSubmit}>
         <label>Email: </label>
         <input

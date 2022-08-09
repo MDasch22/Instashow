@@ -69,13 +69,13 @@ export default function CreatePost() {
       <form onSubmit={handleSubmit}>
         <div>
         {submitted && errors.length > 0 && (
-              <div className="errorHandling">
-                <div className="errorTitle">
+              <div>
+                <div >
                   Please fix the following errors before submitting:
                 </div>
-                <ul className="errors">
+                <ul>
                   {errors.map((error) => (
-                    <ul key={error} id="error">
+                    <ul key={error}>
                       <i className="fas fa-spinner fa-spin" id="spinner"></i>
                       {error}
                     </ul>

@@ -42,7 +42,7 @@ function ProfilePage() {
       </div>
         {user.id === sessionUser.id && (
           <NavLink to={`/${username}/edit`}>
-            <button>Edit</button>
+            <button>Edit Profile</button>
           </NavLink>
         )}
       <div>
