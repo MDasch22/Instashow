@@ -1,3 +1,4 @@
+
 const GET_USER = 'session/GET_USER'
 const UPDATE_USER = 'session/UPDATE_USER'
 
@@ -26,6 +27,7 @@ export const thunkGetUser = (username) => async(dispatch) => {
     return data
   }
 }
+
 
 
 const initialState = {}

@@ -1,0 +1,101 @@
+.profile-user-info-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid lightgray;
+}
+
+#profile-user-profilePic{
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile-user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 0 10px 100px ;
+
+}
+
+#profile-username-follow{
+  display: inline-flex;
+}
+
+#profile-user-username{
+  font-size: 30px;
+}
+
+#profile-follow-bttn {
+  margin-left: 30px;
+}
+
+#follow-unfollow-bttn{
+  width: 100px;
+  height: 30px;
+}
+
+#profile-followers-info{
+  display: flex;
+  flex-direction: row;
+}
+
+#user-post-amount{
+  font-weight: bold;
+  color: #222;
+  margin-right: 20px;
+
+}
+
+#followers-bttn {
+  font-weight: bold;
+  color: #222;
+  width: 100px;
+}
+
+#followers-bttn:hover{
+  cursor: pointer;
+}
+
+
+.profile-user-posts{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#profile-page-postCard{
+  margin: 10px 20px;
+  position: relative;
+}
+
+#profile-page-post-link:hover {
+  -webkit-filter: brightness(60%);
+}
+
+#profile-page-post-link:hover + .post-ratio{
+  visibility: visible;
+}
+
+.post-ratio:hover{
+  visibility: visible;
+}
+
+.post-ratio {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+  visibility: hidden;
+}
+
+#ratio {
+  margin: 0 10px;
+  color: white;
+}

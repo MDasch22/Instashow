@@ -47,6 +47,17 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def user_following(self, user):
+        return self.followers.filter(follows.c.following_id == user.id).count() > 0
+
+    def follow(self, user):
+        if not self.user_following(user):
+            self.followers.append(user)
+
+    def unfollow(self, user):
+        if self.user_following(user):
+            self.followers.remove(user)
+
 
     def to_dict_short(self):
         return {
@@ -66,8 +77,6 @@ class User(db.Model, UserMixin):
             'bio': self.bio,
             'time_created': self.time_created,
             'time_updated': self.time_updated,
-            # 'user_post': self.user_posts,
-            # 'user_comments': self.user_comments,
-            # 'user_likes': self.user_likes,
-            # 'followers': self.followers
+            'following': [user.to_dict_short() for user in self.followers],
+            'followers': [user.to_dict_short() for user in self.follows]
         }
