@@ -50,7 +50,7 @@ export default function EditProfile({user}) {
 
 
   const onCancel = async() => {
-    return history.push('/')
+    return history.push(`/${userName}`)
   }
 
   return (

@@ -8,7 +8,14 @@ export default function HomePage() {
   const sessionUser = useSelector(state => state.session.user)
   const allPosts = useSelector(state => Object.values(state.post))
 
-  allPosts.reverse()
+  // GETTING POST BY USER FOLLOWING
+  const followingPost = allPosts.filter(post => {
+    if(sessionUser.following.map(user => user.id).includes(post.user_id)){
+      return post
+    }
+  })
+
+  followingPost.reverse()
 
   useEffect(() => {
     window.scroll(0,0)
@@ -18,7 +25,7 @@ export default function HomePage() {
   return (
     <div>
       <div>
-        {allPosts.map(post => {
+        {followingPost.map(post => {
         return (
           <div key={post.id}>
             <NavLink to={`/post/${post.id}`}>
