@@ -4,6 +4,7 @@
 const LOAD_ALL_POST = 'posts/loadAllPosts'
 const GET_SINGLE_POST = 'posts/getSinglePost'
 const LOAD_USER_POSTS = 'posts/loadUserPosts'
+const LOAD_FOLLOWING_POSTS = 'post/FollowingPosts'
 
 const CREATE_POST = 'posts/createPost'
 
@@ -33,6 +34,13 @@ export const actionGetSinglePost = (post) => {
 export const actionLoadUserPosts = (posts) => {
   return {
     type: LOAD_USER_POSTS,
+    posts
+  }
+}
+
+export const actionLoadFollowingPosts = (posts) => {
+  return {
+    type: LOAD_FOLLOWING_POSTS,
     posts
   }
 }
@@ -107,6 +115,16 @@ export const thunkGetSinglePost = (post_id) => async(dispatch) => {
 
 export const thunkLoadUserPosts = (username) => async(dispatch) => {
   const response = await fetch (`/api/posts/${username}`)
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(actionLoadUserPosts(data))
+    return data
+  }
+}
+
+export const thunkLoadFollowingUserPosts = (id) => async(dispatch) => {
+  const response = await fetch (`/api/posts/explore/${id}`)
 
   if (response.ok) {
     const data = await response.json()
@@ -272,6 +290,13 @@ const postReducer = (state = initialState, action) => {
     case LOAD_USER_POSTS:
       newState = {}
       action.posts.user_posts.forEach(post => {
+        newState[post.id] = post
+      })
+      return newState;
+
+    case LOAD_FOLLOWING_POSTS:
+      newState = {}
+      action.posts.posts.forEach(post => {
         newState[post.id] = post
       })
       return newState;

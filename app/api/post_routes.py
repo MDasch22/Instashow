@@ -38,6 +38,14 @@ def view_posts(username):
   return {'user_posts': posts}
 
 
+@post_routes.route('/explore/<int:id>')
+@login_required
+def get_explore(id):
+  posts = Post.query.filter(Post.user_id != id).all()
+  data = [post.to_dict() for post in posts]
+  return {'post': data}
+
+
 # CREATE A NEW POST
 @post_routes.route('/new', methods=['GET','POST'])
 @login_required

@@ -13,6 +13,7 @@ import EditPost from './components/EditPost';
 import { thunkLoadAllPosts } from './store/posts';
 import SinglePost from './components/SinglePost';
 import EditProfile from './components/EditProfile';
+import ExplorePage from './components/ExplorePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/:username' exact={true} >
           <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/explore/posts' exact={true}>
+          <ExplorePage user={sessionUser}/>
         </ProtectedRoute>
         <ProtectedRoute path='/:username/edit' exact={true}>
           <EditProfile user={sessionUser}/>

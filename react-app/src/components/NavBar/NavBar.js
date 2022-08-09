@@ -25,6 +25,11 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li id="nav-bar-bttns">
+              <NavLink to='/explore/posts' id='explore-button' exact={true} activeClassName='active'>
+                <div><i class="fa-regular fa-compass fa-lg"></i></div>
+              </NavLink>
+            </li>
+            <li id="nav-bar-bttns">
               <NavLink to='/post/new' exact={true} activeClassName='active'>
                 <button><i className="fa-solid fa-plus fa-lg"></i></button>
               </NavLink>
