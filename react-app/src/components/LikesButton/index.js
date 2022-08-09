@@ -33,11 +33,11 @@ export default function LikeButton({post}) {
     <div>
       {!like ? (
 
-        <button className="like-button"onClick={liking}> <i id='like' className="fa-solid fa-heart fa-2x"> </i></button>
+        <button className="like-button"onClick={liking}> <i id='like' className="fa-regular fa-heart fa-2x"></i></button>
 
       ) : (
 
-        <button className='unlike-button' onClick={unliking}> <i id='unlike' className="fa-solid fa-heart fa-2x"> </i> </button>
+        <button className='unlike-button' onClick={unliking}> <i id='unlike' className="fa-solid fa-heart fa-2x"></i></button>
 
       )}
 

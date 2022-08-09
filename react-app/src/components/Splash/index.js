@@ -11,6 +11,7 @@ export default function HomePage() {
   allPosts.reverse()
 
   useEffect(() => {
+    window.scroll(0,0)
     dispatch(thunkLoadAllPosts())
   }, [dispatch])
 
