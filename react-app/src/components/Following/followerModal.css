@@ -1,0 +1,61 @@
+.followers-modal-container{
+  padding-bottom: 15px;
+}
+
+#followers-modal-title{
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  padding-top: 15px;
+  border-bottom: 1px solid rgb(143, 143, 143);
+}
+
+#modal-user-card:hover{
+  background-color: lightgray;
+}
+
+#modal-user-link{
+  display: flex;
+  justify-content: row;
+  text-decoration: none;
+  padding: 5px 0;
+}
+
+#modal-profile_pic{
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+#modal-user-info{
+  margin-left: 10px;
+}
+
+#modal-user-username{
+  color: #222;
+  font-size: 18px;
+}
+
+#modal-user-fullname{
+  color: rgb(129, 129, 129);
+  font-size: 15px;
+}
+
+#modal-user-link:hover{
+  background-color: lightgray;
+}
+
+#close-modal-followers{
+  position: absolute;
+  left: 350px;
+  top: 1px;
+  width: 30px;
+  height: 30px;
+  color: #222;
+  font-size: 20px;
+  border: 0;
+  background-color: white;
+}
+
+#close-modal-followers:hover{
+  cursor: pointer;
+}

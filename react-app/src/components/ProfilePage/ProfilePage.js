@@ -9,6 +9,7 @@ import Following from '../Following';
 import Followers from '../Followers';
 
 import './ProfilePage.css';
+import '../Following/followerModal.css'
 
 function ProfilePage() {
 
@@ -58,7 +59,7 @@ function ProfilePage() {
       position: 'relative',
       margin: 'auto',
       maxWidth: '500px',
-      width: '100%',
+      width: '400px',
       top: '300px',
       left: '40px',
       right: '40px',
@@ -69,7 +70,7 @@ function ProfilePage() {
       WebkitOverflowScrolling: 'touch',
       borderRadius: '24px',
       outline: 'none',
-      padding: '0px 18px 18px',
+      padding: '0',
       overflow: 'visibile'
     }
 };
@@ -85,9 +86,9 @@ function ProfilePage() {
 
 
   return (
-    <div>
+    <div className='profile-container'>
       <div className='profile-user-info-container'>
-        <img id="profile-user-profilePic"src={user.profile_pic} style={{width: 200 ,height: 200}} alt='profile-pic'></img>
+        <img id="profile-user-profilePic"src={user.profile_pic} style={{width: 180 ,height: 180}} alt='profile-pic'></img>
         <div className='profile-user-info'>
           <div id="profile-username-follow">
             <div id="profile-user-username">{user.username}</div>
@@ -105,14 +106,14 @@ function ProfilePage() {
             <div>
               <p id="followers-bttn" onClick={openFollowers}>{user.followers.length} Followers</p>
               <Modal isOpen={showFollower} style={formStyles}>
-                <button onClick={closeFollowers}>X</button>
+                <button id="close-modal-followers" onClick={closeFollowers}><i className="fa-solid fa-xmark fa-lg"></i></button>
                 <Followers followers={user.followers} closeModal={closeFollowers}/>
               </Modal>
             </div>
             <div>
               <p id="followers-bttn" onClick={openFollowing}>{user.following.length} Following </p>
               <Modal isOpen={showFollowing} style={formStyles}>
-                <button onClick={closeFollowing}>X</button>
+                <button id="close-modal-followers" onClick={closeFollowing}><i className="fa-solid fa-xmark fa-lg"></i></button>
                 <Following following={user.following} closeModal={closeFollowing}/>
               </Modal>
             </div>
@@ -120,11 +121,6 @@ function ProfilePage() {
           <div>{user.fullname}</div>
           <div>{user.bio}</div>
         </div>
-        {/* {user.id === sessionUser.id && (
-          <NavLink to={`/${username}/edit`}>
-            <button>Edit Profile</button>
-          </NavLink>
-        )} */}
       </div>
       <div className="profile-user-posts">
         {users_posts && users_posts.map(post => {
