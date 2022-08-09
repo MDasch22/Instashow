@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost } from '../../store/posts'
@@ -11,11 +11,23 @@ export default function CreatePost() {
   const [image, setImage] = useState(null)
   const [photoUrl, setPhotoUrl] = useState()
   const [caption , setCaption] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    const err = []
+    if(!image) err.push("Image must be: jpg, jpeg, or png")
+    if(caption.length < 5) err.push("Caption must be at least 5 characters")
+    setErrors(err)
+  }, [image, caption])
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const errors = [];
+    setSubmitted(true)
+
+    if(errors.length) {
+      return alert("Could not make your post!")
+    }
+
     const formData = new FormData();
     formData.append('image', image)
     formData.append('caption', caption)
@@ -31,6 +43,10 @@ export default function CreatePost() {
 
   const updateCaption = async(e) => {
     setCaption(e.target.value)
+  }
+
+  const onCancel = async() => {
+    return history.push('/')
   }
 
   const updateImage = async(e) => {
@@ -52,9 +68,21 @@ export default function CreatePost() {
       <h1>Create a new post</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          {errors && errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+        {submitted && errors.length > 0 && (
+              <div>
+                <div >
+                  Please fix the following errors before submitting:
+                </div>
+                <ul>
+                  {errors.map((error) => (
+                    <ul key={error}>
+                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                      {error}
+                    </ul>
+                  ))}
+                </ul>
+              </div>
+        )}
         </div>
         <input
           type='file'
@@ -63,9 +91,11 @@ export default function CreatePost() {
         <textarea
           placeholder='Caption...'
           onChange={updateCaption}
+          required
         />
         <button type='submit'>Post</button>
       </form>
+      <button onClick={onCancel} type='cancel'>Cancel</button>
       {image && (
         <>
           <img src={photoUrl} key={image} style={{width: 400, height: 300}} alt="image"></img>

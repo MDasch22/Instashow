@@ -1,9 +1,18 @@
+
 const GET_USER = 'session/GET_USER'
+const UPDATE_USER = 'session/UPDATE_USER'
 
 
 export const actionGetUser = (user) => {
   return {
     type: GET_USER,
+    user
+  }
+}
+
+export const actionUpdateUser = (user) => {
+  return {
+    type: UPDATE_USER,
     user
   }
 }
@@ -18,7 +27,6 @@ export const thunkGetUser = (username) => async(dispatch) => {
     return data
   }
 }
-
 
 
 

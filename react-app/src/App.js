@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import CreatePost from './components/CreatePost';
@@ -12,6 +12,7 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import EditPost from './components/EditPost';
 import { thunkLoadAllPosts } from './store/posts';
 import SinglePost from './components/SinglePost';
+import EditProfile from './components/EditProfile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/:username' exact={true} >
           <ProfilePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/:username/edit' exact={true}>
+          <EditProfile user={sessionUser}/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>Instashow</h1>

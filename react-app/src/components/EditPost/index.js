@@ -8,6 +8,7 @@ export default function EditPost({setTrigger}) {
   const history = useHistory()
   const { post_id } = useParams()
 
+
   const post = useSelector(state => state.post[post_id])
   const sessionUser = useSelector(state => state.session.user)
   const user = useSelector(state => state.user[post.ownerUsername])
@@ -40,8 +41,8 @@ export default function EditPost({setTrigger}) {
      setCaption(e.target.value)
   }
 
-  const onDelete = (e) => {
-    dispatch(thunkDeletePost(post_id))
+  const onDelete = async(e) => {
+    await dispatch(thunkDeletePost(post_id))
     history.push(`/${sessionUser.username}`)
   }
 
@@ -51,6 +52,21 @@ export default function EditPost({setTrigger}) {
   return (
     <div>
       <h1>Edit Post</h1>
+      {isSubmitted && errors.length > 0 && (
+              <div className="errorHandling">
+                <div className="errorTitle">
+                  Please fix the following errors before submitting:
+                </div>
+                <ul className="errors">
+                  {errors.map((error) => (
+                    <ul key={error} id="error">
+                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                      {error}
+                    </ul>
+                  ))}
+                </ul>
+              </div>
+        )}
       <img src={post.image} style={{width: 400 ,height: 400}} alt='edit-image'></img>
       <form onSubmit={handleSubmit}>
         <div>
