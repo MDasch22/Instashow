@@ -1,0 +1,46 @@
+.single-comment{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.single-comment-username{
+  display: inline-flex;
+}
+
+#single-comment-profilePic{
+  border-radius: 50%;
+}
+
+#single-comment-name{
+  margin-top: 8px;
+  margin-left: 5px;
+  color: #222;
+  font-weight: bold;
+}
+
+.single-comment-edit{
+  flex-wrap: wrap;
+  margin-left: 5px;
+  display: flex;
+  margin-top: 4px;
+  width: 300px;
+}
+
+.comment-update{
+  margin-top: 5px;
+}
+
+#comment-edit{
+  color: rgb(94, 94, 94);
+  border: none;
+  background-color: white;
+  margin: 0 5px;
+}
+
+#comment-delete{
+  color: rgb(94, 94, 94);
+  border: none;
+  background-color: white;
+  margin-right: 10px;
+}

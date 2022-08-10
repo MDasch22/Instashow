@@ -30,7 +30,7 @@ export default function LikeButton({post}) {
 
 
   return (
-    <div>
+    <div className='like-container'>
       {!like ? (
 
         <button className="like-button"onClick={liking}> <i id='like' className="fa-regular fa-heart fa-2x"></i></button>
@@ -43,12 +43,12 @@ export default function LikeButton({post}) {
 
       {post.likes.length === 1 && (
         <>
-          <div>{post.likes.length} like</div>
+          <div id='post-like'>{post.likes.length} like</div>
         </>
       )}
       {post.likes.length > 1 && (
         <>
-          <div>{post.likes.length} likes</div>
+          <div id='post-likes'>{post.likes.length} likes</div>
         </>
       )}
     </div>
