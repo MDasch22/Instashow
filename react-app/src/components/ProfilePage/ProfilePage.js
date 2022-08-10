@@ -16,10 +16,12 @@ function ProfilePage() {
   const dispatch = useDispatch();
   const { username }  = useParams();
 
+
   const sessionUser = useSelector(state => state.session.user)
   const user = useSelector(state => state.user[username])
   const users_posts = useSelector(state => Object.values(state.post))
   users_posts.reverse()
+
 
   const [showFollower, setShowFollowers] = useState(false)
   const [showFollowing, setShowFollowing] = useState(false)

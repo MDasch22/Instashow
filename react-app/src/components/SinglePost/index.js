@@ -9,6 +9,8 @@ import { thunkGetComments, thunkDeleteComment } from '../../store/comment'
 import Comments from '../Comments'
 import LikeButton from '../LikesButton'
 
+import './singlepost.css'
+
 
 export default function SinglePost() {
   const dispatch = useDispatch()
@@ -76,31 +78,48 @@ if(!post) return null
 if(!comments) return null
 
   return (
-    <div>
-      <img src={post.image} style={{width: 500 ,height: 500}} alt='post-image'></img>
-      <LikeButton post={post}/>
-      <img src={post.owner.profile_pic} style={{width: 70 ,height: 70}} alt='post-profile-pic'></img>
-      <div>{post.created_at}</div>
-      <div>{post.owner.username}</div>
-      <div>{post.caption}</div>
-      <div className='edit-modal'>
-        <button onClick={openEditPostForm}>Edit</button>
-        <Modal isOpen={showEditPost} style={formStyles}>
-          <button onClick={closeEditPostForm}>X</button>
-          <EditPost setTrigger={setShowEditPost}/>
-        </Modal>
-      </div>
-      <div>
-        {comments.map(comment => {
-          return(
-            <div>
-              <Comments postId={post_id}comment={comment}/>
+    <div className='single-post'>
+      <div className='single-post-container'>
+        <div>
+          <img src={post.image} style={{width: 600 ,height: 600}} alt='post-image'></img>
+        </div>
+        <div className='single-post-interation'>
+          <div className='single-post-profilepic-username'>
+            <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
+            <div id='single-post-username'>{post.owner.username}</div>
+            <div className='single-post-edit-modal'>
+              <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
+              <Modal isOpen={showEditPost} style={formStyles}>
+                <button onClick={closeEditPostForm}>X</button>
+                <EditPost setTrigger={setShowEditPost}/>
+              </Modal>
             </div>
-          )}
-        )}
-      </div>
-      <div>
-        <CreateCommentForm postId={post_id}/>
+          </div>
+          <div className='border-bottom-single-post'> </div>
+          <div className='single-post-comment-section'>
+            <div className='post-caption'>
+              <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
+              <div id='post-owner-username'>{post.owner.username}</div>
+              <p id='user-post-caption'>{post.caption}</p>
+            </div>
+            <div>
+              {comments.map(comment => {
+                return(
+                  <div className='single-post-single-comment'>
+                    <Comments postId={post_id}comment={comment}/>
+                  </div>
+                )}
+                )}
+            </div>
+          </div>
+          <div className='border-bottom-single-post'> </div>
+          <LikeButton post={post}/>
+          <div className='post-created'>{post.created_at}</div>
+          <div className='border-bottom-single-post'> </div>
+          <div>
+            <CreateCommentForm postId={post_id}/>
+          </div>
+        </div>
       </div>
     </div>
   )

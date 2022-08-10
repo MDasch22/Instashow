@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkCreateComment } from '../../store/comment'
 
+import './createcomment.css'
+
 
 export default function CreateCommentForm({postId}) {
   const dispatch = useDispatch()
@@ -28,24 +30,27 @@ export default function CreateCommentForm({postId}) {
   }
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <div>
-          {errors.length ? errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          )) :  (
-              <></>
-            )
-          }
-        </div>
+    <div className='create-comment-container'>
+      <div>
+        {errors.length ? errors.map((error, ind) => (
+          <p id='error-comments' key={ind}>{error}</p>
+        )) :  (
+            null
+          )
+        }
+      </div>
+      <form className='create-comment' onSubmit={onSubmit}>
         <textarea
+          className='comment-input'
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
           required
 
         />
-        <button type='submit'>Post</button>
+        <div>
+         <button className="post-button"type='submit'>Post</button>
+        </div>
       </form>
 
     </div>

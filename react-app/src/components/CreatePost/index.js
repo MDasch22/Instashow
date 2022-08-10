@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost } from '../../store/posts'
 
@@ -13,9 +13,11 @@ export default function CreatePost() {
   const [caption , setCaption] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
+  const sessionUser = useSelector(state => state.session.user)
+
   useEffect(() => {
     const err = []
-    if(!image) err.push("Image must be: jpg, jpeg, or png")
+    if(!image) err.push("Must select a valid image. (e.g. jpg, jpeg, gif)")
     if(caption.length < 5) err.push("Caption must be at least 5 characters")
     setErrors(err)
   }, [image, caption])
@@ -36,7 +38,7 @@ export default function CreatePost() {
 
     if(new_post){
       alert("Post was created")
-      return history.push('/')
+      return history.push(`/${sessionUser.username}`)
     }
   }
 
