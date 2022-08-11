@@ -20,22 +20,34 @@
   position: relative;
 }
 
-#link-to-post-explore:hover{
+/* #link-to-post-explore:hover{
   filter: brightness(50%);
-}
+} */
 
-#link-to-post-explore:hover + .explore-post-ratio{
+/* #link-to-post-explore:hover + .explore-post-ratio{
   visibility: visible;
-}
+} */
+
+/* #link-to-post-explore{
+  position: relative;
+} */
 
 .explore-post-ratio{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   flex-direction: row;
   position: absolute;
-  top: 145px;
-  left: 100px;
-  visibility: hidden;
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  background-color: rgba(100, 100, 100, .5);
+  /* top: 145px;
+  left: 100px; */
+  /* visibility: hidden; */
 }
 
 #explore-ratio{
