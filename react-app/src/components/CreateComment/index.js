@@ -18,9 +18,9 @@ export default function CreateCommentForm({postId}) {
 
   useEffect(() => {
     const errs = []
-    if(com.length > 50 || com.length < 5) errs.push("Comment must be between 5-50 characters")
+    if(comment.length > 50 || comment.length < 5) errs.push("Comment must be between 5-50 characters")
     setErrors(errs)
-  },[com])
+  },[comment])
 
   const onSubmit = async(e) => {
     e.preventDefault()
@@ -33,12 +33,8 @@ export default function CreateCommentForm({postId}) {
       post_id: postId,
       comment: comment
     }
-   await dispatch(thunkCreateComment(postId, data))
-    // console.log(created_comment)
-    // if(created_comment){
-    //   setErrors(created_comment)
-    //   setComment('');
-    // }
+    const edited_comment = await dispatch(thunkCreateComment(postId, data))
+    setComment('')
   }
 
   return (
