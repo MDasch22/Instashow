@@ -10,6 +10,7 @@ import Followers from '../Followers';
 
 import './ProfilePage.css';
 import '../Following/followerModal.css'
+import ExplorePagePost from '../ExplorePagePostCard';
 
 function ProfilePage() {
 
@@ -127,15 +128,7 @@ function ProfilePage() {
       <div className="profile-user-posts">
         {users_posts && users_posts.map(post => {
           return (
-            <div id="profile-page-postCard"key={post.id}>
-              <NavLink id="profile-page-post-link"to={`/post/${post.id}`}>
-                <img src={post.image} style={{width: 300, height: 300}} alt='post-image'></img>
-              </NavLink>
-              <div className='post-ratio'>
-                <div id="ratio"><i className="fa-solid fa-heart fa-lg"></i> {post.likes.length}</div>
-                <div id="ratio"><i className="fa-solid fa-comment fa-lg"></i> {post.comments.length}</div>
-              </div>
-            </div>
+            <ExplorePagePost  post={post}/>
           )}
         )}
       </div>
