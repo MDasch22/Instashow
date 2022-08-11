@@ -26,7 +26,7 @@ def username_exists(form, field):
 
 class EditProfileForm(FlaskForm):
   id = StringField('id')
-  email = StringField('email', validators=[DataRequired(), email_exists])
+  email = StringField('email', validators=[DataRequired()])
   fullname = StringField('fullname', validators=[DataRequired()])
-  username = StringField('username', validators=[DataRequired(), username_exists])
+  username = StringField('username', validators=[DataRequired()])
   bio = StringField('bio')

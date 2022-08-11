@@ -22,7 +22,7 @@ const NavBar = () => {
           <li id="nav-bar-content">
             <li id="nav-bar-bttns">
               <NavLink to='/' id='home-button'exact={true} activeClassName='active'>
-                <div><i className="fa-solid fa-house fa-xl"></i></div>
+                <button id="house-button"><i className="fa-solid fa-house fa-2x"></i></button>
               </NavLink>
             </li>
             <li id="nav-bar-bttns">
@@ -65,11 +65,6 @@ const NavBar = () => {
           </li>
         </>
         )}
-        {/* {sessionUser && (
-          <li>
-            <LogoutButton />
-          </li>
-        )} */}
       </ul>
     </nav>
   );

@@ -1,5 +1,5 @@
 .like-button{
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: none;
 }
 
@@ -9,9 +9,48 @@
 }
 
 #like{
-  color: black;
+  color: rgb(0, 0, 0);
+  transition: .5s;
 }
 
 #unlike{
+  transition: .2s;
   color: rgb(240, 70, 70);
 }
+
+#like:active{
+  color: rgb(133, 133, 133);
+  transform: scale(0.7);
+}
+
+#like:hover{
+  color: rgb(133, 133, 133);
+  cursor: pointer;
+  transition: .5s;
+  /* animation: bounce 2s linear; */
+}
+
+/* @keyframes bounce {
+  0%, 25%, 50%, 75%, 90%, 100% {
+  transform: translateY(0); }
+  15%, 40% {
+  transform: translateY(-10px); }
+  65%, 80% {
+  transform:translateY(-7px); }
+  95% {
+  transform: translateY(-4px); }} */
+
+  .splash-post-content-info{
+    margin-left: 10px;
+  }
+
+  .splash-username-post-caption{
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  #splash-username-post {
+    font-weight: bold;
+    margin-right: 20px ;
+  }

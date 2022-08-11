@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost } from '../../store/posts'
 
+import './createpost.css'
+
 export default function CreatePost() {
   const dispatch = useDispatch()
   const history = useHistory()

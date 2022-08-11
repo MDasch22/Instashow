@@ -76,4 +76,18 @@
 
 #create-post-plus:active{
   color: rgb(102, 102, 102);
+  border-color: rgb(102, 102, 102);;
+}
+
+
+
+#house-button{
+  border: 0;
+  background-color: white;
+  height: 25px;
+  width: 25px;
+}
+
+#house-button:active{
+  color: rgb(102, 102, 102);
 }

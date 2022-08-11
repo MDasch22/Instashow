@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { thunkEditUser } from '../../store/session'
-import { thunkLoadAllUsers } from '../../store/user'
+import { setUser, thunkEditUser } from '../../store/session'
+import { thunkGetUser, thunkLoadAllUsers } from '../../store/user'
 import UpdateProfileImg from '../UpdateProfileImg'
 
 
@@ -15,17 +15,10 @@ export default function EditProfile({user}) {
   const sessionUser = useSelector(state => state.session.user)
   const users = useSelector(state => Object.values(state.user))
 
-
-
-
-
   const [errors, setErrors] = useState([])
   const [email , setEmail] = useState(user.email)
-  const [emailError, setEmailError] = useState([])
   const [fullname , setFullname] = useState(user.fullname)
-  const [fullnameErrors, setFullnameErrors] = useState([])
-  const [userName, setUserName] = useState(user.username)
-  const [usernameErrors, setUserNameErrors] = useState([])
+  const [username, setUsername] = useState(user.username)
   const [bio, setBio] = useState(user.bio)
   const [showImage , setShowImage] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -33,150 +26,123 @@ export default function EditProfile({user}) {
   const userId = user.id
   const profilePic = user.profile_pic
 
-  useEffect(() => {
-     dispatch(thunkLoadAllUsers())
-  }, [])
-
-
-  const user_Usernames = users.map(user => user.username)
-
+  const usersUsernames = users.map(user => user.username)
+  const noSessionUsernames = usersUsernames.filter(username => username != user.username)
 
   useEffect(() => {
-    const errs = []
+    const error = []
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     let emailTest = email;
     if(!emailRegex.test(emailTest)){
-      errs.push("Must enter a valid email address.")
-      setEmailError(errs)
+      error.push("Must enter a valid email address.")
     }
     if(fullname.length > 100 || fullname.length < 5) {
-      errs.push("Fullname must be between 5-100 characters")
-      setFullnameErrors(errs)
+      error.push("Fullname must be between 5-10 characters")
     }
-    if(user_Usernames.includes(user.username)){
-      errs.push("Username already exist")
-      setUserNameErrors(errs)
+    if(noSessionUsernames.includes(username)){
+      error.push("Username already exist")
     }
-  }, [email, fullname, userName])
 
+    setErrors(error)
+  }, [email, fullname, username])
+
+
+  useEffect(() => {
+    dispatch(thunkLoadAllUsers())
+  }, [])
 
 
   const onSubmit = async(e) => {
     e.preventDefault()
+
     setSubmitted(true)
 
-    if(errors.length) return
-    if(emailError.length) return
-
-    const edited_user = await dispatch(thunkEditUser(userId, email, fullname, userName, bio))
-
-    if(edited_user){
-      return history.push(`/${userName}`)
+    if(errors.length) {
+      return
     }
 
+    const edited_user = await dispatch(thunkEditUser(userId, email, fullname, username, bio))
+
+    if(edited_user) {
+      return history.push(`/${username}`)
+    }
   }
 
-  const updateEmail = async(e) => {
-    setEmail(e.target.value)
-  }
-
-  const updateFullname = async(e) => {
-    setFullname(e.target.value)
-  }
-
-  const updateUsername = async(e) => {
-    setUserName(e.target.value)
-  }
-
-  const updateBio = async(e) => {
-    setBio(e.target.value)
-  }
-
-
-  const onCancel = async() => {
-    return history.push(`/${userName}`)
+  const onCancel = () => {
+    return history.push(`/${username}`)
   }
 
   return (
-    <div>
-      <h1>Edit Profile</h1>
-      <div>
-        <div>
-          <img src={profilePic} alt='profile-pic'></img>
-        </div>
-        <div>
-          <div>
-            {!showImage ?
-              <button onClick={() => setShowImage(true)}>Change profile picture</button>
-              :
-              <UpdateProfileImg id={userId}/>
-            }
+    <div className='edit-profile'>
+      <div className='edit-profile-container'>
+        <h1>Edit Profile</h1>
+        <div className='change-picture'>
+          <div className='colorborder'>
+            <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
+          </div>
+          <div className='edit-profile-picture-buttons'>
+              {!showImage ?
+                <button id="change-profile-pic" onClick={() => setShowImage(true)}>Change profile picture</button>
+                :
+                <UpdateProfileImg id={userId}/>
+              }
           </div>
         </div>
+        <form className="edit-profile-form" onSubmit={onSubmit}>
+          <div>
+            {submitted && errors.length > 0 && (
+              <div>
+                <ul>
+                  {errors.map(error => (
+                    <div id='actual-error' key={error}>
+                    * {error}
+                    </div>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className='edit-form-input'>
+              <label>Email: </label>
+              <input
+                type='text'
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+          </div>
+          <div className='edit-form-input'>
+              <label>Full name: </label>
+              <input
+                type='text'
+                value={fullname}
+                required
+                onChange={(e) => setFullname(e.target.value)}
+              />
+          </div>
+          <div className='edit-form-input'>
+              <label>Username:</label>
+              <input
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                type='text'
+              />
+          </div>
+          <div className='edit-form-input'>
+              <label>Bio: </label>
+              <textarea
+                id='edit-bio-input'
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+          </div>
+          <div className='edit-form-bttns'>
+            <button id="edit-form-submit" type='submit'>Submit</button>
+            <button id="edit-form-cancel" onClick={onCancel}>Cancel</button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={onSubmit}>
-        {submitted && emailError.length > 0 && (
-          <div>
-            <ul>
-              {emailError.map(error => (
-                <div key={error}>
-                  {error}
-                </div>
-              ))}
-            </ul>
-          </div>
-        )}
-        <label>Email: </label>
-        <input
-          type='text'
-          value={email}
-          required
-          onChange={updateEmail}
-        />
-        {submitted && fullnameErrors.length > 0 && (
-          <div>
-            <ul>
-              {fullnameErrors.map(error => (
-                <div key={error}>
-                  {error}
-                </div>
-              ))}
-            </ul>
-          </div>
-        )}
-        <label>Full name: </label>
-        <input
-          type='text'
-          value={fullname}
-          required
-          onChange={updateFullname}
-        />
-        {submitted && usernameErrors.length > 0 && (
-          <div>
-            <ul>
-              {usernameErrors.map(error => (
-                <div key={error}>
-                  {error}
-                </div>
-              ))}
-            </ul>
-          </div>
-        )}
-        <label>Username:</label>
-        <input
-          value={userName}
-          onChange={updateUsername}
-          required
-          type='text'
-        />
-        <label>Bio: </label>
-        <textarea
-          value={bio}
-          onChange={updateBio}
-        />
-        <button type='submit'>Done</button>
-        <button onClick={onCancel}>Cancel</button>
-      </form>
     </div>
   )
 }

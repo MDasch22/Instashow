@@ -41,7 +41,7 @@ export default function LikeButton({post}) {
 
       )}
 
-      {post.likes.length === 1 && (
+      {/* {post.likes.length === 1 && (
         <>
           <div id='post-like'>{post.likes.length} like</div>
         </>
@@ -50,7 +50,7 @@ export default function LikeButton({post}) {
         <>
           <div id='post-likes'>{post.likes.length} likes</div>
         </>
-      )}
+      )} */}
     </div>
   )
 }
