@@ -96,13 +96,15 @@ if(!comments) return null
           <div className='single-post-profilepic-username'>
             <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
             <div id='single-post-username'>{post.owner.username}</div>
-            <div className='single-post-edit-modal'>
-              <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
-              <Modal isOpen={showEditPost} style={formStyles}>
-                <button onClick={closeEditPostForm}>X</button>
-                <EditPost setTrigger={setShowEditPost}/>
-              </Modal>
-            </div>
+            {sessionUser.id === post.owner.id &&
+              <div className='single-post-edit-modal'>
+                <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
+                <Modal isOpen={showEditPost} style={formStyles}>
+                  <button onClick={closeEditPostForm}>X</button>
+                  <EditPost setTrigger={setShowEditPost}/>
+                </Modal>
+              </div>
+            }
           </div>
           <div className='border-bottom-single-post'> </div>
           <div className='single-post-comment-section'>
