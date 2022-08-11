@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkCreateComment, thunkGetComments } from '../../store/comment'
 
@@ -12,38 +12,42 @@ export default function CreateCommentForm({postId}) {
 
   const [errors , setErrors] = useState([])
   const [comment, setComment] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
+  let com = comment
+
+  useEffect(() => {
+    const errs = []
+    if(com.length > 50 || com.length < 5) errs.push("Comment must be between 5-50 characters")
+    setErrors(errs)
+  },[com])
 
   const onSubmit = async(e) => {
     e.preventDefault()
+    setSubmitted(true)
+
+    if(errors.length) return
+
     const data = {
       user_id: sessionUser.id,
       post_id: postId,
       comment: comment
     }
-    const created_comment = await dispatch(thunkCreateComment(postId, data))
-    console.log(created_comment)
-    if(created_comment){
-      setErrors(created_comment)
-      setComment('');
-    } else {
-      await dispatch(thunkGetComments(postId))
-      const post = document.getElementsByClassName('post-button')
-        post.innerText("Submited")
-        post.color("green")
-
-    }
+   await dispatch(thunkCreateComment(postId, data))
+    // console.log(created_comment)
+    // if(created_comment){
+    //   setErrors(created_comment)
+    //   setComment('');
+    // }
   }
 
   return (
     <div className='create-comment-container'>
       <div>
-        {errors.length ? errors.map((error, ind) => (
+        {submitted && errors.map((error, ind) => (
           <p id='error-comments' key={ind}>{error}</p>
-        )) :  (
-            null
           )
-        }
+        )}
       </div>
       <form className='create-comment' onSubmit={onSubmit}>
         <textarea

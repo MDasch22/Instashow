@@ -82,12 +82,12 @@ export const thunkCreateComment = (postId, data) => async(dispatch) => {
     dispatch(actionCreateComment(data))
     return data
   }
-  else {
-    const data = await response.json()
-    if(data.errors) {
-      return data.errors
-    }
-  }
+  // else {
+  //   const data = await response.json()
+  //   if(data.errors) {
+  //     return data.errors
+  //   }
+  // }
 }
 
 export const thunkEditComment = (commentId, comment) => async dispatch => {

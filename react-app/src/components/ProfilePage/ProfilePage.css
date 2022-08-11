@@ -32,9 +32,26 @@
   margin-left: 30px;
 }
 
+#edit-profile-bttn{
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(168, 168, 168);
+}
+
+#edit-profile-bttn:active{
+  transform: scale(0.9);
+}
+
 #follow-unfollow-bttn{
   width: 100px;
   height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(168, 168, 168);
+}
+
+#follow-unfollow-bttn:active{
+  transform: scale(0.9);
 }
 
 #profile-followers-info{
