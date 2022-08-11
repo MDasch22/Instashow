@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { thunkLoadAllPosts, thunkLoadFollowingUserPosts } from '../../store/posts'
 
+import './explorepage.css'
+
 export default function ExplorePage() {
   const dispatch = useDispatch()
 
@@ -18,22 +20,19 @@ export default function ExplorePage() {
   const shuffledPosts = nonSessionUserPost.sort(() => Math.random() - 0.5)
 
   return (
-    <div>
+    <div className='explore-container'>
       <h1>Explore Page</h1>
-      <div>
+      <div className='explore-image-card'>
         {shuffledPosts.map(post => {
         return (
-          <div key={post.id}>
-            <NavLink to={`/post/${post.id}`}>
-              <img src={post.image} style={{width: 400, height: 300}} alt='post-image'></img>
+          <div id="explore-post-div" key={post.id}>
+            <NavLink id="link-to-post-explore" to={`/post/${post.id}`}>
+              <img src={post.image} style={{width: 300, height: 300}} alt='post-image'></img>
             </NavLink>
-            <div>{post.created_at}</div>
-            <NavLink to={`/${post.owner.username}`}>
-              <img src={post.owner.profile_pic} style={{width:30, height:30}}></img>
-            </NavLink>
-            <div>{post.owner.username}</div>
-            <div>{post.caption}</div>
-
+            <div className='explore-post-ratio'>
+              <div id="explore-ratio"><i className="fa-solid fa-heart fa-lg"></i> {post.likes.length}</div>
+              <div id="explore-ratio"><i className="fa-solid fa-comment fa-lg"></i> {post.comments.length}</div>
+           </div>
           </div>
           )
         }) }
