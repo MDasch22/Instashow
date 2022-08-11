@@ -75,6 +75,12 @@ export default function SinglePost() {
     }
 };
 
+// const todaysFullDate = new Date()
+// const todaysDate = (todaysFullDate.getDate() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+// const todaysMonth = (todaysFullDate.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+// const currentYear = todaysFullDate.getFullYear()
+
+
 if(!post) return null
 if(!comments) return null
 

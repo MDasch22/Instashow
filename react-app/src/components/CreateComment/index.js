@@ -14,17 +14,17 @@ export default function CreateCommentForm({postId}) {
   const [comment, setComment] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
-  let com = comment
-
   useEffect(() => {
     const errs = []
-    if(comment.length > 50 || comment.length < 5) errs.push("Comment must be between 5-50 characters")
+    if(comment.length > 35) errs.push("Comment must be only 35 characters")
     setErrors(errs)
   },[comment])
 
-  const onSubmit = async(e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
+
+    if(comment.length < 5) errors.push("Comment must be at least 5 characters")
 
     if(errors.length) return
 
@@ -33,8 +33,14 @@ export default function CreateCommentForm({postId}) {
       post_id: postId,
       comment: comment
     }
-    const edited_comment = await dispatch(thunkCreateComment(postId, data))
+
+    dispatch(thunkCreateComment(postId, data))
+    reset()
+  }
+
+  const reset = () => {
     setComment('')
+    setErrors([])
   }
 
   return (
@@ -52,7 +58,6 @@ export default function CreateCommentForm({postId}) {
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
           required
-
         />
         <div>
          <button className="post-button"type='submit'>Post</button>
