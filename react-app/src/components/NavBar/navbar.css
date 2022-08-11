@@ -6,32 +6,35 @@
 .nav-bar{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
-  padding: 10px 0;
+  padding: 5px 20px;
   align-items: center;
   border-bottom: 2px solid lightgray;
   list-style: none;
+  justify-content: space-evenly;
 }
 
 #nav-bar-content{
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 100px;
+  /* margin-right: 100px; */
 
 }
 
 #instashow-logged-in{
   text-decoration: none;
+}
 
+#instashow-logged-in:active{
+  cursor: pointer;
+  transform: scale(0.9);
 }
 
 #instashow{
   font-size: 30px;
   color: black;
   font-weight: bold;
-  margin-left: 100px;
   border: none;
   background-color: white;
 }
@@ -42,13 +45,17 @@
 
 
 #nav-bar-bttns{
-  margin: 0 5px;
+  margin: 0 12px;
   text-decoration: none;
 }
 
 
 #nav-bar-profile-bttn{
   border-radius: 50%;
+}
+
+#nav-bar-profile-bttn:active{
+ filter: brightness(70%);
 }
 
 #home-button{
@@ -79,15 +86,48 @@
   border-color: rgb(102, 102, 102);;
 }
 
-
+svg{
+  margin-top: 5px;
+  margin-right: -.3rem;
+}
 
 #house-button{
   border: 0;
   background-color: white;
-  height: 25px;
-  width: 25px;
 }
 
 #house-button:active{
   color: rgb(102, 102, 102);
+}
+
+#no-sessionuser-nav-login{
+  text-decoration: none;
+  font-size: 20px;
+  color: #222;
+}
+
+#no-sessionuser-nav-signup{
+  text-decoration: none;
+  font-size: 20px;
+  color: #222;
+}
+
+#no-sessionuser-nav-signup:hover{
+  color: rgb(119, 119, 119);
+}
+
+#no-sessionuser-nav-login:hover{
+  color: rgb(119, 119, 119);
+}
+
+#log-out{
+  border: none;
+  background-color: white;
+  font-size: 15px;
+
+}
+
+#log-out:hover{
+  color: rgb(116, 116, 116);
+  cursor: pointer;
 }

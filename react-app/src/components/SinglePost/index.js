@@ -26,6 +26,7 @@ export default function SinglePost() {
   const [submitted , setSubmitted] = useState(false)
 
   useEffect(() => {
+    window.scroll(0,0)
     dispatch(thunkGetSinglePost(post_id))
     dispatch(thunkGetComments(post_id))
   },[dispatch, post_id])

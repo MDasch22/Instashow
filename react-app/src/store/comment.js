@@ -1,6 +1,7 @@
 // ---------------------------------------------------------- TYPE
 
 const GET_COMMENTS = 'comments/getComments'
+const GET_ALL_COMMENTS = 'comments/getAllComments'
 const CREATE_COMMENT = 'comments/createComment'
 const EDIT_COMMENT = 'comments/editComment'
 const DELETE_COMMENT = 'comments/deleteComment'
@@ -10,6 +11,13 @@ const DELETE_COMMENT = 'comments/deleteComment'
 export const actionGetComments = (comments) => {
   return {
     type: GET_COMMENTS,
+    comments
+  }
+
+}
+export const actionGetAllComments = (comments) => {
+  return {
+    type: GET_ALL_COMMENTS,
     comments
   }
 }
@@ -40,6 +48,16 @@ export const actionDeleteComment = (commentId) => {
 
 export const thunkGetComments = (post_id) => async(dispatch) => {
   const response = await fetch(`/api/posts/${post_id}/comments`)
+
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(actionGetComments(data))
+    return data
+  }
+}
+
+export const thunkGetAllComments = (post_id) => async(dispatch) => {
+  const response = await fetch(`/api/comments/`)
 
   if(response.ok) {
     const data = await response.json()
@@ -107,6 +125,13 @@ const commentReducer = (state = initialState, action) => {
   let newState = {...state}
   switch(action.type) {
     case GET_COMMENTS:
+      newState = {}
+      action.comments.comments.forEach(comment => {
+        newState[comment.id] = comment
+      })
+      return newState
+
+    case GET_ALL_COMMENTS:
       newState = {}
       action.comments.comments.forEach(comment => {
         newState[comment.id] = comment

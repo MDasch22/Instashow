@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkCreateComment } from '../../store/comment'
+import { thunkCreateComment, thunkGetComments } from '../../store/comment'
 
 import './createcomment.css'
 
@@ -26,6 +26,12 @@ export default function CreateCommentForm({postId}) {
     if(created_comment){
       setErrors(created_comment)
       setComment('');
+    } else {
+      await dispatch(thunkGetComments(postId))
+      const post = document.getElementsByClassName('post-button')
+        post.innerText("Submited")
+        post.color("green")
+
     }
   }
 

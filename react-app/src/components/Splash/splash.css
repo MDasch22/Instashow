@@ -54,3 +54,45 @@
   color: rgb(133, 133, 133);
   cursor: pointer;
 }
+
+
+/* .splash-content-comments{
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+
+#splash-comment-username{
+  font-weight: bold;
+  margin-right: 20px;
+} */
+
+.splash-post-content-info{
+  margin-left: 10px;
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.splash-username-post-caption{
+  display: flex;
+  flex-direction: row;
+
+}
+
+#splash-username-post {
+  font-weight: bold;
+  margin-right: 20px ;
+}
+
+#view-all-comments{
+  text-decoration: none;
+  color: rgb(136, 136, 136);
+}
+
+#view-all-comments:active{
+  color: lightgray;
+}

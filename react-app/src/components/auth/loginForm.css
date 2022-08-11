@@ -1,0 +1,115 @@
+.login-page-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+
+.login-page-form{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px 2px lightgray;
+  border-radius: 5px;
+  padding: 10px 20px 0 20px;
+  height: 420px;
+}
+
+
+.login-input{
+  margin: 8px 0;
+}
+
+.login-input input{
+  width: 100%;
+  border-radius: 5px;
+  height: 40px;
+  outline: none;
+  border: 1px solid rgb(139, 139, 139);
+  padding-left: 5px;
+}
+
+#login-instashow{
+  margin-bottom: 20px;
+  padding: 10px 40px;
+}
+
+#login-errors{
+  color: rgb(248, 87, 87);
+}
+
+.loginpage-signup-bttns{
+  text-align: center;
+}
+
+#loginpage-login-bttn{
+  margin-top: 10px;
+  width: 102%;
+  height: 40px;
+  background-color: rgb(115, 175, 253);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  transition: .5s;
+}
+
+#loginpage-login-bttn:hover{
+  background-color: rgb(42, 133, 252);
+  transition: .5s;
+  cursor: pointer;
+}
+
+.-or-{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+#login-or{
+  padding: 4px 0;
+}
+
+#loginpage-demo-user{
+  width: 102%;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: rgb(115, 175, 253);
+  color: white;
+  font-weight: bold;
+  transition: .5s;
+}
+
+#loginpage-demo-user:hover{
+  background-color: rgb(42, 133, 252);
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+.loginpage-signup-link{
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: -3px;
+}
+
+#link-to-signup{
+  text-decoration: none;
+  color: rgb(42, 133, 252);
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 8px;
+  transition: .3s;
+}
+
+#link-to-signup:hover{
+  color: rgb(115, 175, 253);
+  transition: .3s;
+}

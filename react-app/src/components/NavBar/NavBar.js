@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import './navbar.css'
 
 
@@ -15,14 +16,14 @@ const NavBar = () => {
         {sessionUser && (
         <>
           <li className='nav-bar-instashow'>
-            <NavLink to='/' exact={true} id='instashow-logged-in' activeClassName='active'>
-              <button id='instashow'>Instashow</button>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              <img id='instashow-logged-in'  src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:150, height: 50}}></img>
             </NavLink>
           </li>
           <li id="nav-bar-content">
             <li id="nav-bar-bttns">
               <NavLink to='/' id='home-button'exact={true} activeClassName='active'>
-                <button id="house-button"><i className="fa-solid fa-house fa-2x"></i></button>
+                <button id="house-button"> <HomeOutlinedIcon fontSize='large' /></button>
               </NavLink>
             </li>
             <li id="nav-bar-bttns">
@@ -49,16 +50,16 @@ const NavBar = () => {
         {!sessionUser && (
         <>
           <li>
-            <div>Instashow</div>
+          <img id='instashow-logged-in' src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:150, height: 50}}></img>
           </li>
           <li id="nav-bar-content">
             <li id="nav-bar-bttns">
-              <NavLink to='/login' exact={true} activeClassName='active'>
+              <NavLink id="no-sessionuser-nav-login"to='/login' exact={true} activeClassName='active'>
                 Login
               </NavLink>
             </li>
             <li id="nav-bar-bttns">
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+              <NavLink id="no-sessionuser-nav-signup" to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up
               </NavLink>
             </li>

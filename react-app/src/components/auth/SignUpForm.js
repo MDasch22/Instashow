@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { thunkLoadAllUsers } from '../../store/user';
+
+import './signupForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -10,17 +13,45 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [submitted , setSubmitted ] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const users = useSelector(state => Object.values(state.user))
+  const usersEmails = users.map(user => user.email)
+
+
+  useEffect(() => {
+    dispatch(thunkLoadAllUsers())
+    const formError=[]
+    if(fullname.length < 5) formError.push("Fullname must be at least 5 characters")
+    let emailRegex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}/
+    let emailTest = email
+    if(!emailRegex.test(emailTest)){
+      formError.push("Please provide a valid email address")
+    }
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/
+    let passwordTest = password
+    if(!passwordRegex.test(passwordTest)) {
+      formError.push("Password must contain 1 lowercase letter, uppercase letter, number, and special character (i.e. '!@#$%^&*')")
+    }
+    if(password !== repeatPassword) {
+      formError.push("Passwords do not match")
+    }
+    if(usersEmails.includes(email)){
+      formError.push("Email already being used.")
+    }
+    setErrors(formError)
+  },[fullname, email, password])
+
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username,fullname, email, password));
-      if (data) {
-        setErrors(data)
-      }
-    }
+    setSubmitted(true)
+
+    if(errors.length) return
+
+    await dispatch(signUp(username,fullname, email, password));
+
   };
 
   const updateUsername = (e) => {
@@ -48,60 +79,78 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='login-page-container'>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+        <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/image+(1).png' style={{height: 585}}></img>
       </div>
-      <div>
-        <label>Full Name</label>
-        <input
-          type='text'
-          name='fullname'
-          onChange={updateFullname}
-          value={fullname}
-        ></input>
+      <div className='signup-page-form'>
+        <div className='signup-page-header'>
+          <img id="signup-instashow" src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:200, height: 60}}></img>
+          <p id="signup-message">Sign up to see photos and videos from your friends.</p>
+        </div>
+        <form onSubmit={onSignUp}>
+          <div className='error-signup'>
+            {submitted && errors.map((error, ind) => (
+              <div id="signup-errors" key={ind}> * {error}</div>
+            ))}
+          </div>
+          <div className='signup-input'>
+            <input
+              type='text'
+              name='fullname'
+              onChange={updateFullname}
+              placeholder="Fullname"
+              value={fullname}
+            ></input>
+          </div>
+          <div className='signup-input'>
+            <input
+              className='login-input'
+              type='text'
+              name='username'
+              placeholder='Username'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+          </div>
+          <div className='signup-input'>
+            <input
+              type='text'
+              name='email'
+              placeholder='Email'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div className='signup-input'>
+            <input
+              placeholder='Password'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+          <div className='signup-input'>
+            <input
+              type='password'
+              name='repeat_password'
+              placeholder='Confirm Password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <button id="signup-page-bttn" type='submit'>Sign Up</button>
+          <div className='signuppag-login-link'>
+            <p>Already have an account? </p>
+            <NavLink id='link-to-login' to='/login' >
+              <p>Login</p>
+            </NavLink>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Username</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Confirm Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div>
   );
 };
 
