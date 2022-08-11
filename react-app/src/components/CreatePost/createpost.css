@@ -1,0 +1,125 @@
+.create-post-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#create-post-header{
+  padding: 10px 30px 10px 30px;
+}
+
+.creat-post-content{
+  border-radius: 8px;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.create-post-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 500px;
+  width: auto;
+
+}
+
+#post-create-img{
+  border-radius: 5px;
+}
+
+#no-image-create{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  background-color: rgb(129, 129, 129);
+
+}
+
+#create-post-errors{
+  color: rgb(248, 87, 87);
+  padding: 5px;
+  margin: 0 10px;
+}
+
+#create-errors{
+  color: rgb(248, 87, 87);
+}
+
+.choose-picture{
+  text-align: center;
+  align-items: center;
+  margin-left: 70px;
+  margin-top: 30px;
+  /* background-color: aqua; */
+}
+
+.caption-post-cancel{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#caption-input{
+  height: 200px;
+  resize: none;
+  padding-left: 10px;
+  border: 1px solid lightgray ;
+  font-size: 15px;
+}
+
+#caption-input:focus{
+  outline: none;
+}
+
+.create-post-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 45px;
+  align-items: center;
+}
+
+#post-create{
+  height: 30px;
+  background-color: rgb(115, 175, 253);
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  color: white;
+  transition: .5s;
+}
+
+#post-create:hover{
+  background-color: rgb(42, 133, 252);
+  transition: .5s;
+  cursor: pointer;
+}
+
+#post-cancel{
+  margin-top: 10px;
+  height: 30px;
+  background-color: rgb(115, 175, 253);
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  color: white;
+  transition: .5s;
+}
+
+#post-cancel:hover{
+  margin-top: 10px;
+  background-color: rgb(42, 133, 252);
+  transition: .5s;
+  cursor: pointer;
+}

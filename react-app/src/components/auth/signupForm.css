@@ -1,0 +1,87 @@
+.signup-page-form{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px 2px lightgray;
+  border-radius: 5px;
+  padding: 10px 20px 0 20px;
+  /* height: 600px; */
+}
+
+.signup-page-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+#signup-message{
+  width: 80%;
+}
+
+#signup-errors{
+  color: rgb(248, 87, 87);
+  width: 400px;
+}
+
+.signup-input{
+  margin: 8px 0;
+}
+
+.signup-input input{
+  width: 100%;
+  border-radius: 5px;
+  height: 40px;
+  outline: none;
+  border: 1px solid rgb(139, 139, 139);
+  padding-left: 5px;
+}
+
+
+#signup-page-bttn{
+  margin-top: 10px;
+  width: 102%;
+  height: 40px;
+  background-color: rgb(115, 175, 253);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  transition: .5s;
+}
+
+#signup-page-bttn:hover{
+  background-color: rgb(42, 133, 252);
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+.signuppag-login-link{
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: -3px;
+  margin-bottom: 20px;
+}
+
+#link-to-login{
+  text-decoration: none;
+  color: rgb(115, 175, 253);
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 8px;
+  transition: .3s;
+}
+
+#link-to-login:hover{
+  color: rgb(42, 133, 252);
+  transition: .3s;
+}

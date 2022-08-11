@@ -12,6 +12,13 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 comment_routes = Blueprint('comments', __name__)
 
+@comment_routes.route('/')
+@login_required
+def get_all_comments():
+    allComments = Comment.query.all()
+    comments = [comment.to_dict() for comment in allComments]
+
+    return {'comments': comments}
 
 @comment_routes.route('<id>/edit', methods=['PUT'])
 @login_required

@@ -20,7 +20,7 @@ export default function CreatePost() {
   useEffect(() => {
     const err = []
     if(!image) err.push("Must select a valid image. (e.g. jpg, jpeg, gif)")
-    if(caption.length < 5) err.push("Caption must be at least 5 characters")
+    if(caption.length < 5 || caption.length > 100) err.push("Caption must be between 5 and  100 characters")
     setErrors(err)
   }, [image, caption])
 
@@ -68,43 +68,54 @@ export default function CreatePost() {
 
 
   return (
-    <div>
-      <h1>Create a new post</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-        {submitted && errors.length > 0 && (
-              <div>
-                <div >
-                  Please fix the following errors before submitting:
-                </div>
-                <ul>
-                  {errors.map((error) => (
-                    <ul key={error}>
-                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                      {error}
+    <div className='create-post-container'>
+      <div className='creat-post-content'>
+        {image ? (
+            <img id="post-create-img"src={photoUrl} key={image} style={{width: 500, height: 500}} alt="image"></img>
+          )
+          :
+            <div id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></div>
+        }
+        <form className='create-post-form' onSubmit={handleSubmit}>
+          <h1 id='create-post-header'>Create a new post</h1>
+          <div>
+            {submitted && errors.length > 0 && (
+                  <div>
+                    <div id="create-post-errors">
+                      Please fix the following errors before submitting:
+                    </div>
+                    <ul>
+                      {errors.map((error) => (
+                        <ul id="create-errors" key={error}>
+                          <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                          {error}
+                        </ul>
+                      ))}
                     </ul>
-                  ))}
-                </ul>
+                  </div>
+            )}
+            <input
+              type='file'
+              className='choose-picture'
+              onChange={updateImage}
+            />
+            {image && (
+              <div className='caption-post-cancel'>
+                <textarea
+                  id="caption-input"
+                  placeholder='Caption...'
+                  onChange={updateCaption}
+                  required
+                />
+                <div className='create-post-buttons'>
+                  <button id="post-create" type='submit'>Post</button>
+                  <button id="post-cancel" onClick={onCancel} type='cancel'>Cancel</button>
+                </div>
               </div>
-        )}
-        </div>
-        <input
-          type='file'
-          onChange={updateImage}
-        />
-        <textarea
-          placeholder='Caption...'
-          onChange={updateCaption}
-          required
-        />
-        <button type='submit'>Post</button>
-      </form>
-      <button onClick={onCancel} type='cancel'>Cancel</button>
-      {image && (
-        <>
-          <img src={photoUrl} key={image} style={{width: 400, height: 300}} alt="image"></img>
-        </>
-      )}
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

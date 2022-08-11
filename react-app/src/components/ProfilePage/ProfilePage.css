@@ -74,14 +74,10 @@
 }
 
 #profile-page-post-link:hover {
-  filter: brightness(70%);
+ filter: brightness(45%);
 }
 
 #profile-page-post-link:hover + .post-ratio{
-  visibility: visible;
-}
-
-.post-ratio:hover{
   visibility: visible;
 }
 
