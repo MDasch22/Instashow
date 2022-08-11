@@ -26,8 +26,8 @@ export default function EditPost({setTrigger}) {
     setIsSubmitted(true);
 
     let errors = []
-    if(caption.length < 5) {
-      errors.push("Please provide caption with at least characters")
+    if(caption.length > 50) {
+      errors.push("Caption cannot be greater than 50 characters")
     }
     setErrors(errors)
 
@@ -75,11 +75,6 @@ export default function EditPost({setTrigger}) {
             </div>
           )}
         <form onSubmit={handleSubmit}>
-          <div>
-            {errors && errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <textarea
             value={caption}
             placeholder={post.caption}
