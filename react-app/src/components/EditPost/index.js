@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { thunkEditPost, thunkDeletePost } from '../../store/posts';
+import './editpost.css'
 
 export default function EditPost({setTrigger}) {
   const dispatch = useDispatch()
@@ -17,16 +18,20 @@ export default function EditPost({setTrigger}) {
   const [caption, setCaption] = useState(post.caption)
   const [isSubmitted , setIsSubmitted] = useState(false)
 
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
+
     let errors = []
     if(caption.length < 5) {
-      errors.push("Please provide caption with at least 5 characters")
+      errors.push("Please provide caption with at least characters")
     }
     setErrors(errors)
 
-    if(errors.length) return alert("Cannot edit the snack")
+    if(errors.length) return
 
     const edited_post = dispatch(thunkEditPost(post_id, caption))
 
@@ -50,41 +55,44 @@ export default function EditPost({setTrigger}) {
   if(!post) return null
 
   return (
-    <div>
-      <h1>Edit Post</h1>
-      {isSubmitted && errors.length > 0 && (
-              <div className="errorHandling">
-                <div className="errorTitle">
-                  Please fix the following errors before submitting:
-                </div>
-                <ul className="errors">
-                  {errors.map((error) => (
-                    <ul key={error} id="error">
-                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                      {error}
-                    </ul>
-                  ))}
-                </ul>
+    <div className='edit-post-container'>
+      <img id="edit-post-img" src={post.image} style={{width: 420 ,height: 420}} alt='edit-image'></img>
+      <div className='edit-post-content'>
+        <h1>Edit Post</h1>
+        {isSubmitted && errors.length > 0 && (
+            <div>
+              <div>
+                Please fix the following errors before submitting:
               </div>
-        )}
-      <img src={post.image} style={{width: 400 ,height: 400}} alt='edit-image'></img>
-      <form onSubmit={handleSubmit}>
+              <ul>
+                {errors.map((error) => (
+                  <ul key={error} id="error">
+                    <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                    {error}
+                  </ul>
+                ))}
+              </ul>
+            </div>
+          )}
+        <form onSubmit={handleSubmit}>
+          <div>
+            {errors && errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <textarea
+            value={caption}
+            placeholder={post.caption}
+            onChange={updateCaption}
+            required
+
+          />
         <div>
-          {errors && errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+          <button type='submit'>Finished</button>
+          <button onClick={onDelete}>Delete</button>
         </div>
-        <textarea
-          value={caption}
-          placeholder={post.caption}
-          onChange={updateCaption}
-          required
-
-        />
-        <button type='submit'>Finished</button>
-        <button onClick={onDelete}>Delete</button>
-
-      </form>
+        </form>
+      </div>
     </div>
   )
 }

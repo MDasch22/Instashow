@@ -163,10 +163,6 @@ export const thunkEditPost = (post_id, caption) => async(dispatch) => {
     dispatch(actionEditPost(data))
     return data
   }
-  else {
-    const error = await response.json()
-    return error
-  }
 }
 
 export const thunkDeletePost = (post_id) => async(dispatch) => {

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams, NavLink } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import Modal from 'react-modal'
 import { thunkGetSinglePost } from '../../store/posts'
 import EditPost from '../EditPost'
 import CreateCommentForm from '../CreateComment'
-import { thunkGetComments, thunkDeleteComment } from '../../store/comment'
+import { thunkGetComments } from '../../store/comment'
 import Comments from '../Comments'
 import LikeButton from '../LikesButton'
+
 
 import './singlepost.css'
 
@@ -58,7 +59,7 @@ export default function SinglePost() {
     content: {
       position: 'relative',
       margin: 'auto',
-      maxWidth: '500px',
+      maxWidth: '600px',
       width: '100%',
       top: '40px',
       left: '40px',
@@ -70,16 +71,17 @@ export default function SinglePost() {
       WebkitOverflowScrolling: 'touch',
       borderRadius: '24px',
       outline: 'none',
-      padding: '0px 18px 18px',
+      // padding: 0,
       overflow: 'visibile'
     }
 };
 
-// const todaysFullDate = new Date()
-// const todaysDate = (todaysFullDate.getDate() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-// const todaysMonth = (todaysFullDate.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-// const currentYear = todaysFullDate.getFullYear()
+const todaysFullDate = new Date()
+const todaysDate = (todaysFullDate.getDate() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+const todaysMonth = (todaysFullDate.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+const currentYear = todaysFullDate.getFullYear()
 
+console.log(todaysDate)
 
 if(!post) return null
 if(!comments) return null
