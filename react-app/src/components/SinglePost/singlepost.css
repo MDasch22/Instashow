@@ -94,10 +94,15 @@
 .single-post-comment-section{
   display: flex;
   flex-direction: column;
+  overflow: auto;
   overflow-y: scroll;
   height: 460px;
-
 }
+
+.single-post-comment-section::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* .user-comments{
 

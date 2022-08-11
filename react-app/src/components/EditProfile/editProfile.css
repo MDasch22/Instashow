@@ -1,0 +1,141 @@
+#actual-error{
+  color: red;
+  align-items: left;
+  margin-left: 80px;
+}
+
+.edit-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-profile-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid lightgray;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  width: 700px;
+}
+
+.edit-profile-picture-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#change-profile-pic {
+  width: 150px;
+  height: 30px;
+  margin: 10px 0;
+  color: white;
+  background-color: rgb(62, 135, 245);
+  border: 0;
+  border-radius: 25px;
+  transition: .5s;
+}
+
+#change-profile-pic:hover{
+  transition: .5s;
+  transform: scale(1.1);
+}
+
+
+.edit-profile-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+
+
+}
+
+/* :root {
+  --gradient: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)
+} */
+
+.change-picture{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* .colorborder{
+  border: 4px solid transparent;
+  border-image: linear-gradient(#833ab4, #fd1d1d, #fcb045);
+  border-image-slice: 1;
+} */
+
+
+#edit-image{
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: double 5px transparent;
+
+
+}
+
+.edit-form-input{
+  margin: 20px 0 ;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit-profile-form input{
+  height: 30px;
+  width: 400px;
+  margin-left: 20px;
+}
+
+
+#edit-bio-input{
+  width: 400px;
+  resize: none;
+  height: 60px;
+}
+
+.edit-form-bttns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-form-submit{
+  width: 100px;
+  height: 30px;
+  margin: 10px 0;
+  color: white;
+  background-color: rgb(62, 135, 245);
+  border: 0;
+  border-radius: 25px;
+  transition: .5s;
+
+}
+
+#edit-form-cancel{
+  width: 100px;
+  height: 30px;
+  margin: 10px 0;
+  color: white;
+  background-color: rgb(62, 135, 245);
+  border: 0;
+  border-radius: 25px;
+  transition: .5s;
+}
+
+#edit-form-submit:hover{
+  transition: .5s;
+  transform: scale(1.1);
+}
+
+#edit-form-cancel:hover{
+  background-color: rgb(247, 85, 85);
+  transition: .5s;
+  transform: scale(1.1);
+}

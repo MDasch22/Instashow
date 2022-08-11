@@ -55,7 +55,6 @@ function App() {
           <EditProfile user={sessionUser}/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>Instashow</h1>
           <HomePage />
         </ProtectedRoute>
         <ProtectedRoute path='/post/new' exact={true}>

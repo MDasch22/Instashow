@@ -1,6 +1,7 @@
 .create-comment-container{
   display: flex;
   flex-direction: column;
+  border-top: 1px solid lightgray;
 }
 
 
@@ -10,11 +11,14 @@
 }
 
 .comment-input{
-  width: 400px;
+  margin-top: 10px;
+  width: 380px;
   height: 50px;
   border: none;
   resize: none;
   padding-left: 20px;
+  border-radius: 25px;
+
 }
 
 
@@ -26,10 +30,11 @@
   border: none;
   background-color: white;
   color: rgb(95, 95, 241);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   transition: .5s;
   margin-top: 15px;
+  margin-right: 10px;
 }
 
 .post-button:hover{
