@@ -58,7 +58,11 @@ export default function HomePage() {
               </NavLink>
             </div>
             <div className='splash-post-content-info'>
-              <p>{post.likes.length} likes </p>
+              {post.likes.length === 1 ?
+                <p>{post.likes.length} like </p>
+                :
+                <p>{post.likes.length} likes </p>
+              }
               <div className='splash-username-post-caption'>
                 <p id="splash-username-post">{post.owner.username}</p>
                 <p id="splash-caption-post">{post.caption}</p>

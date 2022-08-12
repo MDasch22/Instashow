@@ -26,8 +26,8 @@ export default function EditPost({setTrigger}) {
     setIsSubmitted(true);
 
     let errors = []
-    if(caption.length > 50) {
-      errors.push("Caption cannot be greater than 50 characters")
+    if(caption.length > 50 || caption.length < 5) {
+      errors.push("Caption must be between 5-50 characters")
     }
     setErrors(errors)
 
@@ -56,37 +56,42 @@ export default function EditPost({setTrigger}) {
 
   return (
     <div className='edit-post-container'>
-      <img id="edit-post-img" src={post.image} style={{width: 420 ,height: 420}} alt='edit-image'></img>
+      <div>
+       <img id="edit-post-img" src={post.image} style={{width: 500 ,height: 500}} alt='edit-image'></img>
+      </div>
       <div className='edit-post-content'>
-        <h1>Edit Post</h1>
-        {isSubmitted && errors.length > 0 && (
+        <div className='edit-post-form'>
+          <h1 id="edit-modal-header">Edit Post</h1>
+          {isSubmitted && errors.length > 0 && (
             <div>
-              <div>
+              <div id="errorHeading">
                 Please fix the following errors before submitting:
               </div>
               <ul>
                 {errors.map((error) => (
-                  <ul key={error} id="error">
-                    <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                  <ul key={error} id="edit-error">
+                    <i className="fas fa-spinner fa-spin" id="spinner"> </i>
                     {error}
                   </ul>
                 ))}
               </ul>
             </div>
           )}
-        <form onSubmit={handleSubmit}>
-          <textarea
-            value={caption}
-            placeholder={post.caption}
-            onChange={updateCaption}
-            required
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className='edit-caption'
+              value={caption}
+              placeholder={post.caption}
+              onChange={updateCaption}
+              required
 
-          />
-        <div>
-          <button type='submit'>Finished</button>
-          <button onClick={onDelete}>Delete</button>
+            />
+          <div className='edit-form-bttns'>
+            <button id="edit-submit" type='submit'>Finished</button>
+            <button id="edit-delete" onClick={onDelete}>Delete Post</button>
+          </div>
+          </form>
         </div>
-        </form>
       </div>
     </div>
   )
