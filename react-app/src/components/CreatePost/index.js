@@ -19,9 +19,13 @@ export default function CreatePost() {
 
   useEffect(() => {
     const err = []
-    if(!image) err.push("Must select a valid image. (e.g. jpg, jpeg, gif)")
-    if(!image?.name.includes('jpg') && !(image?.name.includes('jpeg') && !image?.name.includes('png') && !image?.name.includes('gif'))){
-      err.push("Please submit a valid ")
+    if(!image) err.push("No image was selected ")
+    if(!image?.type.includes('jpg') && !(image?.type.includes('jpeg') && !image?.type.includes('png') && !image?.type.includes('gif'))){
+      err.push("Please submit a valid file type.(e.g. 'jpg', 'jpeg', 'png', and 'gif' ) ")
+    }
+    const whiteSpace = caption.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpace === '') {
+      err.push('Please enter a valid caption')
     }
     if(caption.length < 5 || caption.length > 100) err.push("Caption must be between 5 and  100 characters")
     setErrors(err)
@@ -67,34 +71,39 @@ export default function CreatePost() {
     <div className='create-post-container'>
       <div className='creat-post-content'>
         {image ? (
-            <img id="post-create-img"src={photoUrl} key={image} style={{width: 500, height: 500}} alt="image"></img>
+            <img id="post-create-img"src={photoUrl} key={image} style={{width: 600, height: 600}} alt="image"></img>
           )
           :
-            <div id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></div>
+            <label for="choosepicture" id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></label>
         }
         <form className='create-post-form' onSubmit={handleSubmit}>
-          <h1 id='create-post-header'>Create a new post</h1>
-          <div>
+          <div className='create-form-post-header'>
+            <h1 id='create-post-header'>Create a new post</h1>
             {submitted && errors.length > 0 && (
-                  <div>
-                    <div id="create-post-errors">
-                      Please fix the following errors before submitting:
-                    </div>
-                    <ul>
-                      {errors.map((error) => (
-                        <ul id="create-errors" key={error}>
-                          <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                          {error}
-                        </ul>
-                      ))}
+              <div className='create-post-error-container'>
+                <div id="create-post-errors">
+                  Please fix the following errors before submitting:
+                </div>
+                <ul >
+                  {errors.map((error) => (
+                    <ul id="create-errors" key={error}>
+                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                      {error}
                     </ul>
-                  </div>
+                  ))}
+                </ul>
+              </div>
             )}
-            <input
-              type='file'
-              className='choose-picture'
-              onChange={updateImage}
-            />
+          </div>
+          <div className='form-input-create-post'>
+            <div className='image-selector-post'>
+              <label id='image-selector-button' for="choosepicture" >Choose a Photo</label>
+              <input
+                type='file'
+                id='choosepicture'
+                onChange={updateImage}
+              />
+            </div>
             {image && (
               <div className='caption-post-cancel'>
                 <textarea

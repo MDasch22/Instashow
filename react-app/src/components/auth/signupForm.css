@@ -39,6 +39,12 @@
   outline: none;
   border: 1px solid rgb(139, 139, 139);
   padding-left: 5px;
+  transition: .3s;
+}
+
+.signup-input input:focus{
+  transition: .3s;
+  border: 1px solid rgb(168, 115, 253);
 }
 
 

@@ -29,6 +29,12 @@
   outline: none;
   border: 1px solid rgb(139, 139, 139);
   padding-left: 5px;
+  transition: .3s;
+}
+
+.login-input input:focus{
+  transition: .3s;
+  border: 1px solid rgb(168, 115, 253);
 }
 
 #login-instashow{
@@ -63,9 +69,10 @@
 }
 
 .-or-{
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-evenly;
 }
 
 #login-or{
