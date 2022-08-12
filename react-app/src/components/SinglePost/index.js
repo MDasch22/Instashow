@@ -59,9 +59,9 @@ export default function SinglePost() {
     content: {
       position: 'relative',
       margin: 'auto',
-      maxWidth: '600px',
-      width: '100%',
-      top: '40px',
+      maxWidth: '800px',
+      width: '800px',
+      top: '100px',
       left: '40px',
       right: '40px',
       bottom: '40px',
@@ -71,7 +71,7 @@ export default function SinglePost() {
       WebkitOverflowScrolling: 'touch',
       borderRadius: '24px',
       outline: 'none',
-      // padding: 0,
+      padding: " 0, 20px 0",
       overflow: 'visibile'
     }
 };
@@ -81,7 +81,6 @@ const todaysDate = (todaysFullDate.getDate() + 1).toLocaleString('en-US', {minim
 const todaysMonth = (todaysFullDate.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
 const currentYear = todaysFullDate.getFullYear()
 
-console.log(todaysDate)
 
 if(!post) return null
 if(!comments) return null
@@ -89,9 +88,7 @@ if(!comments) return null
   return (
     <div className='single-post'>
       <div className='single-post-container'>
-        <div>
-          <img src={post.image} style={{width: 600 ,height: 600}} alt='post-image'></img>
-        </div>
+        <img src={post.image} style={{width: 600 ,height: 600}} alt='post-image'></img>
         <div className='single-post-interation'>
           <div className='single-post-profilepic-username'>
             <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
@@ -100,7 +97,7 @@ if(!comments) return null
               <div className='single-post-edit-modal'>
                 <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
                 <Modal isOpen={showEditPost} style={formStyles}>
-                  <button onClick={closeEditPostForm}>X</button>
+                  <button id="close-edit-modal" onClick={closeEditPostForm}>X</button>
                   <EditPost setTrigger={setShowEditPost}/>
                 </Modal>
               </div>

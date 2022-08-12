@@ -20,6 +20,9 @@ export default function CreatePost() {
   useEffect(() => {
     const err = []
     if(!image) err.push("Must select a valid image. (e.g. jpg, jpeg, gif)")
+    if(!image?.name.includes('jpg') && !(image?.name.includes('jpeg') && !image?.name.includes('png') && !image?.name.includes('gif'))){
+      err.push("Please submit a valid ")
+    }
     if(caption.length < 5 || caption.length > 100) err.push("Caption must be between 5 and  100 characters")
     setErrors(err)
   }, [image, caption])
@@ -27,7 +30,6 @@ export default function CreatePost() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setSubmitted(true)
-
     if(errors.length) {
       return alert("Could not make your post!")
     }
@@ -54,14 +56,8 @@ export default function CreatePost() {
   }
 
   const updateImage = async(e) => {
-    const errors = []
     const file = e.target.files[0]
-    if(!file?.name.includes('jpg') && !file?.name.includes('jpeg') && !file?.name.includes('png')){
-      errors.push('Please enter a valid filetype: "jpg", "jpeg", and "png"')
-    }
-    if (errors.length){
-      setErrors(errors)
-    }
+
     setImage(file)
     setPhotoUrl(URL.createObjectURL(file))
   }

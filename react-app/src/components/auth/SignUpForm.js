@@ -30,19 +30,22 @@ const SignUpForm = () => {
     if(!emailRegex.test(emailTest)){
       formError.push("Please provide a valid email address")
     }
-    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[!@#$%^&*])/
     let passwordTest = password
     if(!passwordRegex.test(passwordTest)) {
-      formError.push("Password must contain 1 lowercase letter, uppercase letter, number, and special character (i.e. '!@#$%^&*')")
+      formError.push("Password must be at least 8 characters, contain 1 lowercase letter, uppercase letter, number, and special character (i.e. '!@#$%^&*')")
     }
-    if(password !== repeatPassword) {
+    if(repeatPassword !== password) {
       formError.push("Passwords do not match")
     }
     if(usersEmails.includes(email)){
       formError.push("Email already being used.")
     }
     setErrors(formError)
-  },[fullname, email, password])
+  },[fullname, email, password, repeatPassword])
+
+  console.log("This is the password, ", password)
+  console.log("This is the confirm password, ", repeatPassword)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ const SignUpForm = () => {
 
     if(errors.length) return
 
-    await dispatch(signUp(username,fullname, email, password));
+    await dispatch(signUp(username, email, password, fullname));
 
   };
 

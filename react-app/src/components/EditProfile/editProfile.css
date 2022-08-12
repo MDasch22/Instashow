@@ -17,9 +17,11 @@
   align-items: center;
   justify-content: center;
   border: 2px solid lightgray;
+  border-radius: 15px;
   margin-top: 40px;
   margin-bottom: 50px;
   width: 700px;
+  box-shadow: 2px 2px 4px 2px lightgray;
 }
 
 .edit-profile-picture-buttons{

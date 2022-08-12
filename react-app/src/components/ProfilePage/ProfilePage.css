@@ -39,6 +39,10 @@
   border: 1px solid rgb(168, 168, 168);
 }
 
+#edit-profile-bttn:hover{
+  color: rgb(109, 109, 109);
+}
+
 #edit-profile-bttn:active{
   transform: scale(0.9);
 }
@@ -62,8 +66,9 @@
 #user-post-amount{
   font-weight: bold;
   color: #222;
-  margin-right: 20px;
-  width: 50px;
+  margin-right: 10px;
+  width: 60px;
+  font-size: 15px;
 
 }
 
@@ -71,6 +76,7 @@
   font-weight: bold;
   color: #222;
   width: 100px;
+  font-size: 15px;
 }
 
 #followers-bttn:hover{
