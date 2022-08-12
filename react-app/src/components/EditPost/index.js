@@ -18,18 +18,21 @@ export default function EditPost({setTrigger}) {
   const [caption, setCaption] = useState(post.caption)
   const [isSubmitted , setIsSubmitted] = useState(false)
 
+  useEffect(() => {
+    const err = []
+    const whiteSpace = caption.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpace === '') {
+      err.push('Please enter a valid caption')
+    }
+    if(caption.length < 5 || caption.length > 100) err.push("Caption must be between 5 and  100 characters")
+    setErrors(err)
+  }, [caption])
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-
-    let errors = []
-    if(caption.length > 50 || caption.length < 5) {
-      errors.push("Caption must be between 5-50 characters")
-    }
-    setErrors(errors)
 
     if(errors.length) return
 
@@ -65,7 +68,7 @@ export default function EditPost({setTrigger}) {
           {isSubmitted && errors.length > 0 && (
             <div>
               <div id="errorHeading">
-                Please fix the following errors before submitting:
+                Please fix the following submitting:
               </div>
               <ul>
                 {errors.map((error) => (

@@ -26,6 +26,11 @@
   margin-top: 10px;
 }
 
+.link-to-ownerProfile{
+  display: flex;
+  flex-direction: row;
+}
+
 #single-post-profilePic{
   border-radius: 50%;
 }
@@ -66,13 +71,14 @@
   flex-direction: row;
   margin-left: 20px;
   padding-top: 10px;
+  width: 50px;
 }
 
 #user-post-caption{
   margin-top: 5px;
   margin-left: 10px;
-  width: 250px
 }
+
 
 #user-post-profilePic{
   border-radius: 50%;

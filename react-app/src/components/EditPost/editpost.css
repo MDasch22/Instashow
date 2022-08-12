@@ -15,7 +15,7 @@
 }
 
 #edit-post-img{
-  border-radius: 25px;
+  border-radius: 10px;
 }
 
 #close-edit-modal{
@@ -42,6 +42,8 @@
 #errorHeading{
   color: rgb(248, 87, 87);
   margin-bottom: 1rem;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 #spinner{
@@ -52,24 +54,30 @@
 #edit-error{
   color: rgb(248, 87, 87);
   margin-bottom: 20px;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 5px;
 }
 
 .edit-caption{
-  width: 90%;
+  width: 97%;
   resize: none;
   height: 10rem;
   border: 1px solid lightgray;
   padding-top: 10px;
   padding-left: 5px;
   border-radius: 10px;
+  transition: .3s;
 }
 
 .edit-caption:focus{
+  transition: .3s;
   outline: none;
+  border: 1px solid rgb(168, 115, 253);
 }
 
 .edit-form-bttns{
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;

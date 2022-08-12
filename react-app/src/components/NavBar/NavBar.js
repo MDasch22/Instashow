@@ -20,6 +20,11 @@ const NavBar = () => {
               <img id='instashow-logged-in'  src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:150, height: 50}}></img>
             </NavLink>
           </li>
+          <li >
+            <div id='empty'>
+              hello
+            </div>
+          </li>
           <li id="nav-bar-content">
             <li id="nav-bar-bttns">
               <NavLink to='/' id='home-button'exact={true} activeClassName='active'>

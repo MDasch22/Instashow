@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import Modal from 'react-modal'
 import { thunkGetSinglePost } from '../../store/posts'
 import EditPost from '../EditPost'
@@ -69,7 +69,7 @@ export default function SinglePost() {
       background: '#fff',
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
-      borderRadius: '24px',
+      borderRadius: '10px',
       outline: 'none',
       padding: " 0, 20px 0",
       overflow: 'visibile'
@@ -91,7 +91,9 @@ if(!comments) return null
         <img src={post.image} style={{width: 600 ,height: 600}} alt='post-image'></img>
         <div className='single-post-interation'>
           <div className='single-post-profilepic-username'>
-            <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
+            <NavLink id='link-to-ownerProfile' to={`/${post.owner.username}`}>
+              <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
+            </NavLink>
             <div id='single-post-username'>{post.owner.username}</div>
             {sessionUser.id === post.owner.id &&
               <div className='single-post-edit-modal'>
@@ -106,7 +108,9 @@ if(!comments) return null
           <div className='border-bottom-single-post'> </div>
           <div className='single-post-comment-section'>
             <div className='post-caption'>
-              <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
+              <NavLink to={`/${post.owner.username}`}>
+                <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
+              </NavLink>
               <div id='post-owner-username'>{post.owner.username}</div>
               <p id='user-post-caption'>{post.caption}</p>
             </div>
@@ -114,10 +118,10 @@ if(!comments) return null
               {comments.map(comment => {
                 return(
                   <div className='single-post-single-comment'>
-                    <Comments postId={post_id}comment={comment}/>
+                    <Comments postId={post_id} comment={comment}/>
                   </div>
                 )}
-                )}
+              )}
             </div>
           </div>
           <div className='border-bottom-single-post'> </div>

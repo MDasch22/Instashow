@@ -6,8 +6,7 @@
 .nav-bar{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  padding: 5px 20px;
+  padding: 5px 150px;
   align-items: center;
   border-bottom: 2px solid lightgray;
   list-style: none;
@@ -19,7 +18,10 @@
   flex-direction: row;
   align-items: center;
   /* margin-right: 100px; */
+}
 
+#empty{
+  visibility: hidden;
 }
 
 #instashow-logged-in{

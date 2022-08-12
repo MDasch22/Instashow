@@ -81,9 +81,9 @@ const LoginForm = () => {
         </form>
       <div className='loginpage-signup-bttns'>
         <div className='-or-'>
-          <div id="line-break"> </div>
+          <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/563-5632919_line-clipart-straight-line-table-hd-png-download.png' style={{width: 130, height: 30}}></img>
           <p id="login-or">or</p>
-          <div id="line-break"> </div>
+          <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/563-5632919_line-clipart-straight-line-table-hd-png-download.png' style={{width: 130, height: 30}}></img>
         </div>
         <button id='loginpage-demo-user' onClick={demoUser}>Continue as Demo</button>
       </div>

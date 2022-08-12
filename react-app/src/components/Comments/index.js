@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 import { thunkDeleteComment } from '../../store/comment'
 import EditCommentForm from '../EditComment';
 
@@ -17,10 +18,10 @@ export default function Comments({postId, comment}) {
   return (
 
       <div className='single-comment'>
-        <div className='single-comment-username'>
+        <NavLink to={`/${comment.user.username}`} className='single-comment-username'>
           <img id='single-comment-profilePic' src={comment.user.profile_pic} style={{width: 30 ,height: 30}} alt='comment-profile-pic'></img>
           <div id='single-comment-name'>{comment.user.username}</div>
-        </div>
+        </NavLink>
         <div className='single-comment-edit'>
         {!showEditCommentForm ?
           <div className='single-comment-edit'>
