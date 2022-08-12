@@ -7,14 +7,13 @@
 
 
 .login-page-form{
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   box-shadow: 2px 2px 4px 2px lightgray;
   border-radius: 5px;
   padding: 10px 20px 0 20px;
-  height: 420px;
+  /* height: 380px; */
 }
 
 
@@ -38,25 +37,27 @@
 }
 
 #login-instashow{
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding: 10px 40px;
 }
 
 #login-errors{
   color: rgb(248, 87, 87);
+  font-size: 13px;
 }
 
 .loginpage-signup-bttns{
   text-align: center;
 }
 
+
 #loginpage-login-bttn{
   margin-top: 10px;
   width: 102%;
-  height: 40px;
+  height: 30px;
   background-color: rgb(115, 175, 253);
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   color: white;
   font-weight: bold;
   transition: .5s;
@@ -72,7 +73,11 @@
   margin-top: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+#Line-break{
+  background-color: white;
 }
 
 #login-or{
@@ -80,38 +85,48 @@
 }
 
 #loginpage-demo-user{
-  width: 102%;
   height: 40px;
   border: none;
   border-radius: 25px;
-  background-color: rgb(115, 175, 253);
-  color: white;
+  background-color: white;
+  color: black;
   font-weight: bold;
   transition: .5s;
+  margin-bottom: 20px;
 }
 
 #loginpage-demo-user:hover{
-  background-color: rgb(42, 133, 252);
+  transform: scale(.95);
   transition: .5s;
   cursor: pointer;
 }
 
+.login-right-info{
+  display: flex;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
 
 .loginpage-signup-link{
+  font-size: 14px;
   margin-top: 30px;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: -3px;
+  border-radius: 5px;
+  padding: 15px 0;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px 2px lightgray;
 }
 
 #link-to-signup{
   text-decoration: none;
   color: rgb(42, 133, 252);
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   margin-left: 8px;
   transition: .3s;
 }

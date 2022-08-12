@@ -51,50 +51,52 @@ const LoginForm = () => {
       <div>
         <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/image+(1).png' style={{height: 585}}></img>
       </div>
-      <div className='login-page-form'>
-        <img id="login-instashow" src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:200, height: 60}}></img>
-        <form onSubmit={onLogin}>
-          <div>
-            {errors.map((error, ind) => (
-              <div id="login-errors" key={ind}>* {error}</div>
-            ))}
+      <div className='login-right-info'>
+        <div className='login-page-form'>
+          <img id="login-instashow" src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:210, height: 60}}></img>
+          <form className= 'login-form' onSubmit={onLogin}>
+            <div>
+              {errors.map((error, ind) => (
+                <div id="login-errors" key={ind}>* {error}</div>
+              ))}
+            </div>
+            <div className='login-input'>
+              <input
+                name='email'
+                type='text'
+                placeholder='Email'
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div className='login-input'>
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={updatePassword}
+              />
+            </div>
+          <button id="loginpage-login-bttn" type='submit'>Login</button>
+          </form>
+        <div className='loginpage-signup-bttns'>
+          <div className='-or-'>
+            <img id="line-break" src='https://instashowbucket.s3.us-west-1.amazonaws.com/line-break-grey.png' style={{width: 110, height: 30}}></img>
+            <p id="login-or">or</p>
+            <img id="line-break" src='https://instashowbucket.s3.us-west-1.amazonaws.com/line-break-grey.png' style={{width: 110, height: 30}}></img>
           </div>
-          <div className='login-input'>
-            <input
-              name='email'
-              type='text'
-              placeholder='Email'
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div className='login-input'>
-            <input
-              name='password'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={updatePassword}
-            />
-          </div>
-        <button id="loginpage-login-bttn" type='submit'>Login</button>
-        </form>
-      <div className='loginpage-signup-bttns'>
-        <div className='-or-'>
-          <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/563-5632919_line-clipart-straight-line-table-hd-png-download.png' style={{width: 130, height: 30}}></img>
-          <p id="login-or">or</p>
-          <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/563-5632919_line-clipart-straight-line-table-hd-png-download.png' style={{width: 130, height: 30}}></img>
+          <button id='loginpage-demo-user' onClick={demoUser}> <i className="fa-regular fa-circle-user fa-lg"></i> Login with Demo</button>
         </div>
-        <button id='loginpage-demo-user' onClick={demoUser}>Continue as Demo</button>
+        </div>
+        <div className='loginpage-signup-link'>
+          <p>Dont have an account?</p>
+          <NavLink id="link-to-signup" to='/sign-up'>
+            <p> Sign up </p>
+          </NavLink>
+        </div>
       </div>
-      <div className='loginpage-signup-link'>
-        <p>Dont have an account?</p>
-        <NavLink id="link-to-signup" to='/sign-up'>
-          <p> Sign up </p>
-        </NavLink>
       </div>
-      </div>
-    </div>
   );
 };
 

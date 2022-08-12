@@ -1,5 +1,5 @@
 .signup-page-form{
-  margin-top: 40px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
@@ -54,10 +54,11 @@
   height: 40px;
   background-color: rgb(115, 175, 253);
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
   color: white;
   font-weight: bold;
   transition: .5s;
+  margin-bottom: 20px;
 }
 
 #signup-page-bttn:hover{
@@ -68,6 +69,7 @@
 
 
 .signuppag-login-link{
+  font-size: 14px;
   margin-top: 20px;
   text-align: center;
   display: flex;
@@ -76,13 +78,17 @@
   align-items: center;
   margin-left: -3px;
   margin-bottom: 20px;
+  border: 1px solid lightgray;
+  padding: 15px 0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 2px lightgray;
 }
 
 #link-to-login{
   text-decoration: none;
   color: rgb(115, 175, 253);
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   margin-left: 8px;
   transition: .3s;
 }
