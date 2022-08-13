@@ -1,0 +1,3 @@
+.edit-profile-pic-form input::file-selector-button{
+  display: none;
+}

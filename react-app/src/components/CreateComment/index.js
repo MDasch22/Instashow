@@ -16,15 +16,13 @@ export default function CreateCommentForm({postId}) {
 
   useEffect(() => {
     const errs = []
-    if(comment.length > 35) errs.push("Comment must be only 35 characters")
+    if(comment.length > 150) errs.push("Comment must not exceed 150 characters")
     setErrors(errs)
   },[comment])
 
   const onSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
-
-    if(comment.length < 5) errors.push("Comment must be at least 5 characters")
 
     if(errors.length) return
 

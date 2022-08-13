@@ -26,8 +26,12 @@ export default function EditProfile({user}) {
   const userId = user.id
   const profilePic = user.profile_pic
 
+  // CHECK USERNAMES
   const usersUsernames = users.map(user => user.username)
-  const noSessionUsernames = usersUsernames.filter(username => username != user.username)
+  const noSessionUsernames = usersUsernames.filter(username => username !== user.username)
+  // CHECK EMAILS
+  const usersEmails = users.map(user => user.email)
+  const noSessionEmails = usersEmails.filter(userEmail => userEmail !== user.email )
 
   useEffect(() => {
     const error = []
@@ -36,13 +40,15 @@ export default function EditProfile({user}) {
     if(!emailRegex.test(emailTest)){
       error.push("Must enter a valid email address.")
     }
-    if(fullname.length > 100 || fullname.length < 5) {
-      error.push("Fullname must be between 5-10 characters")
+    if(noSessionEmails.includes(email)) {
+      error.push("Email already exist")
+    }
+    if(fullname.length > 50 || fullname.length < 5) {
+      error.push("Fullname must be between 5-50 characters")
     }
     if(noSessionUsernames.includes(username)){
       error.push("Username already exist")
     }
-
     setErrors(error)
   }, [email, fullname, username])
 

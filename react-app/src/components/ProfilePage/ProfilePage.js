@@ -131,6 +131,11 @@ function ProfilePage() {
             <ExplorePagePost  post={post}/>
           )}
         )}
+        {users_posts.length === 0 &&
+          <div id="no-posts-yet">
+            <p> No posts yet</p>
+          </div>
+        }
       </div>
     </div>
   );
