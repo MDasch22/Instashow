@@ -61,6 +61,7 @@ function ProfilePage() {
     content: {
       position: 'relative',
       margin: 'auto',
+      height: '200px',
       maxWidth: '500px',
       width: '400px',
       top: '300px',
@@ -69,12 +70,10 @@ function ProfilePage() {
       bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
-      overflow: 'auto',
-      WebkitOverflowScrolling: 'touch',
-      borderRadius: '24px',
+      borderRadius: '3px',
       outline: 'none',
       padding: '0',
-      overflow: 'visibile'
+      overflow: 'auto',
     }
 };
 

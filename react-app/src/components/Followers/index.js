@@ -12,7 +12,7 @@ export default function Followers({followers, closeModal}) {
           <p> No followers yet...</p>
         )}
       </div>
-      <div>
+      <div className='follower-container'>
         {followers.map(user => {
           return (
             <div id='modal-user-card'key={user.id}>
