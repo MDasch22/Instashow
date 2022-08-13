@@ -41,7 +41,7 @@ export default function EditCommentForm({ postId ,currentComment, closeForm}) {
     <div className='edit-comment-form'>
       <div >
         {submited && errors.map((error, ind) => (
-          <p id='error-edit-comments' key={ind}>{error}</p>
+          <p id='error-edit-comments' key={ind}> * {error}</p>
           )
         )}
       </div>
