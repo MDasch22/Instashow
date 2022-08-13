@@ -47,7 +47,7 @@
 
 
 #nav-bar-bttns{
-  margin: 0 12px;
+  margin: 0 15px;
   text-decoration: none;
 }
 
@@ -131,5 +131,71 @@ svg{
 
 #log-out:hover{
   color: rgb(116, 116, 116);
+  cursor: pointer;
+}
+
+.dropDown{
+  position: absolute;
+  top: 58px;
+  width: 230px;
+  transform: translateX(-75%);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.1) 5px -6px 12px;
+}
+
+#dropdown-item{
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.8rem;
+  text-decoration: none;
+  color: black;
+}
+
+#dropdown-item:hover{
+  background-color: rgb(245, 245, 245);
+}
+
+#pointer-arrow{
+  z-index: 2;
+  position: absolute;
+  transform: translateX(30%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom:  10px solid rgb(255, 255, 255);
+}
+
+#dropdown-profile{
+  padding-left: 14px;
+  font-size: 14px;
+  text-align: left;
+}
+
+#dropdown-text{
+  padding-left: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+#dropdown-logout{
+  border-top: 1px solid lightgray;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.8rem;
+  font-size: 14px;
+}
+
+#dropdown-logout:hover{
+  background-color: rgb(245, 245, 245);
   cursor: pointer;
 }
