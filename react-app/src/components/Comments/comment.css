@@ -1,11 +1,12 @@
 .single-comment{
   display: flex;
   flex-direction: row;
-
+  /* justify-content: space-between; */
 }
 
 .single-comment-username{
   display: inline-flex;
+   text-decoration: none;
 }
 
 #single-comment-profilePic{
@@ -20,27 +21,54 @@
 }
 
 .single-comment-edit{
-  flex-wrap: wrap;
+  margin-top: 8px;
   margin-left: 5px;
-  display: flex;
-  margin-top: 4px;
-  width: 300px;
+}
+
+.user-comments{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: row;
+  width: 250px;
+  font-size: 15px;
+}
+
+.user-comment-long-string{
+  width: 250px;
+  word-break: break-all;
 }
 
 .comment-update{
-  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.edit-delete-button{
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
 #comment-edit{
   color: rgb(94, 94, 94);
   border: none;
   background-color: white;
-  margin: 0 5px;
+  cursor: pointer;
 }
 
 #comment-delete{
   color: rgb(94, 94, 94);
   border: none;
   background-color: white;
-  margin-right: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+
+#comment-edit:hover{
+  transform: scale(1.1);
+}
+
+#comment-delete:hover{
+  transform: scale(1.1);
 }

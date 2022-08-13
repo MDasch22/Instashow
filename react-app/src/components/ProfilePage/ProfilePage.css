@@ -118,3 +118,10 @@
   margin: 0 10px;
   color: white;
 }
+
+
+#no-posts-yet{
+  margin-top: 100px;
+  font-size: 20px;
+  font-weight: bold;
+}

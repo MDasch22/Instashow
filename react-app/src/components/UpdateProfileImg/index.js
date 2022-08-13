@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useEffect, useState }from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../store/session'
 
@@ -9,7 +9,7 @@ export default function UpdateProfileImg({id}) {
   const [errors , setErrors] = useState([])
   const [image, setImage] = useState(null);
   const [ submitted , setSubmitted] = useState(false)
-  const [imageLoading, setImageLoading] = useState(false)
+  // const [imageLoading, setImageLoading] = useState(false)
 
   const onSubmit = async(e) => {
     e.preventDefault()
@@ -42,39 +42,51 @@ export default function UpdateProfileImg({id}) {
   }
 
   const updateProfilePic = (e) => {
+    const err= []
     const file = e.target.files[0]
-    setImage(file)
+    if(!file?.type.includes('jpg') && !(file?.type.includes('jpeg') && !file?.type.includes('png') && !file?.type.includes('gif'))){
+      err.push("Please submit a valid file type.(e.g. 'jpg', 'jpeg', 'png', and 'gif' ) ")
+      setErrors(err)
+      setImage(null)
+    } else {
+      setImage(file)
+      setErrors([])
+    }
   }
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form className="edit-profile-pic-form" onSubmit={onSubmit}>
         <div>
-        {submitted && errors.length > 0 && (
-              <div className="errorHandling">
-                <div className="errorTitle">
-                  Please fix the following errors before submitting:
-                </div>
-                <ul className="errors">
-                  {errors.map((error) => (
-                    <ul key={error} id="error">
-                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                      {error}
-                    </ul>
-                  ))}
+        {errors.length > 0 && (
+          <div className="errorHandling">
+            <div className="errorTitle">
+              Please fix the following errors before submitting:
+            </div>
+            <ul className="errors">
+              {errors.map((error) => (
+                <ul key={error} id="error">
+                  <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                  {error}
                 </ul>
-              </div>
+              ))}
+            </ul>
+          </div>
         )}
         </div>
         <div>
-          <label htmlFor='user-update-img'>Choose Photo</label>
+          <label for='user-update-img'>Choose Photo</label>
           <input
             id='user-update-img'
             type='file'
             accept='image/*'
             onChange={updateProfilePic}
           />
-          <button>Upload</button>
+          {!image && errors.length ?
+            <button disabled={true}>Upload</button>
+            :
+            <button>Upload</button>
+          }
         </div>
       </form>
     </div>

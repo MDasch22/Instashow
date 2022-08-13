@@ -93,8 +93,8 @@ if(!comments) return null
           <div className='single-post-profilepic-username'>
             <NavLink id='link-to-ownerProfile' to={`/${post.owner.username}`}>
               <img id='single-post-profilePic' src={post.owner.profile_pic} style={{width: 40 ,height: 40}} alt='post-profile-pic'></img>
+              <div id='single-post-username'>{post.owner.username}</div>
             </NavLink>
-            <div id='single-post-username'>{post.owner.username}</div>
             {sessionUser.id === post.owner.id &&
               <div className='single-post-edit-modal'>
                 <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
@@ -108,10 +108,10 @@ if(!comments) return null
           <div className='border-bottom-single-post'> </div>
           <div className='single-post-comment-section'>
             <div className='post-caption'>
-              <NavLink to={`/${post.owner.username}`}>
+              <NavLink id='link-caption-user'to={`/${post.owner.username}`}>
                 <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
+                <div id='post-owner-username'>{post.owner.username}</div>
               </NavLink>
-              <div id='post-owner-username'>{post.owner.username}</div>
               <p id='user-post-caption'>{post.caption}</p>
             </div>
             <div>

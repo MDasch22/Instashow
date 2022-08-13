@@ -49,7 +49,7 @@ const LoginForm = () => {
   return (
     <div className='login-page-container'>
       <div>
-        <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/image+(1).png' style={{height: 585}}></img>
+        <img src='https://instashowbucket.s3.us-west-1.amazonaws.com/splash+login(1).png' style={{height: 585}}></img>
       </div>
       <div className='login-right-info'>
         <div className='login-page-form'>
