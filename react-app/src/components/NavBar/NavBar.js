@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -16,6 +16,22 @@ const NavBar = () => {
   const onLogout = async() => {
     await dispatch(logout())
   }
+
+  const dropDownRef = useRef();
+
+  useEffect(() => {
+
+    const closeDrop = (e) => {
+      if(e.path[0].tagName !== 'IMG'){
+        setOpen(false)
+      }
+    }
+
+    document.body.addEventListener('click', closeDrop )
+
+    return () => document.body.removeEventListener('click', closeDrop);
+
+  }, [])
 
   return (
     <nav className='nav'>
@@ -52,7 +68,7 @@ const NavBar = () => {
               <>
                 <img onClick={() => setOpen(!open)} src={sessionUser.profile_pic} id="nav-bar-profile-bttn"style={{width: 30, height: 30}}></img>
                 {open && (
-                <>
+                <div >
                   <div id='pointer-arrow'>  </div>
                   <div className='dropDown'>
                     <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={() => setOpen(!open)}>
@@ -67,7 +83,7 @@ const NavBar = () => {
                       Logout
                     </div>
                   </div>
-                </>
+                </div>
                 )}
               </>
             </li>
@@ -76,7 +92,7 @@ const NavBar = () => {
         </>
         )}
         {!sessionUser && (
-        <>
+        <div>
           <li>
           <img id='instashow-logged-in' src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:150, height: 50}}></img>
           </li>
@@ -92,7 +108,7 @@ const NavBar = () => {
               </NavLink>
             </li>
           </li>
-        </>
+        </div>
         )}
       </ul>
     </nav>

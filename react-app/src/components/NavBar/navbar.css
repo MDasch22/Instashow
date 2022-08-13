@@ -57,8 +57,13 @@
 }
 
 #nav-bar-profile-bttn:active{
- filter: brightness(70%);
+ filter: brightness(75%);
 }
+
+#nav-bar-profile-bttn:hover{
+  cursor: pointer;
+}
+
 
 #home-button{
   color: black;
@@ -76,6 +81,10 @@
   color: rgb(102, 102, 102);
 }
 
+#explore:hover{
+  cursor: pointer;
+}
+
 
 #create-post-plus{
   border-radius: 25%;
@@ -86,6 +95,10 @@
 #create-post-plus:active{
   color: rgb(102, 102, 102);
   border-color: rgb(102, 102, 102);;
+}
+
+#create-post-plus:hover{
+  cursor: pointer;
 }
 
 svg{
@@ -100,6 +113,10 @@ svg{
 
 #house-button:active{
   color: rgb(102, 102, 102);
+}
+
+#house-button:hover{
+  cursor: pointer;
 }
 
 #no-sessionuser-nav-login{
