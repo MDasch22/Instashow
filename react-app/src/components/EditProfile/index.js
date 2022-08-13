@@ -40,11 +40,23 @@ export default function EditProfile({user}) {
     if(!emailRegex.test(emailTest)){
       error.push("Must enter a valid email address.")
     }
+    const whiteSpace = email.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpace === '') {
+      error.push('Please enter a valid email')
+    }
     if(noSessionEmails.includes(email)) {
       error.push("Email already exist")
     }
     if(fullname.length > 50 || fullname.length < 5) {
       error.push("Fullname must be between 5-50 characters")
+    }
+    const whiteSpaceFn = fullname.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpaceFn === '') {
+      error.push('Please enter a valid Fullname')
+    }
+    const whiteSpaceUn = username.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpaceUn === '') {
+      error.push('Please enter a valid username')
     }
     if(noSessionUsernames.includes(username)){
       error.push("Username already exist")
