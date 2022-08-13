@@ -16,6 +16,10 @@ export default function CreateCommentForm({postId}) {
 
   useEffect(() => {
     const errs = []
+    const whiteSpace = comment.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpace === '') {
+      errs.push('Please enter a valid comment')
+    }
     if(comment.length > 150) errs.push("Comment must not exceed 150 characters")
     setErrors(errs)
   },[comment])
@@ -45,7 +49,7 @@ export default function CreateCommentForm({postId}) {
     <div className='create-comment-container'>
       <div>
         {submitted && errors.map((error, ind) => (
-          <p id='error-comments' key={ind}>{error}</p>
+          <p id='error-comments' key={ind}> * {error}</p>
           )
         )}
       </div>

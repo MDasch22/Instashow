@@ -96,7 +96,7 @@
 }
 
 #loginpage-demo-user:hover{
-  transform: scale(.95);
+  transform: scale(1.1);
   transition: .5s;
   cursor: pointer;
 }
