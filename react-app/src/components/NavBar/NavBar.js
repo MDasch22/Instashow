@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -16,8 +16,6 @@ const NavBar = () => {
   const onLogout = async() => {
     await dispatch(logout())
   }
-
-  const dropDownRef = useRef();
 
   useEffect(() => {
 
