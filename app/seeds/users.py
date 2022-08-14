@@ -9,10 +9,24 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', fullname='Marnie Smith', bio="I am Marnie Smith", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/default-profile-icon-24.jpg')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', fullname="Bobbie Duggin", bio="I am Bobby Duggin", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/default-profile-icon-24.jpg' )
+    michael = User(
+        username='McDaschin', email="michaeldasch22@gmail.com", password="password", fullname="Michael Dasch", bio="I am Michael Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/coaching.jpeg"
+    )
+    shawn = User(
+        username="DigitalDasch", email="shawndasch11@gmail.com", password="password", fullname="Shawn Dasch", bio="I am Shawn Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/tanjiro+wallpaper.jpg"
+    )
+    joshua = User(
+        username="BrandofMel", email="joshuadasch@gmail.com", password="password", fullname="Joshua Dasch", bio="I am Joshua Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/99bbf1fc914ad9fcaea4c7a10fffabe9.png"
+    )
+
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(michael)
+    db.session.add(shawn)
+    db.session.add(joshua)
+
 
     db.session.commit()
 

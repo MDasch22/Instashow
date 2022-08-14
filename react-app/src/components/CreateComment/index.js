@@ -16,10 +16,6 @@ export default function CreateCommentForm({postId}) {
 
   useEffect(() => {
     const errs = []
-    const whiteSpace = comment.replace(/^>s+/, '').replace(/\s+$/, '')
-    if( whiteSpace === '') {
-      errs.push('Please enter a valid comment')
-    }
     if(comment.length > 150) errs.push("Comment must not exceed 150 characters")
     setErrors(errs)
   },[comment])
@@ -27,6 +23,12 @@ export default function CreateCommentForm({postId}) {
   const onSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
+
+    const whiteSpace = comment.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpace === '') {
+      errors.push('Please enter a valid comment')
+    }
+    setErrors(errors)
 
     if(errors.length) return
 
@@ -37,12 +39,11 @@ export default function CreateCommentForm({postId}) {
     }
 
     dispatch(thunkCreateComment(postId, data))
-    reset()
+    setComment('')
   }
 
   const reset = () => {
     setComment('')
-    setErrors([])
   }
 
   return (
@@ -59,7 +60,7 @@ export default function CreateCommentForm({postId}) {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
-          required
+          // required
         />
         <div>
          <button className="post-button"type='submit'>Post</button>

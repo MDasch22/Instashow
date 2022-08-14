@@ -34,13 +34,16 @@
   margin-left: 20px;
 }
 
+
 #splash-page-user-username{
   color: rgb(59, 59, 59);
   margin-left: 15px;
   margin-top: 5px;
 }
 
+
 .like-comment-splash-buttons{
+  margin: 5px;
   display: flex;
   flex-direction: row;
 
@@ -56,43 +59,89 @@
   background-color: white;
 }
 
+
 #comment-button-splash:hover{
   color: rgb(133, 133, 133);
   cursor: pointer;
 }
 
-
 .splash-post-content-info{
   margin-left: 10px;
   display: flex;
-  height: 80px;
+  width: 400px;
   flex-direction: column;
   justify-content: space-between;
+}
 
+.liked-by-container{
+  display: flex;
+  flex-direction: row;
+}
+
+#liked-by-pic{
+  margin-top: -4px;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 2;
+}
+
+#overlapping-by-pic{
+  border-radius: 50%;
+}
+
+#overlapping-pic{
+  margin-top: -4px;
+  position: relative;
+  border-radius: 50%;
+  z-index: 1;
+  margin-left: -8px;
+  border: 2px solid white;
+}
+
+#liked-by-usernames {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.hidden{
+  font-size: 14px;
 }
 
 .splash-username-post-caption{
+  margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: row;
+  float: left;
+
+}
+
+.user-caption-slash-post{
+  width: 330px;
   word-break: break-all;
-
-
+  font-size: 14px;
 }
 
 #splash-username-post {
   font-weight: bold;
   margin-right: 20px ;
+
 }
 
 #view-all-comments{
   text-decoration: none;
   color: rgb(136, 136, 136);
+  font-size: 14px;
 }
 
 #view-all-comments:active{
   color: lightgray;
 }
 
+#created-at-splash{
+  font-size: 14px;
+  padding: 5px 0;
+}
 
 .suggested-users{
   display: flex;
@@ -119,18 +168,15 @@
   border-radius: 50%;
 }
 
-.hidden{
-  opacity: 0;
-}
-
 #user-username-suggest{
-  margin-top: 20px;
-  padding-left: 15px;
+  margin-top: 5px;
+  padding-left: 10px;
   color: black;
+  font-weight: bold;
 }
 
 #user-fullname-suggest{
-  padding-left: 15px;
+  padding-left: 10px;
   font-size: 15px;
   color: rgb(175, 175, 175);
 }
@@ -160,14 +206,14 @@
 
 #username-suggest{
   font-weight: bold;
-  margin-top: 5px;
+  margin-top: 2px;
   padding-left: 15px;
   color: black;
   font-size: 14px;
 }
 
 #fullname-suggest{
-  margin-top: 5px;
+  margin-top: 3px;
   padding-left: 15px;
   color: rgb(175, 175, 175);
   font-size: 12.5px;

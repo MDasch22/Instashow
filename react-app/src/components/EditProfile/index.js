@@ -47,8 +47,8 @@ export default function EditProfile({user}) {
     if(noSessionEmails.includes(email)) {
       error.push("Email already exist")
     }
-    if(fullname.length > 50 || fullname.length < 5) {
-      error.push("Fullname must be between 5-50 characters")
+    if(fullname.length > 30 || fullname.length < 5) {
+      error.push("Fullname must be between 5-30 characters")
     }
     const whiteSpaceFn = fullname.replace(/^>s+/, '').replace(/\s+$/, '')
     if( whiteSpaceFn === '') {
@@ -60,6 +60,9 @@ export default function EditProfile({user}) {
     }
     if(noSessionUsernames.includes(username)){
       error.push("Username already exist")
+    }
+    if(username.length > 20) {
+      error.push("Username cannot exceed 50 characters")
     }
     setErrors(error)
   }, [email, fullname, username])
