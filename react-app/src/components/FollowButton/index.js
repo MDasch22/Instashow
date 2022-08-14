@@ -55,7 +55,7 @@ export default function FollowButton({sessionUser, userId, username}) {
               Follow
             </button>
           :
-            <button id="follow-unfollow-bttn" onClick={unfollow}>
+            <button id="unfollow-bttn" onClick={unfollow}>
               <i className="fa-solid fa-user-check"></i>
             </button>
           }

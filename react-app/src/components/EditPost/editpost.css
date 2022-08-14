@@ -1,31 +1,64 @@
+.edit-post-header{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 30px;
+  border-bottom: 1px solid lightgray;
+  padding-top: 5px;
+}
+
 .edit-post-container{
   display: flex;
   flex-direction: row;
   height: 500px;
 }
 
-
 .edit-post-content{
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   width: 100%;
   height: 500px;
   text-align: center;
 }
 
-#edit-post-img{
+#hidden-edit{
+  border: none;
+  background-color: white;
+  margin-left: 10px;
+  color: rgb(42, 133, 252);
+  font-weight: bold;
+}
+
+#submit-edit{
+  background-color: white;
+  border: none;
+  color: rgb(42, 133, 252);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#hidden-edit:hover{
+  color: rgb(115, 175, 253);
+  cursor: pointer;
+}
+
+#submit-edit:hover{
+  color: rgb(115, 175, 253);
+  cursor: pointer;
+}
+
+#hidden-edit{
   border-radius: 10px;
 }
 
 #close-edit-modal{
   position: absolute;
   top: 5px;
-  right: -40px;
-  color: #FFFFFF;
+  color: blue;
   background-color: transparent;
   border: none;
-  font-size: 24px;
+  font-size: 15pxpx;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
@@ -34,9 +67,13 @@
   transform: scale(0.9);
 }
 
+#edit-post-image{
+  border-radius: 5px;
+}
 
 #edit-modal-header{
-  margin-bottom: 20px;
+  padding-top: 5px;
+  font-weight: bold;
 }
 
 #errorHeading{
@@ -44,6 +81,7 @@
   margin-bottom: 1rem;
   font-size: 14px;
   font-weight: bold;
+  padding-top: 10px;
 }
 
 #spinner{
@@ -62,11 +100,11 @@
 .edit-caption{
   width: 97%;
   resize: none;
-  height: 10rem;
-  border: 1px solid lightgray;
+  height: 17rem;
+  border: 1px solid lightgrey;
   padding-top: 10px;
   padding-left: 5px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   transition: .3s;
 }
 
@@ -76,11 +114,31 @@
   border: 1px solid rgb(168, 115, 253);
 }
 
+.edit-post-user-info{
+  display: flex;
+  flex-direction: row;
+  border-top: 1px  solid lightgray;
+  padding-top: 5px;
+
+}
+
 .edit-form-bttns{
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#edit-post-user-pp{
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#edit-post-user-username{
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 #edit-submit{
@@ -100,7 +158,7 @@
   width: 50%;
   border-radius: 15px;
   border: 1px solid lightgray;
-  background-color: rgb(115, 175, 253);
+  background-color: rgb(248, 101, 101);
   color: white;
   transition: .5s;
 }
@@ -113,6 +171,6 @@
 
 #edit-delete:hover{
   transform: scale(1.1);
-  background-color: rgb(42, 133, 252);
+  background-color: rgb(248, 66, 66);
   transition: .5s;
 }
