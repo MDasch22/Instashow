@@ -167,7 +167,7 @@ export default function reducer(state = initialState, action) {
       newState.user.following.push(action.user)
       return newState
     case USER_UNFOLLOW:
-      const i = newState.user.following.indexOf(action.user.id)
+      const i = newState.user.following.findIndex(user => user.id === action.user.id)
       newState.user.following.splice(i, 1)
       return newState
     default:

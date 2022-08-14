@@ -5,6 +5,7 @@ import { thunkGetAllComments } from '../../store/comment'
 import { thunkLoadAllPosts } from '../../store/posts'
 import { thunkLoadAllUsers } from '../../store/user'
 import CreateCommentForm from '../CreateComment'
+import { setUser } from '../../store/session'
 import FollowButton from '../FollowButton'
 import LikeButton from '../LikesButton'
 

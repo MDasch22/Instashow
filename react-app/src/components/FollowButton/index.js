@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { thunkFollow, thunkUnfollow } from '../../store/session'
 import { thunkGetUser } from '../../store/user'
 
-export default function FollowButton({sessionUser, userId, username}) {
+export default function FollowButton({sessionUser, username, userId}) {
   const dispatch = useDispatch()
 
   const [userFollowing, setUserFollowing] = useState(false)
