@@ -17,7 +17,8 @@
 .splash-page-postCard{
   border: 2px solid lightgray;
   margin: 15px 0;
-  border-radius: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px 2px lightgray;
 
 }
 
@@ -162,7 +163,8 @@
 
 .border{
   border: 2px solid lightgray;
-  border-radius: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px 2px lightgray;
 
 }
 
