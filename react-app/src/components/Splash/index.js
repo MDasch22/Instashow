@@ -34,11 +34,12 @@ export default function HomePage() {
 
   // SUGGESTED USER BY USER NOT FOLLOWING
   const userFollowing = sessionUser.following.map(user => user.username)
+
   const suggested = []
 
   for(let i = 0; i < allUsers.length -1; i++){
     let userObj = allUsers[i]
-    console.log(userObj.username)
+
     if(!userFollowing) {
       suggested.push(allUsers)
     }
@@ -52,7 +53,7 @@ export default function HomePage() {
 
   const suggestedFollower = suggested.filter(user => user.username !== sessionUser.username)
 
-  const radomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
+  const randomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
 
 
   followingPost.reverse()
@@ -77,7 +78,7 @@ export default function HomePage() {
               </div>
             </NavLink>
             <NavLink to={`/post/${post.id}`}>
-              <img id='splash-post-picture' src={post.image} style={{width: 450, height: 500}} alt='post-image'></img>
+              <img id='splash-post-picture' src={post.image} style={{width: 465, height: 500}} alt='post-image'></img>
             </NavLink>
             <div className='like-comment-splash-buttons'>
               <div className='like-button-splash'>
@@ -142,7 +143,7 @@ export default function HomePage() {
                 ) :
                 null
               } */}
-            <div id='created-at-splash'>{post.created_at}</div>
+            <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
             </div>
             <CreateCommentForm postId={post.id}/>
           </div>
@@ -160,7 +161,7 @@ export default function HomePage() {
           </NavLink>
           <div className='suggestion-container'>
             <p id="suggested-for-you">Suggestions For You</p>
-            {suggestedFollower.slice(0, 4).map(user => {
+            {randomSuggested.slice(0, 4).map(user => {
             return (
                 <NavLink to={`/${user.username}`} className='suggestion-user'>
                   <img id="profile-pic_suggest"src={user.profile_pic} style={{width: 35, height: 35}}></img>

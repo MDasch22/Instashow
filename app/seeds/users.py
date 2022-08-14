@@ -6,11 +6,11 @@ def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password', fullname='Demo User', bio="I am the Demo User", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/default-profile-icon-24.jpg')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', fullname='Marnie Smith', bio="I am Marnie Smith", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/default-profile-icon-24.jpg')
+        username='marnie', email='marnie@aa.io', password='password', fullname='Marnie Smith', bio="I am Marnie Smith", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/4dbd4ef54d2f41cd9f9b5b0c43d8bc6c.jpg')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', fullname="Bobbie Duggin", bio="I am Bobby Duggin", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/default-profile-icon-24.jpg' )
+        username='bobbie', email='bobbie@aa.io', password='password', fullname="Bobbie Duggin", bio="I am Bobby Duggin", profile_pic='https://instashowbucket.s3.us-west-1.amazonaws.com/88985.png' )
     michael = User(
-        username='McDaschin', email="michaeldasch22@gmail.com", password="password", fullname="Michael Dasch", bio="I am Michael Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/coaching.jpeg"
+        username='McDaschin', email="michaeldasch22@gmail.com", password="password!!", fullname="Michael Dasch", bio="I am Michael Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/coaching.jpeg"
     )
     shawn = User(
         username="DigitalDasch", email="shawndasch11@gmail.com", password="password", fullname="Shawn Dasch", bio="I am Shawn Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/tanjiro+wallpaper.jpg"

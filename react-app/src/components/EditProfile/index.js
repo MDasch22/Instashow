@@ -98,14 +98,20 @@ export default function EditProfile({user}) {
       <div className='edit-profile-container'>
         <h1>Edit Profile</h1>
         <div className='change-picture'>
-          <div className='colorborder'>
+          {/* <div className='colorborder'>
             <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
-          </div>
+          </div> */}
           <div className='edit-profile-picture-buttons'>
               {!showImage ?
+                <div className='edit-profile-mix'>
+                <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
                 <button id="change-profile-pic" onClick={() => setShowImage(true)}>Change profile picture</button>
+                </div>
                 :
-                <UpdateProfileImg id={userId}/>
+                <div className='edit-profile-mix'>
+                  <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
+                  <UpdateProfileImg id={userId}/>
+                </div>
               }
           </div>
         </div>

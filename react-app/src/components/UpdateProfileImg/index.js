@@ -2,6 +2,8 @@ import React, { useEffect, useState }from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../store/session'
 
+import './updateProfilepic.css'
+
 
 export default function UpdateProfileImg({id}) {
   const dispatch = useDispatch()
@@ -55,7 +57,7 @@ export default function UpdateProfileImg({id}) {
   }
 
   return (
-    <div>
+    <div className='edit-change-profile-pic'>
       <form className="edit-profile-pic-form" onSubmit={onSubmit}>
         <div>
         {errors.length > 0 && (
@@ -63,9 +65,9 @@ export default function UpdateProfileImg({id}) {
             <div className="errorTitle">
               Please fix the following errors before submitting:
             </div>
-            <ul className="errors">
+            <ul className="edit-profilepic-errors">
               {errors.map((error) => (
-                <ul key={error} id="error">
+                <ul key={error} id="edit-pic-error">
                   <i className="fas fa-spinner fa-spin" id="spinner"></i>
                   {error}
                 </ul>
@@ -74,8 +76,8 @@ export default function UpdateProfileImg({id}) {
           </div>
         )}
         </div>
-        <div>
-          <label for='user-update-img'>Choose Photo</label>
+        <div className='edit-choose-photo'>
+          <label for='user-update-img' id="choose-photo">Choose Photo</label>
           <input
             id='user-update-img'
             type='file'
@@ -83,9 +85,9 @@ export default function UpdateProfileImg({id}) {
             onChange={updateProfilePic}
           />
           {!image && errors.length ?
-            <button disabled={true}>Upload</button>
+            <button id="upload-profile-pic" disabled={true}>Upload</button>
             :
-            <button>Upload</button>
+            <button id="upload-profile-pic" >Upload</button>
           }
         </div>
       </form>

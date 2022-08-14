@@ -46,6 +46,12 @@
   transform: scale(1.1);
 }
 
+.edit-profile-mix{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .edit-profile-form{
   display: flex;

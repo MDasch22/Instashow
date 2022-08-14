@@ -1,3 +1,66 @@
 .edit-profile-pic-form input::file-selector-button{
   display: none;
 }
+
+
+.edit-change-profile-pic{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.edit-choose-photo{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+
+#choose-photo{
+ color: rgb(42, 133, 252);
+ font-weight: bold;
+}
+
+#choose-photo:hover{
+  cursor: pointer;
+  color: rgb(115, 175, 253);
+  border: none;
+
+}
+
+#upload-profile-pic{
+  width: 40%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(42, 133, 252);
+  color: white;
+  margin-top: 10px;
+}
+
+#upload-profile-pic:hover{
+  background-color: rgb(115, 175, 253);
+  cursor: pointer;
+}
+
+.errorTitle{
+  color: red;
+  padding-bottom: 5px;
+}
+
+.edit-profilepic-errors{
+  color: rgb(255, 82, 82);
+  padding-bottom: 5px;
+  width: 90%;
+  transform: translateX(4%);
+  font-size: 14px;
+}
+
+.errorHandling{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
