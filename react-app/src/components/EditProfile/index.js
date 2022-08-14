@@ -64,8 +64,11 @@ export default function EditProfile({user}) {
     if(username.length > 20) {
       error.push("Username cannot exceed 20 characters")
     }
+    if(bio.length > 150){
+      error.push('Bio cannot exceed 150 characters')
+    }
     setErrors(error)
-  }, [email, fullname, username])
+  }, [email, fullname, username, bio])
 
 
   useEffect(() => {

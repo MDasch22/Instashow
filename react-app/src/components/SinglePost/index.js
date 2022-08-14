@@ -130,7 +130,7 @@ if(!comments) return null
             <LikeButton post={post}/>
             <div className='single-post-liked-by'>
               {post.likes.length === 0 ?
-                  <div className='hidden'> no likes yet</div>
+                  <div className='hidden'> No likes yet</div>
                   :
                   <p>{post.likes.length === 1 ?
                         <div className='liked-by-container'>

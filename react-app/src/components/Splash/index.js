@@ -123,27 +123,11 @@ export default function HomePage() {
               }
               <div className='splash-username-post-caption'>
                 <p id="splash-username-post">{post.owner.username}</p>
-                <div className='user-caption-slash-post'>
-                  <p id="splash-caption-post">{post.caption}</p>
-                </div>
+                <p className='user-caption-slash-post'>{post.caption}</p>
               </div>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
                 <p>View all comments </p>
               </NavLink>
-              {/* {post.comments.length ? (
-                <div>
-                  {post.comments.slice(0, 2).map(comment => {
-                    return (
-                        <div className='splash-content-comments'>
-                          <p id="splash-comment-username">{comment.user.username}</p>
-                          <p id="splash-comment-comment">{comment.comment}</p>
-                        </div>
-                      )
-                  })}
-                </div>
-                ) :
-                null
-              } */}
             <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
             </div>
             <CreateCommentForm postId={post.id}/>

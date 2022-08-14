@@ -24,7 +24,7 @@ export default function EditPost({setTrigger}) {
     if( whiteSpace === '') {
       err.push('Please enter a valid caption')
     }
-    if(caption.length < 5 || caption.length > 100) err.push("Caption must be between 5 and  100 characters")
+    if(caption.length < 5 || caption.length > 150) err.push("Caption must be between 5 and  150 characters")
     setErrors(err)
   }, [caption])
 

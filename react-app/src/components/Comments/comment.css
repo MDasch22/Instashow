@@ -1,7 +1,7 @@
 .single-comment{
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 
 .single-comment-username{
@@ -25,11 +25,17 @@
   margin-left: 5px;
 }
 
+.user-single-comment{
+  float: left;
+  margin-left: -15px;
+}
+
 .user-comments{
   display: inline-flex;
   flex-direction: row;
   flex-wrap: row;
-  width: 250px;
+  width: 270px;
+  word-wrap: break-word;
   font-size: 15px;
 }
 
@@ -42,6 +48,8 @@
   display: flex;
   flex-direction: row;
   text-align: left;
+  transform: translateX(-30%);
+
 }
 
 .edit-delete-button{
