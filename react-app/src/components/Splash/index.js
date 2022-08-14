@@ -52,7 +52,7 @@ export default function HomePage() {
 
   const suggestedFollower = suggested.filter(user => user.username !== sessionUser.username)
 
-  const sf = suggestedFollower.filter(user => user.username !== 'test' || user.username !== 'pregrade')
+  const sf = suggestedFollower.filter(user => `${user.username}` !== 'test' || `${user.username}` !== 'pregrade')
 
   const randomSuggested = sf.sort(() => Math.random() - 0.5)
 
