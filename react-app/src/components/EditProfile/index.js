@@ -62,7 +62,7 @@ export default function EditProfile({user}) {
       error.push("Username already exist")
     }
     if(username.length > 20) {
-      error.push("Username cannot exceed 50 characters")
+      error.push("Username cannot exceed 20 characters")
     }
     setErrors(error)
   }, [email, fullname, username])

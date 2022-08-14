@@ -25,23 +25,42 @@ const SignUpForm = () => {
   useEffect(() => {
     dispatch(thunkLoadAllUsers())
     const formError=[]
-    if(fullname.length < 5) formError.push("Fullname must be at least 5 characters")
+    if(fullname.length < 5 || fullname.length > 30) formError.push("Fullname must be at least 5-30 characters")
+
+    const whiteSpaceFn = fullname.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpaceFn === '') {
+      formError.push('Please enter a valid Fullname')
+    }
+
     let emailRegex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}/
     let emailTest = email
     if(!emailRegex.test(emailTest)){
       formError.push("Please provide a valid email address")
     }
+
     let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-8])(?=.*[!@#$%^&*])/
     let passwordTest = password
     if(!passwordRegex.test(passwordTest)) {
       formError.push("Password must be at least 8 characters, contain 1 lowercase letter, uppercase letter, number, and special character (i.e. '!@#$%^&*')")
     }
+
     if(repeatPassword !== password) {
       formError.push("Passwords do not match")
     }
+
     if(usersEmails.includes(email)){
       formError.push("Email already being used.")
     }
+
+    if(username.length > 20) {
+      formError.push("Username cannot exceed 20 characters")
+    }
+
+    const whiteSpaceUn = username.replace(/^>s+/, '').replace(/\s+$/, '')
+    if( whiteSpaceUn === '') {
+      formError.push('Please enter a valid username')
+    }
+
     setErrors(formError)
   },[fullname, email, password, repeatPassword])
 
