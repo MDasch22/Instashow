@@ -13,7 +13,7 @@ export default function Footer() {
       </div>
       <div className='footer-content'>
         <p id="created-at"><i className="fa-solid fa-c fa-xs"></i></p>
-        <p id="app-academy"> 2022 App Academy </p>
+        <p id="app-academy"> 2022 Michael Dasch </p>
       </div>
     </div>
   )
