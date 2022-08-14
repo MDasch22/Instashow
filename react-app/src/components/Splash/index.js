@@ -37,7 +37,7 @@ export default function HomePage() {
 
   const suggested = []
 
-  for(let i = 0; i < allUsers.length -1; i++){
+  for(let i = 0; i < allUsers.length - 1; i++){
     let userObj = allUsers[i]
 
     if(!userFollowing) {
@@ -46,12 +46,13 @@ export default function HomePage() {
     if(!userFollowing.includes(`${userObj.username}`)){
       suggested.push(userObj)
     }
-    else {
-      suggested.push(allUsers)
-    }
   }
 
+
+
   const suggestedFollower = suggested.filter(user => user.username !== sessionUser.username)
+
+  console.log(suggestedFollower)
 
   const randomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
 
