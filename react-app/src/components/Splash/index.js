@@ -52,9 +52,9 @@ export default function HomePage() {
 
   const suggestedFollower = suggested.filter(user => user.username !== sessionUser.username)
 
-  console.log(suggestedFollower)
+  const sf = suggestedFollower.filter(user => user.username !== 'test' || user.username !== 'pregrade')
 
-  const randomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
+  const randomSuggested = sf.sort(() => Math.random() - 0.5)
 
 
   followingPost.reverse()

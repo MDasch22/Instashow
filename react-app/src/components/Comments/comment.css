@@ -1,7 +1,7 @@
 .single-comment{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
 }
 
 .single-comment-username{
@@ -27,7 +27,7 @@
 
 .user-single-comment{
   float: left;
-  margin-left: -15px;
+  /* margin-left: -5px; */
 }
 
 .user-comments{
