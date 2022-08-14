@@ -16,4 +16,4 @@ from wtforms.validators import DataRequired, ValidationError
 class CreateComment(FlaskForm):
   user_id = IntegerField('user_id')
   postId = IntegerField('postId')
-  comment = TextAreaField('comment', validators=[ DataRequired()])
+  comment = TextAreaField('comment')
