@@ -1,0 +1,56 @@
+.footer-nav-container{
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  border-top: 2px solid lightgray;
+}
+
+.footer-content-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.footer-content{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 14px
+
+}
+
+#footer-dasch-img{
+  border-radius: 50%;
+
+}
+
+#michael-dasch{
+  margin: 5px 15px 0 15px;
+}
+
+#anchor{
+  margin: 5px 4px 0 4px;
+  color: rgb(42, 133, 252);
+
+}
+
+
+#created-at{
+  border: 1px solid grey;
+  border-radius: 50%;
+  font-size: 12px;
+  padding-bottom: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  color: grey;
+}
+
+#app-academy{
+  color: grey;
+  margin-left: 8px;
+}
