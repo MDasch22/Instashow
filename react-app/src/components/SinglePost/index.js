@@ -110,8 +110,8 @@ if(!comments) return null
             <div className='post-caption'>
               <NavLink id='link-caption-user'to={`/${post.owner.username}`}>
                 <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
-                <div id='post-owner-username'>{post.owner.username}</div>
               </NavLink>
+              <p id='post-owner-username'>{post.owner.username}</p>
               <p id='user-post-caption'>{post.caption}</p>
             </div>
             <div>

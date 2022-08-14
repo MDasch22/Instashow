@@ -54,7 +54,6 @@ export default function HomePage() {
 
   const radomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
 
-  // console.log(suggested)
 
   followingPost.reverse()
 
@@ -73,10 +72,12 @@ export default function HomePage() {
           <div className="splash-page-postCard" key={post.id}>
             <NavLink id="splash-page-post-link" to={`/${post.owner.username}`}>
               <img id="splash-page-profile-pic" src={post.owner.profile_pic} style={{width:32, height:32}}></img>
-              <p id="splash-page-user-username">{post.owner.username}</p>
+              <div id='username-splash-card'>
+                <p id="splash-page-user-username">{post.owner.username}</p>
+              </div>
             </NavLink>
             <NavLink to={`/post/${post.id}`}>
-              <img src={post.image} style={{width: 450, height: 500}} alt='post-image'></img>
+              <img id='splash-post-picture' src={post.image} style={{width: 450, height: 500}} alt='post-image'></img>
             </NavLink>
             <div className='like-comment-splash-buttons'>
               <div className='like-button-splash'>
@@ -88,18 +89,41 @@ export default function HomePage() {
             </div>
             <div className='splash-post-content-info'>
               {post.likes.length === 0 ?
-                  <div className='hidden'>hidden</div>
+                  <div className='hidden'> no likes yet</div>
                 :
                 <p>{post.likes.length === 1 ?
-                      <p>{post.likes.length} like</p>
+                      <div className='liked-by-container'>
+                        <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                        <p id='liked-by-usernames'>Liked by {post.likes[0].username} </p>
+                      </div>
                     :
-                      <p>{post.likes.length} likes</p>
+                      <div>
+                        {post.likes.length === 2 ?
+                          <div className='liked-by-container'>
+                            <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                            <div id='overlapping-pic'>
+                              <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
+                            </div>
+                            <p id='liked-by-usernames'>Liked by {post.likes[0].username} and 1 other</p>
+                          </div >
+                          :
+                          <div className='liked-by-container'>
+                            <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                            <div id='overlapping-pic'>
+                              <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
+                            </div>
+                            <p id='liked-by-usernames'>Liked by {post.likes[0].username} and {post.likes.length - 1} others </p>
+                          </div>
+                        }
+                      </div>
                     }
                 </p>
               }
               <div className='splash-username-post-caption'>
                 <p id="splash-username-post">{post.owner.username}</p>
-                <p id="splash-caption-post">{post.caption}</p>
+                <div className='user-caption-slash-post'>
+                  <p id="splash-caption-post">{post.caption}</p>
+                </div>
               </div>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
                 <p>View all comments </p>
@@ -118,7 +142,7 @@ export default function HomePage() {
                 ) :
                 null
               } */}
-            <div>{post.created_at}</div>
+            <div id='created-at-splash'>{post.created_at}</div>
             </div>
             <CreateCommentForm postId={post.id}/>
           </div>
@@ -136,10 +160,10 @@ export default function HomePage() {
           </NavLink>
           <div className='suggestion-container'>
             <p id="suggested-for-you">Suggestions For You</p>
-            {radomSuggested.slice(0, 5).map(user => {
+            {suggestedFollower.slice(0, 4).map(user => {
             return (
                 <NavLink to={`/${user.username}`} className='suggestion-user'>
-                  <img id="profile-pic_suggest"src={user.profile_pic} style={{width: 40, height: 40}}></img>
+                  <img id="profile-pic_suggest"src={user.profile_pic} style={{width: 35, height: 35}}></img>
                   <div>
                     <p id="username-suggest">{user.username}</p>
                     <p id="fullname-suggest">{user.fullname}</p>

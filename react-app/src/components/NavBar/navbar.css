@@ -121,13 +121,13 @@ svg{
 
 #no-sessionuser-nav-login{
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   color: #222;
 }
 
 #no-sessionuser-nav-signup{
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   color: #222;
 }
 
@@ -215,4 +215,17 @@ svg{
 #dropdown-logout:hover{
   background-color: rgb(245, 245, 245);
   cursor: pointer;
+}
+
+.logged-out-nav-bar-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+.nosesson-navbar-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
