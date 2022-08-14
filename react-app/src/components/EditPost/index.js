@@ -58,42 +58,52 @@ export default function EditPost({setTrigger}) {
   if(!post) return null
 
   return (
-    <div className='edit-post-container'>
-      <div>
-       <img id="edit-post-img" src={post.image} style={{width: 500 ,height: 500}} alt='edit-image'></img>
+    <div>
+      <div className='edit-post-header'>
+        <button onClick={setTrigger} id="hidden-edit">Cancel</button>
+        <p id="edit-modal-header">Edit info</p>
+        <button form='edit-post-form' id="submit-edit" type='submit'>Done</button>
       </div>
-      <div className='edit-post-content'>
-        <div className='edit-post-form'>
-          <h1 id="edit-modal-header">Edit Post</h1>
-          {isSubmitted && errors.length > 0 && (
-            <div>
-              <div id="errorHeading">
-                Please fix the following submitting:
-              </div>
-              <ul>
-                {errors.map((error) => (
-                  <ul key={error} id="edit-error">
-                    <i className="fas fa-spinner fa-spin" id="spinner"> </i>
-                    {error}
-                  </ul>
-                ))}
-              </ul>
-            </div>
-          )}
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className='edit-caption'
-              value={caption}
-              placeholder={post.caption}
-              onChange={updateCaption}
-              required
 
-            />
-          <div className='edit-form-bttns'>
-            <button id="edit-submit" type='submit'>Finished</button>
-            <button id="edit-delete" onClick={onDelete}>Delete Post</button>
+      <div className='edit-post-container'>
+        <div>
+          <img id="edit-post-img" src={post.image} style={{width: 500 ,height: 500}} alt='edit-image'></img>
+        </div>
+        <div className='edit-post-content'>
+          <div className='edit-post-form'>
+            {isSubmitted && errors.length > 0 && (
+              <div>
+                <div id="errorHeading">
+                  Please fix the following submitting:
+                </div>
+                <ul>
+                  {errors.map((error) => (
+                    <ul key={error} id="edit-error">
+                      <i className="fas fa-spinner fa-spin" id="spinner"> </i>
+                      {error}
+                    </ul>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className='edit-post-user-info'>
+              <img id="edit-post-user-pp" src={post.owner.profile_pic} style={{width:40, height: 40}}></img>
+              <p id="edit-post-user-username">{post.owner.username}</p>
+            </div>
+            <form id="edit-post-form" onSubmit={handleSubmit}>
+              <textarea
+                className='edit-caption'
+                value={caption}
+                placeholder={post.caption}
+                onChange={updateCaption}
+                required
+
+              />
+            <div className='edit-form-bttns'>
+              <button id="edit-delete" onClick={onDelete}>Delete Post</button>
+            </div>
+            </form>
           </div>
-          </form>
         </div>
       </div>
     </div>

@@ -54,6 +54,7 @@ export default function SinglePost() {
       height: '100%',
       minHeight: '100%',
       padding: '12px',
+      zIndex: 3,
       backgroundColor: 'rgba(34, 34, 34, 0.65)'
     },
     content: {
@@ -69,7 +70,7 @@ export default function SinglePost() {
       background: '#fff',
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
-      borderRadius: '10px',
+      borderRadius: '5px',
       outline: 'none',
       padding: " 0, 20px 0",
       overflow: 'visibile'
@@ -99,8 +100,8 @@ if(!comments) return null
               <div className='single-post-edit-modal'>
                 <button id='edit-post-bttn' onClick={openEditPostForm}><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
                 <Modal isOpen={showEditPost} style={formStyles}>
-                  <button id="close-edit-modal" onClick={closeEditPostForm}>X</button>
-                  <EditPost setTrigger={setShowEditPost}/>
+                  {/* <button id="close-edit-modal" onClick={closeEditPostForm}>Cancel</button> */}
+                  <EditPost setTrigger={closeEditPostForm}/>
                 </Modal>
               </div>
             }
