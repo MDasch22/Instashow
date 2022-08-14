@@ -20,8 +20,8 @@ export default function CreatePost() {
   useEffect(() => {
     const err = []
     if(!image) err.push("No image was selected ")
-    if(!image?.type.includes('jpg') && !(image?.type.includes('jpeg') && !image?.type.includes('png') && !image?.type.includes('gif'))){
-      err.push("Please submit a valid file type.(e.g. 'jpg', 'jpeg', 'png', and 'gif' ) ")
+    if(!image?.type.includes('png') && !image?.type.includes('jpg') && !(image?.type.includes('jpeg'))){
+      err.push("Please submit a valid file type.(e.g. 'png', 'jpg', 'jpeg' ) ")
     }
     const whiteSpace = caption.replace(/^>s+/, '').replace(/\s+$/, '')
     if( whiteSpace === '') {

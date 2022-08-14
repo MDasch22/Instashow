@@ -46,8 +46,8 @@ export default function UpdateProfileImg({id}) {
   const updateProfilePic = (e) => {
     const err= []
     const file = e.target.files[0]
-    if(!file?.type.includes('jpg') && !(file?.type.includes('jpeg') && !file?.type.includes('png') && !file?.type.includes('gif'))){
-      err.push("Please submit a valid file type.(e.g. 'jpg', 'jpeg', 'png', and 'gif' ) ")
+    if(!file?.type.includes('png') && !file?.type.includes('jpg') && !(file?.type.includes('jpeg'))){
+      err.push("Please submit a valid file type.(e.g. 'png', 'jpg', or 'jpeg') ")
       setErrors(err)
       setImage(null)
     } else {
