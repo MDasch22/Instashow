@@ -125,8 +125,43 @@ if(!comments) return null
             </div>
           </div>
           <div className='border-bottom-single-post'> </div>
-          <LikeButton post={post}/>
-          <div className='post-created'>{post.created_at}</div>
+          <div className='single-post-likes-container'>
+            <LikeButton post={post}/>
+            <div className='single-post-liked-by'>
+              {post.likes.length === 0 ?
+                  <div className='hidden'> no likes yet</div>
+                  :
+                  <p>{post.likes.length === 1 ?
+                        <div className='liked-by-container'>
+                          <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                          <p id='liked-by-usernames'>Liked by {post.likes[0].username} </p>
+                        </div>
+                      :
+                        <div>
+                          {post.likes.length === 2 ?
+                            <div className='liked-by-container'>
+                              <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                              <div id='overlapping-pic'>
+                                <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
+                              </div>
+                              <p id='liked-by-usernames'>Liked by {post.likes[0].username} and 1 other</p>
+                            </div >
+                            :
+                            <div className='liked-by-container'>
+                              <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
+                              <div id='overlapping-pic'>
+                                <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
+                              </div>
+                              <p id='liked-by-usernames'>Liked by {post.likes[0].username} and {post.likes.length - 1} others </p>
+                            </div>
+                          }
+                        </div>
+                      }
+                  </p>
+                }
+            </div>
+          </div>
+          <div className='post-created'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
           <div className='border-bottom-single-post'> </div>
           <div>
             <CreateCommentForm postId={post_id}/>
