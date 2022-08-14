@@ -34,11 +34,12 @@
   margin-left: 20px;
 }
 
-
 #splash-page-user-username{
   color: rgb(59, 59, 59);
   margin-left: 15px;
   margin-top: 5px;
+  font-weight: bold;
+
 }
 
 
@@ -117,9 +118,16 @@
 }
 
 .user-caption-slash-post{
-  width: 330px;
+  /* position: absolute; */
+  width: 200px;
   word-break: break-all;
   font-size: 14px;
+  text-overflow: ellipsis;
+}
+
+#splash-caption-post{
+  width: 150px;
+  word-break: break-all;
 }
 
 #splash-username-post {
@@ -149,12 +157,12 @@
   height: 430px;
   margin-left: 50px;
   margin-top: 35px;
-  width: 280px;
 }
 
 .border{
   border: 2px solid lightgray;
   border-radius: 15px;
+
 }
 
 .user-info-suggest{

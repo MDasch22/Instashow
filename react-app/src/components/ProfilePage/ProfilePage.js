@@ -128,7 +128,7 @@ function ProfilePage() {
             </div>
           </div>
           <div>{user.fullname}</div>
-          <div>{user.bio}</div>
+          <div id='profile-bio'>{user.bio}</div>
         </div>
       </div>
       <div className="profile-user-posts">
