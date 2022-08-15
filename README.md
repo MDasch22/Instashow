@@ -75,6 +75,68 @@
   
  
  ## Code Snippets
-   
+ Follow/Unfollow Button
+  ```
+  const follow = async(e) => {
+    e.preventDefault()
+    setUserFollowing(true)
+    const newFollow = await dispatch(thunkFollow(userId))
+    if(newFollow){
+      if(newFollow.username === username) {
+        dispatch(thunkGetUser(username))
+      }
+      if(sessionUser.username === username){
+        dispatch(thunkGetUser(username))
+      }
+    }
+  }
+
+  const unfollow = async(e) => {
+    e.preventDefault()
+    setUserFollowing(false)
+    const removeFollow = await dispatch(thunkUnfollow(userId))
+    if(removeFollow){
+      if(removeFollow.username === username){
+        dispatch(thunkGetUser(username))
+      }
+      if(sessionUser.username === username) {
+        dispatch(thunkGetUser(username))
+      }
+    }
+  }
+  ```
+  
+  Updating Profile Picture
+  ```
+   const onSubmit = async(e) => {
+    e.preventDefault()
+    setSubmitted(true)
+    const formErrors = []
+
+    const formData = new FormData();
+
+    formData.append('image', image)
+
+    const response = await fetch(`/api/users/profile/${id}/profileImg/edit`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    const new_image = await response.json();
+
+    if(new_image && new_image.errors === undefined) {
+      dispatch(setUser(new_image))
+    }
+    else if (new_image.errors) {
+      formErrors.push(new_image.errors)
+    }
+    else {
+      formErrors.push('Something went wrong, please try again! ')
+    }
+    if(formErrors.length) {
+      setErrors(formErrors)
+    }
+  }
+  ```
    
 
