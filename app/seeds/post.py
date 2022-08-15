@@ -115,6 +115,7 @@ def seed_post():
   )
 
 
+
 #Digital Dasch
   post33 = Post(
     user_id = 5, image="https://instashowbucket.s3.us-west-1.amazonaws.com/0x0.jpg", caption="Just got done watching the Sandman on netflix... was so freaking good!!"
@@ -177,7 +178,6 @@ def seed_post():
   db.session.add(post21)
   db.session.add(post6)
   db.session.add(post27)
-  db.session.add(post32)
   db.session.add(post28)
 
 
