@@ -27,6 +27,7 @@
 
 .user-single-comment{
   float: left;
+  padding-right: 10px;
   /* margin-left: -5px; */
 }
 
