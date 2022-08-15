@@ -38,7 +38,7 @@ export default function HomePage() {
 
   const suggested = []
 
-  for(let i = 0; i < allUsers.length - 1; i++){
+  for(let i = 0; i < allUsers.length; i++){
     let userObj = allUsers[i]
 
     if(!userFollowing) {
