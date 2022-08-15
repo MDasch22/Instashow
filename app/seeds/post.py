@@ -15,12 +15,34 @@ def seed_post():
   post6 = Post (
     user_id = 3, image='https://instashowbucket.s3.us-west-1.amazonaws.com/test-post5.jpg', caption="About to start the road trip with the boys, had to get this sweet shot before we headed out lol")
 
+  post8 = Post (
+    user_id = 10, image="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow/51a11aa1a87ff441e0356abb31f5cfcc.jpg", caption="Welcome to Instashow!! The Developer worked long hours to get this to work, I hope you enjoy!😊"
+  )
+  post9 = Post (
+    user_id = 10, image="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow/instagram-engagement.jpg", caption="Instashow is an Instagram clone developed by Michael Dasch in collaboration with App Academy!"
+  )
+  post10 = Post (
+    user_id = 10, image="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow/How-to-make-money-on-Instagram.jpg", caption="Technologies used to build site include PostgreSQL, SQLAlchemy, Flask, Python, React, and Javascript."
+  )
+  post11= Post (
+    user_id = 10, image="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow/ec4a89c9a4dc81bbe2588db676a7165d.jpg", caption="A feature that will soon be added to Instashow will be adding emojis to creating posts/comments!"
+  )
+  post12 = Post (
+    user_id = 10, image="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow/247-instagram-answering-service.jpg", caption="Coming soon.....👀.....👀"
+  )
+
   db.session.add(post1)
   db.session.add(post2)
   db.session.add(post3)
   db.session.add(post4)
   db.session.add(post5)
   db.session.add(post6)
+
+  db.session.add(post8)
+  db.session.add(post9)
+  db.session.add(post10)
+  db.session.add(post11)
+  db.session.add(post12)
 
   db.session.commit()
 
