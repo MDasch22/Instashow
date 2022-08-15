@@ -18,7 +18,7 @@ export default function HomePage() {
   const allUsers = useSelector(state => Object.values(state.user))
   const allComments = useSelector(state => Object.values(state.comment))
 
-
+  console.log(allUsers)
 
   // GETTING POST BY USER FOLLOWING
   let followingPost = allPosts.filter(post => {
@@ -27,8 +27,8 @@ export default function HomePage() {
     }
   })
 
-  // GETTING DEMO USER POST IF NEW USER HAS NO FOLLOWERS
-  let demoPost = allPosts.filter(post => post.user_id === 1)
+  // GETTING INSTASHOW USER POST IF NEW USER HAS NO FOLLOWERS
+  let demoPost = allPosts.filter(post => post.user_id === 10)
   if(sessionUser.following.length === 0) {
     followingPost = demoPost
   }
