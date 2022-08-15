@@ -85,7 +85,7 @@ export default function UpdateProfileImg({id}) {
             onChange={updateProfilePic}
           />
           {!image && errors.length ?
-            <button id="upload-profile-pic" disabled={true}>Upload</button>
+            <button id="upload-profile-pic-dis" disabled={true}>Upload</button>
             :
             <button id="upload-profile-pic" >Upload</button>
           }

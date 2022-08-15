@@ -70,6 +70,11 @@ export default function HomePage() {
   return (
     <div className='home-page'>
       <div className='splash-container'>
+        {followingPost.length === 0 && (
+            <div className="nofollow-post">
+              <p>Make sure to follow a user with posts! </p>
+            </div>
+          )}
         {followingPost.map(post => {
         return (
           <div className="splash-page-postCard" key={post.id}>

@@ -27,6 +27,16 @@
   cursor: pointer;
   color: rgb(115, 175, 253);
   border: none;
+}
+
+#upload-profile-pic-dis{
+  width: 40%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(142, 188, 248);
+  color: white;
+  margin-top: 10px;
 
 }
 
