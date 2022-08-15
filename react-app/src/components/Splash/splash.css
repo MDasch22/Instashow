@@ -120,8 +120,8 @@
 
 .user-caption-slash-post{
   /* position: absolute; */
-  width: 200px;
-  word-break: break-all;
+  width: 300px;
+  word-wrap: break-word;
   font-size: 14px;
   text-overflow: ellipsis;
 }
