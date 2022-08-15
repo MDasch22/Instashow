@@ -84,7 +84,9 @@ function ProfilePage() {
   },[dispatch, username])
 
 
-  if(!user) return null
+  if(!user) return (
+      <h1 style={{textAlign: "center", marginTop: 50}}> No user found </h1>
+    )
 
 
   return (
