@@ -1,3 +1,5 @@
+import email
+from re import fullmatch
 from app.models import db, User
 
 
@@ -18,6 +20,19 @@ def seed_users():
     joshua = User(
         username="BrandofMel", email="joshuadasch@gmail.com", password="password", fullname="Joshua Dasch", bio="I am Joshua Dasch", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/99bbf1fc914ad9fcaea4c7a10fffabe9.png"
     )
+    safari = User(
+        username='theSafariMan', email="safariman@gmail.com", password="password", fullname="Andrew Bolt", bio="Excited to share my 🦁 safari 🦁 pictures with the world, hope you enjoy just as much as I do 📷", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/71153223_2363633983734725_7786436035864428544_n.jpg"
+    )
+    crunchy = User(
+        username='Crunchyroll', email="crunchyroll@gmail.com", password="password", fullname="Crunchyroll", bio="✨ Welcome to Crunchyroll! ✨ Bringing you all the latest & greatest anime at the speed of Japan ~ !", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/crunchyroll.jpg"
+    )
+    nasa = User(
+        username='nasa', email="nasanasa@gmail.com", password="passwordNasa", fullname="NASA", bio="🚀 🌎 Exploring the universe and our home planet.", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/images.png"
+    )
+    instashow = User(
+        username = "instashow", email="instashow@gmail.com", password="passwordInstashow", fullname="Instashow", bio=" Discover what's next on Instashow 🔎✨", profile_pic="https://instashowbucket.s3.us-west-1.amazonaws.com/instashow-fav.png"
+    )
+
 
 
     db.session.add(demo)
@@ -26,6 +41,13 @@ def seed_users():
     db.session.add(michael)
     db.session.add(shawn)
     db.session.add(joshua)
+    db.session.add(safari)
+    db.session.add(crunchy)
+    db.session.add(nasa)
+    db.session.add(instashow)
+
+
+
 
 
     db.session.commit()
