@@ -19,7 +19,7 @@ export default function EditProfile({user}) {
   const [email , setEmail] = useState(user.email)
   const [fullname , setFullname] = useState(user.fullname)
   const [username, setUsername] = useState(user.username)
-  const [bio, setBio] = useState(user.bio)
+  const [bio, setBio] = useState(user?.bio)
   const [showImage , setShowImage] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -64,7 +64,7 @@ export default function EditProfile({user}) {
     if(username.length > 20) {
       error.push("Username cannot exceed 20 characters")
     }
-    if(bio.length > 150){
+    if(bio?.length > 150){
       error.push('Bio cannot exceed 150 characters')
     }
     setErrors(error)
