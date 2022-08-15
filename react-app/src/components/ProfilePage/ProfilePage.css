@@ -129,6 +129,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  border-top: 2px solid lightgray;
+  padding-top: 30px;
 
 }
 

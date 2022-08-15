@@ -134,6 +134,7 @@ function ProfilePage() {
         </div>
       </div>
       <div className="profile-user-posts">
+        <>
         {users_posts && users_posts.map(post => {
           return (
             <ExplorePagePost  post={post}/>
@@ -144,6 +145,7 @@ function ProfilePage() {
             <p> No posts yet</p>
           </div>
         }
+        </>
       </div>
     </div>
   );
