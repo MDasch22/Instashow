@@ -66,6 +66,9 @@ function App() {
         <ProtectedRoute path='/post/:post_id/edit' exact={true}>
           <EditPost />
         </ProtectedRoute>
+        <ProtectedRoute>
+          <h1> Page Not Found.</h1>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
