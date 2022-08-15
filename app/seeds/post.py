@@ -114,9 +114,6 @@ def seed_post():
     user_id = 4, image="https://instashowbucket.s3.us-west-1.amazonaws.com/McDaschin/image2+(2).jpeg", caption="What an insane view... Couldn't of made it to the top without Leo!"
   )
 
-  post32 = Post(
-    user_id = 4, image="https://instashowbucket.s3.us-west-1.amazonaws.com/McDaschin/IMG_1083+(2).JPG", caption="Getting ready to coach for another season of the SocalDevils Lacrosse team."
-  )
 
 #Digital Dasch
   post33 = Post(
