@@ -37,6 +37,9 @@
   
   - With the given task, here are a list of technologies that were used in order to complete this projects. 
   
+  #### Hosting 
+   - [Heroku](https://dashboard.heroku.com/)
+  
   #### Front End
    - [React](https://reactjs.org/)
    - [Redux](https://redux.js.org/)
