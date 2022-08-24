@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { thunkEditPost, thunkDeletePost } from '../../store/posts';
+import { thunkEditPost } from '../../store/posts';
 import './editpost.css'
 
 export default function EditPost({setTrigger}) {
@@ -11,8 +11,6 @@ export default function EditPost({setTrigger}) {
 
 
   const post = useSelector(state => state.post[post_id])
-  const sessionUser = useSelector(state => state.session.user)
-  const user = useSelector(state => state.user[post.ownerUsername])
 
   const [errors, setErrors] = useState([])
   const [caption, setCaption] = useState(post.caption)
@@ -47,11 +45,6 @@ export default function EditPost({setTrigger}) {
 
   const updateCaption = (e) => {
      setCaption(e.target.value)
-  }
-
-  const onDelete = async(e) => {
-    await dispatch(thunkDeletePost(post_id))
-    history.push(`/${sessionUser.username}`)
   }
 
 

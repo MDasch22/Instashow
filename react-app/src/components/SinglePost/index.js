@@ -35,6 +35,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const closeEllipsisModal = (e) => {
+      console.log(e.path[0].tagName)
       if(e.path[0].tagName === 'DIV' ){
         setShowEllipsis(false)
       }
@@ -47,6 +48,7 @@ export default function SinglePost() {
   Modal.setAppElement('body');
 
   function openEditPostForm() {
+    setShowEllipsis(false)
     setShowEditPost(true)
   }
 
@@ -160,9 +162,9 @@ if(!comments) return null
                 <Modal className='single-post-edit-modal' isOpen={showEllipsis} style={formStyles2}>
                   <button id="single-post-delete" onClick={onDelete}> Delete </button>
                   <button id="single-post-edit" onClick={openEditPostForm}>Edit</button>
-                  <Modal isOpen={showEditPost} style={formStyles}>
-                    <EditPost setTrigger={closeEditPostForm}/>
-                  </Modal>
+                </Modal>
+                <Modal isOpen={showEditPost} style={formStyles}>
+                  <EditPost setTrigger={closeEditPostForm}/>
                 </Modal>
               </div>
             }

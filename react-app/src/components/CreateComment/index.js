@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkCreateComment, thunkGetComments } from '../../store/comment'
+import { thunkCreateComment } from '../../store/comment'
 import Picker from 'emoji-picker-react'
 
 import './createcomment.css'
@@ -11,7 +11,6 @@ export default function CreateCommentForm({postId}) {
 
   const sessionUser = useSelector(state => state.session.user)
 
-  const [inputStr, setInputStr] = useState('');
   const [showPicker, setShowPicker] = useState(false)
   const [errors , setErrors] = useState([])
   const [comment, setComment] = useState('')

@@ -104,7 +104,6 @@
   border: 1px solid lightgrey;
   padding-top: 10px;
   padding-left: 5px;
-  /* border-radius: 10px; */
   transition: .3s;
 }
 
@@ -117,7 +116,6 @@
 .edit-post-user-info{
   display: flex;
   flex-direction: row;
-  border-top: 1px  solid lightgray;
   padding-top: 5px;
 
 }

@@ -19,8 +19,6 @@ export default function HomePage() {
   const allUsers = useSelector(state => Object.values(state.user))
   const allComments = useSelector(state => Object.values(state.comment))
 
-  console.log(allUsers)
-
   // GETTING POST BY USER FOLLOWING
   let followingPost = allPosts.filter(post => {
     if(sessionUser.following.map(user => user.id).includes(post.user_id)){
@@ -61,25 +59,6 @@ export default function HomePage() {
 
   followingPost.reverse()
 
-  // const commentsOnPost = (postId) => {
-  //   const comments = allComments.filter(comment => comment.post_id === postId)
-  //   return (
-  //       <>
-  //         {comments.length > 2 ?
-  //           <>
-  //             {comments.slice(0, 2).map(comment => {
-  //               <>
-  //                 <p>{comment.user.username}</p>
-  //                 <p>{comment.comment}</p>
-  //               </>
-  //             })}
-  //           </>
-  //           :
-  //           null
-  //         }
-  //       </>
-  //     )
-  // }
 
   const commentsLength = (postId) => {
     const postComments = allComments.filter(comment => comment.post_id === postId)
@@ -137,7 +116,7 @@ export default function HomePage() {
             </div>
             <div className='splash-post-content-info'>
               {post.likes.length === 0 ?
-                  <div className='hidden'> no likes yet</div>
+                  <div className='hidden'> no likes yet </div>
                 :
                 <p>{post.likes.length === 1 ?
                       <div className='liked-by-container'>
