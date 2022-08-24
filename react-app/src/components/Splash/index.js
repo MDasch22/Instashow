@@ -19,8 +19,6 @@ export default function HomePage() {
   const allUsers = useSelector(state => Object.values(state.user))
   const allComments = useSelector(state => Object.values(state.comment))
 
-  console.log(allUsers)
-
   // GETTING POST BY USER FOLLOWING
   let followingPost = allPosts.filter(post => {
     if(sessionUser.following.map(user => user.id).includes(post.user_id)){
