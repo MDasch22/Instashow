@@ -217,10 +217,6 @@
 
 }
 
-#container-more-posts{
-  /* width: 100%; */
-}
-
 .more-posts-section{
   display: flex;
   flex-direction: column;

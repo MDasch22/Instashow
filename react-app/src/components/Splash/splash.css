@@ -114,27 +114,34 @@
   opacity: 0;
 }
 
+.splash-caption-container{
+  width: 420px;
+  display: flex;
+  flex-direction: row ;
+  padding-bottom: 5px;
+}
+
 .splash-username-post-caption{
-  margin-top: 5px;
-  margin-bottom: 5px;
+  width: 420px;
   display: flex;
   flex-direction: row;
-  float: left;
+
+
 }
 
 .user-caption-slash-post{
-  /* position: absolute; */
-  width: 100%;
+  width: 90%;
   word-wrap: break-word;
   font-size: 13.5px;
-  text-overflow: ellipsis;
+  float: left;
 }
 
 
 #splash-username-post {
   font-weight: bold;
-  margin-right: 15px ;
+  margin-right: 10px ;
   font-size: 15px;
+  float: left;
 
 }
 
@@ -240,26 +247,38 @@
   padding-left: 10px;
 }
 
+#commentspost-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: initial;
+}
+
 #comment-on-post-section{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  flex-wrap: initial;
+  float: left;
 
-}
-
-.splash-card-comment-username{
-  font-weight: bold;
-  font-size: 14px;
-  padding: 5px 5px 5px 0;
-
-}
-
-.splash-card-comment-comment{
-  font-size: 13.5px;
-  padding: 5px;
 }
 
 #splash-card-username-link{
   text-decoration: none;
   color: black;
+  float: left;
+}
+
+.splash-card-comment-username{
+  font-weight: bold;
+  font-size: 13.5px;
+  padding: 5px 5px 5px 0;
+  float: left;
+
+}
+
+.splash-card-comment-comment{
+  font-size: 13.2px;
+  padding: 5px;
+  word-wrap: break-word;
+  width: 85%;
+  float: left;
 }

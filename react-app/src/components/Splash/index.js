@@ -80,8 +80,8 @@ export default function HomePage() {
     const commentsOnPost = allComments.filter(comment => comment.post_id === postId)
     console.log(commentsOnPost)
     return (
-      <p>
-        {commentsOnPost.map(comment => {
+      <p id="commentspost-container">
+        {commentsOnPost.slice(0,2).map(comment => {
           return (
             <div id="comment-on-post-section">
               <NavLink id="splash-card-username-link" to={`/${comment.user.username}`}>
@@ -164,11 +164,13 @@ export default function HomePage() {
                     }
                 </p>
               }
-              <div className='splash-username-post-caption'>
-                <NavLink id='splash-card-username-link' to={`/${post.owner.username}`}>
-                  <p id="splash-username-post">{post.owner.username}</p>
-                </NavLink>
-                <p className='user-caption-slash-post'>{post.caption}</p>
+              <div className='splash-caption-container'>
+                <div className='splash-username-post-caption'>
+                  <NavLink id='splash-card-username-link' to={`/${post.owner.username}`}>
+                    <p id="splash-username-post">{post.owner.username}</p>
+                  </NavLink>
+                  <p className='user-caption-slash-post'>{post.caption}</p>
+                </div>
               </div>
               <p>{commentsForPost(post.id)}</p>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
