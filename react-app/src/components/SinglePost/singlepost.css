@@ -1,6 +1,7 @@
 .single-post{
   display: flex;
   justify-content: center;
+  /* flex-direction: column; */
   margin: 0 50px;
 }
 
@@ -10,6 +11,7 @@
   justify-content: center;
   margin-top: 25px;
   border: 2px solid lightgray;
+  border-radius: 5px;
 }
 
 .single-post-interation{
@@ -204,4 +206,38 @@
 #ellipsis-post:hover{
   color: rgb(143, 143, 143);
   transition: .3s;
+}
+
+.more-posts{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 80px;
+
+}
+
+#container-more-posts{
+  /* width: 100%; */
+}
+
+.more-posts-section{
+  display: flex;
+  flex-direction: column;
+}
+
+#more-post-by{
+  /* position: absolute; */
+  padding-top: 100px;
+  left: 200px;
+
+}
+
+#more-post-images{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  justify-content: flex-start;
+
+
 }
