@@ -131,10 +131,6 @@
   text-overflow: ellipsis;
 }
 
-#splash-caption-post{
-  width: 200px;
-  word-break: break-all;
-}
 
 #splash-username-post {
   font-weight: bold;
@@ -243,4 +239,28 @@
   font-weight: bold;
   font-size: 18px;
   padding-left: 10px;
+}
+
+#comment-on-post-section{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+.splash-card-comment-username{
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 5px 5px 0;
+
+}
+
+.splash-card-comment-comment{
+  font-size: 13.5px;
+  padding: 5px;
+}
+
+#splash-card-username-link{
+  text-decoration: none;
+  color: black;
 }

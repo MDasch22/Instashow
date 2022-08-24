@@ -35,7 +35,6 @@ export default function SinglePost() {
 
   useEffect(() => {
     const closeEllipsisModal = (e) => {
-      console.log(e.path[0].tagName)
       if(e.path[0].tagName === 'DIV' ){
         setShowEllipsis(false)
       }

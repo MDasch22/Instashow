@@ -4,9 +4,6 @@ import { NavLink } from 'react-router-dom'
 import { thunkGetAllComments } from '../../store/comment'
 import { thunkLoadAllPosts } from '../../store/posts'
 import { thunkLoadAllUsers } from '../../store/user'
-import CreateCommentForm from '../CreateComment'
-import { setUser } from '../../store/session'
-import FollowButton from '../FollowButton'
 import LikeButton from '../LikesButton'
 
 import './splash.css'
@@ -79,6 +76,27 @@ export default function HomePage() {
       )
   }
 
+  const commentsForPost = (postId) => {
+    const commentsOnPost = allComments.filter(comment => comment.post_id === postId)
+    console.log(commentsOnPost)
+    return (
+      <p>
+        {commentsOnPost.map(comment => {
+          return (
+            <div id="comment-on-post-section">
+              <NavLink id="splash-card-username-link" to={`/${comment.user.username}`}>
+                <p className='splash-card-comment-username'>{comment.user.username}</p>
+              </NavLink>
+              <p className='splash-card-comment-comment'>{comment.comment}</p>
+            </div>
+
+          )}
+        )}
+      </p>
+
+      )
+  }
+
   useEffect(() => {
     window.scroll(0,0)
     dispatch(thunkGetAllComments())
@@ -147,15 +165,18 @@ export default function HomePage() {
                 </p>
               }
               <div className='splash-username-post-caption'>
-                <p id="splash-username-post">{post.owner.username}</p>
+                <NavLink id='splash-card-username-link' to={`/${post.owner.username}`}>
+                  <p id="splash-username-post">{post.owner.username}</p>
+                </NavLink>
                 <p className='user-caption-slash-post'>{post.caption}</p>
               </div>
+              <p>{commentsForPost(post.id)}</p>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
                 <p>{commentsLength(post.id)}</p>
               </NavLink>
             <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
             </div>
-            {/* <CreateCommentForm postId={post.id}/> */}
+
             <NewComment postId={post.id}/>
           </div>
           )
