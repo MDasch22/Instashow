@@ -24,7 +24,7 @@
   flex-direction: row;
   margin-left: 20px;
   margin-top: 10px;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 
 #link-to-ownerProfile{
@@ -162,4 +162,46 @@
 
 .post-created{
   margin-left: 10px;
+}
+
+
+.single-post-edit-modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#single-post-edit{
+  padding: 10px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+#single-post-delete{
+  padding: 10px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-bottom: 1px solid lightgray;
+  font-size: 15px;
+  color: rgb(247, 95, 95);
+  font-weight: bold;
+}
+
+#ellipsis-post{
+  border: none;
+  background-color: white;
+  padding-right: 15px;
+  font-size: 18px;
+  padding-top: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+#ellipsis-post:hover{
+  color: rgb(143, 143, 143);
+  transition: .3s;
 }

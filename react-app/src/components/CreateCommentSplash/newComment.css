@@ -1,0 +1,67 @@
+.new-comment-splash{
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid lightgray;
+}
+
+
+#newcomment-splash-form{
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.emoji-splash-picker{
+  color: rgb(37, 37, 37);
+  cursor: pointer;
+  margin-left: 5px;
+  padding-right: 10px;
+
+}
+
+
+.newcomment-splash-input{
+  border: none;
+  resize: none;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow: auto;
+  overflow-y: scroll;
+  font-size: 15px;
+  height: 20px;
+}
+
+.newcomment-splash-input::-webkit-scrollbar{
+  display: none;
+}
+
+
+.newcomment-splash-input:focus{
+  outline: none;
+}
+
+.newcomment-splash-post{
+  border: none;
+  background-color: white;
+  color: rgb(139, 183, 250);
+  padding-right: 25px;
+  font-weight: bold;
+  transition: .3s;
+  font-size: 15px;
+}
+
+.newcomment-splash-post:hover{
+  color: rgb(61, 138, 253);
+  transition: .3s;
+  cursor: pointer;
+}
+
+
+#newcomment-splash-emoji-picker{
+  position: absolute;
+  bottom: 17%;
+  z-index: 3;
+}

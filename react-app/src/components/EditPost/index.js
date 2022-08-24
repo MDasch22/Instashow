@@ -99,9 +99,6 @@ export default function EditPost({setTrigger}) {
                 required
 
               />
-            <div className='edit-form-bttns'>
-              <button id="edit-delete" onClick={onDelete}>Delete Post</button>
-            </div>
             </form>
           </div>
         </div>

@@ -10,6 +10,7 @@ import FollowButton from '../FollowButton'
 import LikeButton from '../LikesButton'
 
 import './splash.css'
+import NewComment from '../CreateCommentSplash'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -59,6 +60,45 @@ export default function HomePage() {
 
 
   followingPost.reverse()
+
+  // const commentsOnPost = (postId) => {
+  //   const comments = allComments.filter(comment => comment.post_id === postId)
+  //   return (
+  //       <>
+  //         {comments.length > 2 ?
+  //           <>
+  //             {comments.slice(0, 2).map(comment => {
+  //               <>
+  //                 <p>{comment.user.username}</p>
+  //                 <p>{comment.comment}</p>
+  //               </>
+  //             })}
+  //           </>
+  //           :
+  //           null
+  //         }
+  //       </>
+  //     )
+  // }
+
+  const commentsLength = (postId) => {
+    const postComments = allComments.filter(comment => comment.post_id === postId)
+    return (
+      <>
+        {postComments.length === 0 ?
+          <p>No comments yet</p>
+          :
+          <p>{postComments.length === 1 ?
+            <p>View {postComments.length} comment</p>
+            :
+            <p>View all {postComments.length} comments</p>
+          }
+          </p>
+        }
+
+      </>
+      )
+  }
 
   useEffect(() => {
     window.scroll(0,0)
@@ -132,11 +172,12 @@ export default function HomePage() {
                 <p className='user-caption-slash-post'>{post.caption}</p>
               </div>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
-                <p>View all comments </p>
+                <p>{commentsLength(post.id)}</p>
               </NavLink>
             <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
             </div>
-            <CreateCommentForm postId={post.id}/>
+            {/* <CreateCommentForm postId={post.id}/> */}
+            <NewComment postId={post.id}/>
           </div>
           )
         })}
