@@ -30,7 +30,7 @@ export default function SinglePost() {
   const post = posts[post_id]
 
   const allPosts = Object.values(posts)
-  const usersPosts = allPosts.filter(daPost => daPost.owner.id === post.owner.id)
+  const usersPosts = allPosts.filter(daPost => daPost?.owner.id === post?.owner.id)
   const usersPost = usersPosts.filter(singPost => singPost.id !== post.id)
 
 
