@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
-import { setUser, thunkEditUser } from '../../store/session'
-import { thunkGetUser, thunkLoadAllUsers } from '../../store/user'
+import { useHistory } from 'react-router-dom'
+import { thunkEditUser } from '../../store/session'
+import { thunkLoadAllUsers } from '../../store/user'
 import UpdateProfileImg from '../UpdateProfileImg'
 
 
@@ -12,7 +12,6 @@ export default function EditProfile({user}) {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const sessionUser = useSelector(state => state.session.user)
   const users = useSelector(state => Object.values(state.user))
 
   const [errors, setErrors] = useState([])

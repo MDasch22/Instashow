@@ -28,7 +28,7 @@ export default function NewComment({postId}) {
 
   useEffect(() => {
     const closeEmoji = (e) => {
-      if(e.path[0].tagName !== "I"){
+      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
         setShowPicker(false)
       }
     }
@@ -61,9 +61,12 @@ export default function NewComment({postId}) {
   }
 
   const emojiClick = (e, emojiObj) => {
-
-    setComment(comment => comment + emojiObj.emoji);
-    setShowPicker(false)
+    if(emojiObj.emoji.length){
+      setComment(comment => comment + emojiObj.emoji);
+      setShowPicker(false)
+    } else {
+      setShowPicker(true)
+    }
   }
 
   const openShow = (e) => {

@@ -71,7 +71,7 @@ export default function CreatePost() {
     <div className='create-post-container'>
       <div className='creat-post-content'>
         {image ? (
-            <img id="post-create-img"src={photoUrl} key={image} style={{width: 600, height: 600}} alt="image"></img>
+            <img id="post-create-img"src={photoUrl} key={image} style={{width: 600, height: 600}} alt="post-image"></img>
           )
           :
             <label for="choosepicture" id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></label>

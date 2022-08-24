@@ -16,7 +16,7 @@
 .emoji-splash-picker{
   color: rgb(37, 37, 37);
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 10px;
   padding-right: 10px;
 
 }
@@ -62,6 +62,6 @@
 
 #newcomment-splash-emoji-picker{
   position: absolute;
-  bottom: 17%;
   z-index: 3;
+  padding-bottom: 400px;
 }

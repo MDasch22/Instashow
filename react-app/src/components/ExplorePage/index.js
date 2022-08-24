@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { thunkLoadAllPosts, thunkLoadFollowingUserPosts } from '../../store/posts'
+import { thunkLoadAllPosts } from '../../store/posts'
 import ExplorePagePost from '../ExplorePagePostCard'
 
 import './explorepage.css'

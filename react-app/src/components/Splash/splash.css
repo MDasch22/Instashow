@@ -111,6 +111,7 @@
 
 .hidden{
   font-size: 14px;
+  opacity: 0;
 }
 
 .splash-username-post-caption{
@@ -124,20 +125,17 @@
 
 .user-caption-slash-post{
   /* position: absolute; */
-  width: 300px;
+  width: 100%;
   word-wrap: break-word;
-  font-size: 14px;
+  font-size: 13.5px;
   text-overflow: ellipsis;
 }
 
-#splash-caption-post{
-  width: 150px;
-  word-break: break-all;
-}
 
 #splash-username-post {
   font-weight: bold;
-  margin-right: 20px ;
+  margin-right: 15px ;
+  font-size: 15px;
 
 }
 
@@ -145,15 +143,17 @@
   text-decoration: none;
   color: rgb(136, 136, 136);
   font-size: 14px;
+  width: 150px;
 }
 
-#view-all-comments:active{
+#view-all-comments:hover{
   color: lightgray;
 }
 
 #created-at-splash{
-  font-size: 14px;
+  font-size: 12px;
   padding: 5px 0;
+  color: rgb(136, 136, 136);
 }
 
 .suggested-users{
@@ -184,7 +184,7 @@
 }
 
 #user-username-suggest{
-  margin-top: 5px;
+  margin-top: 15px;
   padding-left: 10px;
   color: black;
   font-weight: bold;
@@ -239,4 +239,28 @@
   font-weight: bold;
   font-size: 18px;
   padding-left: 10px;
+}
+
+#comment-on-post-section{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+.splash-card-comment-username{
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 5px 5px 0;
+
+}
+
+.splash-card-comment-comment{
+  font-size: 13.5px;
+  padding: 5px;
+}
+
+#splash-card-username-link{
+  text-decoration: none;
+  color: black;
 }
