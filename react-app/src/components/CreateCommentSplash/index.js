@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { thunkCreateComment, thunkGetComments } from '../../store/comment'
+import { thunkCreateComment } from '../../store/comment'
 import Picker from 'emoji-picker-react'
 
-import './createcomment.css'
+import './newComment.css'
 
-
-export default function CreateCommentForm({postId}) {
+export default function NewComment({postId}) {
   const dispatch = useDispatch()
-
   const sessionUser = useSelector(state => state.session.user)
 
-  const [inputStr, setInputStr] = useState('');
   const [showPicker, setShowPicker] = useState(false)
   const [errors , setErrors] = useState([])
   const [comment, setComment] = useState('')
@@ -73,33 +70,34 @@ export default function CreateCommentForm({postId}) {
     setShowPicker(!showPicker)
   }
 
+
   return (
-    <div className='create-comment-container'>
-      <div>
+    <div className='new-comment-splash'>
+       <div>
         {submitted && errors.map((error, ind) => (
           <p id='error-comments' key={ind}> * {error}</p>
           )
         )}
       </div>
-      <form className='create-comment' onSubmit={onSubmit}>
-        <label className="emoji-icon" onClick={openShow}> <i class="fa-regular fa-face-smile fa-xl"></i> </label>
+      <form onSubmit={onSubmit} id="newcomment-splash-form">
+        <label className='emoji-splash-picker' onClick={openShow}> <i class="fa-regular fa-face-smile fa-xl"></i> </label>
         {showPicker &&
-        <div id='emoji-icon-picker'>
-          <Picker onClick={showPicker} pickerStyle={{width:'17rem'}} onEmojiClick={emojiClick} />
-        </div>
+          <div id="newcomment-splash-emoji-picker">
+            <Picker onClick={showPicker} pickerStyle={{width: '17rem'}} onEmojiClick={emojiClick} />
+          </div>
+
         }
         <textarea
-          className='comment-input'
+          className='newcomment-splash-input'
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
           required
         />
         <div>
-          <button className="post-button"type='submit'>Post</button>
+          <button className='newcomment-splash-post' type='submit'>Post</button>
         </div>
       </form>
-
     </div>
   )
 }

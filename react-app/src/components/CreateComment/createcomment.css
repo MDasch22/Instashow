@@ -18,7 +18,6 @@
   resize: none;
   padding-left: 10px;
   padding-top: 5px;
-  /* border-radius: 25px; */
   padding-right: 15px;
 
 }
@@ -31,20 +30,36 @@
 .post-button{
   border: none;
   background-color: white;
-  color: rgb(95, 95, 241);
+  color: rgb(139, 183, 250);
   font-size: 15px;
   font-weight: bold;
-  transition: .5s;
+  transition: .3s;
   margin-top: 15px;
   margin-right: 10px;
 }
 
 .post-button:hover{
-  color: rgb(60, 60, 235);
-  transition: .5s;
+  color: rgb(61, 138, 253);
+  transition: .3s;
+  cursor: pointer;
 }
 
 #error-comments{
   color: red;
   margin-left: 10px;
+}
+
+.emoji-icon{
+  color: rgb(37, 37, 37);
+  cursor: pointer;
+  position: relative;
+  top: 15px;
+  margin-left: 5px;
+
+}
+
+#emoji-icon-picker{
+  position: absolute;
+  bottom: 35%;
+  z-index: 3;
 }
