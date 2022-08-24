@@ -34,7 +34,7 @@ export default function NewComment({postId}) {
     }
     document.body.addEventListener("click", closeEmoji)
     return () => document.body.removeEventListener('click', closeEmoji)
-  })
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault()
