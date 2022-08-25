@@ -19,6 +19,10 @@ export default function ExplorePage() {
 
   const shuffledPosts = nonSessionUserPost.sort(() => Math.random() - 0.5)
 
+  const toTop = () => {
+    window.scroll(0, 0)
+  }
+
   return (
     <div className='explore-container'>
       <h1>Explore Page</h1>
@@ -29,6 +33,7 @@ export default function ExplorePage() {
           )
         }) }
       </div>
+      <p onClick={toTop} id="to-the-top">Back to the top</p>
     </div>
   )
 }

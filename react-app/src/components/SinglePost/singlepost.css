@@ -17,7 +17,7 @@
 .single-post-interation{
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 400px;
   height: 600px;
 }
 
@@ -46,6 +46,7 @@
 
 #single-post-profilePic{
   border-radius: 50%;
+
 }
 
 #single-post-username{
@@ -89,7 +90,7 @@
 .post-caption{
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  margin-left: 22px;
   padding-top: 10px;
   width: 80%;
   float: left;
@@ -100,6 +101,7 @@
   margin-left: 10px;
   width: 275px;
   word-wrap: break-word;
+  font-size: 13.5px;
 }
 
 
@@ -112,6 +114,7 @@
   margin-top: 8px;
   font-weight: bold;
   color:#222;
+  font-size: 14px;
 }
 
 .single-post-single-comment{
@@ -223,17 +226,19 @@
 }
 
 #more-post-by{
-  /* position: absolute; */
+  font-weight: bold;
+  color: rgb(124, 124, 124);
   padding-top: 100px;
   left: 200px;
 
 }
 
 #more-post-images{
-  display: flex;
-  flex-direction: row;
-  padding-top: 20px;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
+}
 
+#more-post-link{
+  text-decoration: none;
 }

@@ -12,7 +12,7 @@
 
 .edit-form-comment{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -27,39 +27,34 @@
 
 .edit-comment-buttons{
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-left: 20px;
+  flex-direction: row;
+  padding-top: 5px;
 }
 
 
 #done-edit{
   transition: .2s;
-  color: white;
   padding: 2px 3px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  background-color: rgb(115, 175, 253);
+  border: none;
+  background-color: white;
+  color: rgb(115, 175, 253);
 }
 
 #cancel-edit-comment{
   transition: .2s;
-  color: white;
   padding: 2px 3px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  background-color: rgb(115, 175, 253);
+  margin-left: 10px;
+  border: none;
+  background-color: white;
+  color: rgb(115, 175, 253);
 }
 
 #done-edit:hover{
-  border: 1px solid rgb(115, 175, 253) ;
-  transition: .2s;
-  background-color: rgb(72, 194, 72);
+  color: rgb(61, 138, 253);
+  cursor: pointer;
 }
 
 #cancel-edit-comment:hover{
-  border: 1px solid rgb(245, 79, 79) ;
-  transition: .2s;
-  background-color: rgb(245, 79, 79);
+  color: rgb(61, 138, 253);
+  cursor: pointer;
 }
