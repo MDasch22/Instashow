@@ -17,12 +17,13 @@
 }
 
 #edit-comment-input{
-  width: 245px;
+  width: 275px;
   height: 50px;
   border: 1.5px solid lightgray;
   border-radius: 5px;
   resize: none;
-  padding: 5px;
+  padding: 5px 0 5px 30px;
+
 }
 
 .edit-comment-buttons{
@@ -57,4 +58,26 @@
 #cancel-edit-comment:hover{
   color: rgb(61, 138, 253);
   cursor: pointer;
+}
+
+.edit-emoji-splash-picker{
+  position: relative;
+}
+
+#edit-emoji-text{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin-left: -10px; */
+
+}
+
+.edit-emoji-splash-picker{
+  position: absolute;
+  padding-left: 5px;
+}
+
+#editcomment-splash-emoji-picker{
+  position: absolute;
+  top: 20px;
 }

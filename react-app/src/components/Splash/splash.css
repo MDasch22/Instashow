@@ -132,7 +132,7 @@
 .user-caption-slash-post{
   width: 90%;
   word-wrap: break-word;
-  font-size: 13.5px;
+  font-size: 14px;
   float: left;
 }
 
@@ -140,7 +140,7 @@
 #splash-username-post {
   font-weight: bold;
   margin-right: 10px ;
-  font-size: 15px;
+  font-size: 14px;
   float: left;
 
 }
@@ -269,14 +269,14 @@
 
 .splash-card-comment-username{
   font-weight: bold;
-  font-size: 13.5px;
+  font-size: 14px;
   padding: 5px 5px 5px 0;
   float: left;
 
 }
 
 .splash-card-comment-comment{
-  font-size: 13.2px;
+  font-size: 13.5px;
   padding: 5px;
   word-wrap: break-word;
   width: 85%;

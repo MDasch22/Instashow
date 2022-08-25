@@ -16,6 +16,7 @@
   flex-direction: row;
   text-decoration: none;
   float: left;
+  height: 20px;
 }
 
 #single-comment-profilePic{
@@ -28,6 +29,7 @@
   color: #222;
   font-weight: bold;
   font-size: 13.5px;
+  height: 15px;
 }
 
 .single-comment-edit{
