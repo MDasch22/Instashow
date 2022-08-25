@@ -79,5 +79,5 @@
 
 #editcomment-splash-emoji-picker{
   position: absolute;
-  top: 20px;
+  transform: translateY(-64%);
 }

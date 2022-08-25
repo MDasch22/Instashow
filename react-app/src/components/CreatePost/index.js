@@ -128,8 +128,8 @@ export default function CreatePost({setTrigger}) {
           :
             <>
               <div id="no-image-yet">
-                <label for="choosepicture2" id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></label>
-                <label for="choosepicture2"> Click here to select a picture</label>
+                <label for="choosepicture2" id="no-image-create"><i className="fa-solid fa-images fa-4x"></i></label>
+                <label id="select-picture" for="choosepicture2"> Click here to select a picture</label>
               </div>
               <input
               type='file'

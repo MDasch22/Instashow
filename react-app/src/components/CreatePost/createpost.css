@@ -68,9 +68,8 @@
   text-align: center;
   justify-content: center;
   color: rgb(129, 129, 129);
-
   border-radius: 5px;
-
+  padding-bottom: 10px;
 }
 
 #no-image-yet{
