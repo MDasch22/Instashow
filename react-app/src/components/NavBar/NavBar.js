@@ -37,7 +37,7 @@ const NavBar = () => {
       position: 'relative',
       margin: 'auto',
       maxWidth: '870px',
-      width: 'auto',
+      width: '100%',
       height:'auto',
       top: '100px',
       left: '40px',
@@ -50,7 +50,8 @@ const NavBar = () => {
       borderRadius: '5px',
       outline: 'none',
       padding: " 0, 20px 0",
-      overflow: 'visibile'
+      overflow: 'visibile',
+      transform: 'translatex(-5%)'
     }
   };
 
