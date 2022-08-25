@@ -95,7 +95,7 @@ function ProfilePage() {
         <img id="profile-user-profilePic"src={user.profile_pic} style={{width: 180 ,height: 180}} alt='profile-pic'></img>
         <div className='profile-user-info'>
           <div id="profile-username-follow">
-            {user.username === "McDaschin" || "instashow" ?
+            {user.username === "McDaschin" || user.username === "instashow" ?
               <div className='McDaschin'>
                 <div id="profile-user-username">{user.username}</div>
                 <img id="verified"src="https://instashowbucket.s3.us-west-1.amazonaws.com/302-3024199_instagram-verified-symbol-png-instagram-verified-logo-png.png" style={{width:20, height:20}}></img>
