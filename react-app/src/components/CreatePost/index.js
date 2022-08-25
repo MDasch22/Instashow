@@ -5,7 +5,7 @@ import { thunkCreatePost } from '../../store/posts'
 
 import './createpost.css'
 
-export default function CreatePost() {
+export default function CreatePost({setTrigger}) {
   const dispatch = useDispatch()
   const history = useHistory()
 
@@ -46,6 +46,7 @@ export default function CreatePost() {
 
     if(new_post){
       alert("Post was created")
+      setTrigger()
       return history.push(`/${sessionUser.username}`)
     }
   }
@@ -53,10 +54,6 @@ export default function CreatePost() {
 
   const updateCaption = async(e) => {
     setCaption(e.target.value)
-  }
-
-  const onCancel = async() => {
-    return history.push('/')
   }
 
   const updateImage = async(e) => {
@@ -69,57 +66,79 @@ export default function CreatePost() {
 
   return (
     <div className='create-post-container'>
+      <div className="create-header">
+        <button className="header-button"onClick={setTrigger}>Cancel</button>
+        <h1 id='create-post-header'>Create a new post</h1>
+        {image ?
+          <button className="header-button-submit" form='create-post-form'>Submit</button>
+          :
+          <button className="header-button-submitDs" disabled={true}>Submit</button>
+        }
+      </div>
       <div className='creat-post-content'>
         {image ? (
-            <img id="post-create-img"src={photoUrl} key={image} style={{width: 600, height: 600}} alt="post-image"></img>
+              <div className='flex-edit-container'>
+                <img id="post-create-img"src={photoUrl} key={image} style={{width: 500, height: 500}} alt="post-image"></img>
+                <form id='create-post-form' onSubmit={handleSubmit}>
+                  <div className='create-form-post-header'>
+                    {submitted && errors.length > 0 && (
+                      <div className='create-post-error-container'>
+                        <div id="create-post-errors">
+                          Please fix the following errors before submitting:
+                        </div>
+                        <ul >
+                          {errors.map((error) => (
+                            <ul id="create-errors" key={error}>
+                              <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                              {error}
+                            </ul>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  <div className='form-input-create-post'>
+                    <div className='image-selector-post'>
+                      <label id='image-selector-button' for="choosepicture" >Select a different photo</label>
+                      <input
+                        type='file'
+                        id='choosepicture'
+                        onChange={updateImage}
+                        visability="hidden"
+                      />
+                    </div>
+                    {image && (
+                      <div className='caption-post-cancel'>
+                        <textarea
+                          id="caption-input"
+                          placeholder='Caption...'
+                          onChange={updateCaption}
+                          required
+                          maxLength={150}
+                        />
+                        <div className={caption.length >= 140 ? "red" : "normal"}>
+                          <p>{caption.length} / 150</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </form>
+              </div>
           )
           :
-            <label for="choosepicture" id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></label>
-        }
-        <form className='create-post-form' onSubmit={handleSubmit}>
-          <div className='create-form-post-header'>
-            <h1 id='create-post-header'>Create a new post</h1>
-            {submitted && errors.length > 0 && (
-              <div className='create-post-error-container'>
-                <div id="create-post-errors">
-                  Please fix the following errors before submitting:
-                </div>
-                <ul >
-                  {errors.map((error) => (
-                    <ul id="create-errors" key={error}>
-                      <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                      {error}
-                    </ul>
-                  ))}
-                </ul>
+            <>
+              <div id="no-image-yet">
+                <label for="choosepicture2" id="no-image-create"><i className="fa-solid fa-image fa-4x"></i></label>
+                <label for="choosepicture2"> Click here to select a picture</label>
               </div>
-            )}
-          </div>
-          <div className='form-input-create-post'>
-            <div className='image-selector-post'>
-              <label id='image-selector-button' for="choosepicture" >Choose a Photo</label>
               <input
-                type='file'
-                id='choosepicture'
-                onChange={updateImage}
-              />
-            </div>
-            {image && (
-              <div className='caption-post-cancel'>
-                <textarea
-                  id="caption-input"
-                  placeholder='Caption...'
-                  onChange={updateCaption}
-                  required
-                />
-                <div className='create-post-buttons'>
-                  <button id="post-create" type='submit'>Post</button>
-                  <button id="post-cancel" onClick={onCancel} type='cancel'>Cancel</button>
-                </div>
-              </div>
-            )}
-          </div>
-        </form>
+              type='file'
+              id='choosepicture2'
+              visability="hidden"
+              onChange={updateImage}
+               />
+            </>
+        }
       </div>
     </div>
   )
