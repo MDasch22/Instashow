@@ -12,8 +12,7 @@ export default function Footer() {
         <a id="anchor" target="_blank" href='https://github.com/MDasch22'><i className="fa-brands fa-square-github fa-xl"></i></a>
       </div>
       <div className='footer-content'>
-        <p id="created-at"><i className="fa-solid fa-c fa-xs"></i></p>
-        <p id="app-academy"> 2022 Michael Dasch </p>
+        <p id="app-academy">© 2022 Michael Dasch </p>
       </div>
     </div>
   )

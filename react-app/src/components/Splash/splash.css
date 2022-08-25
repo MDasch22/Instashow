@@ -282,3 +282,26 @@
   width: 85%;
   float: left;
 }
+
+#mini-footer-links{
+  color: rgb(139, 139, 139);
+  margin-top: 10px;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+#mini-footer{
+  color: rgb(139, 139, 139);
+  margin-top: 5px;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+#mf-link{
+  text-decoration: none;
+  color: rgb(139, 139, 139);
+}
+
+#mf-link:hover{
+  color: rgb(182, 182, 182);
+}

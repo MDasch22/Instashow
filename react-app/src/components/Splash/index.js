@@ -208,6 +208,8 @@ export default function HomePage() {
             })}
           </div>
         </div>
+        <p id="mini-footer-links"><a id="mf-link" target="_blank" href='https://github.com/MDasch22'>Github <i className="fa-brands fa-github fa-sm"></i></a> | <a id="mf-link" target="_blank" href='https://www.linkedin.com/in/michael-dasch-71b6a6187/'> LinkedIn <i className="fa-brands fa-linkedin fa-sm"></i></a> | <a id="mf-link" target="_blank" href='https://angel.co/u/michael-dasch-1'>AngelList <i className="fa-brands fa-angellist fa-sm"></i></a> | <a id="mf-link" target="_blank" href='https://www.michaeldasch.live/'> Personal Site <i className="fa-solid fa-bolt-lightning fa-sm"></i></a></p>
+        <p id="mini-footer">© 2022 Michael Dasch</p>
       </div>
     </div>
   )

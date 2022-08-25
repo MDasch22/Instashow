@@ -18,32 +18,34 @@ export default function Comments({postId, comment}) {
   return (
 
       <div className='single-comment'>
-        <NavLink to={`/${comment.user.username}`} className='single-comment-username'>
-          <img id='single-comment-profilePic' src={comment.user.profile_pic} style={{width: 30 ,height: 30}} alt='comment-profile-pic'></img>
-          <div id='single-comment-name'>{comment.user.username}</div>
-        </NavLink>
-        <div className='single-comment-edit'>
-          {!showEditCommentForm ?
-            <div className={comment.comment.includes(' ') ? 'user-comments' : 'user-comment-long-string' }>
-              <p className='user-single-comment'>{comment.comment}</p>
-            </div>
-            :
-            <EditCommentForm postId={postId} currentComment={comment} closeForm={() => setShowEditCommentForm(false)}/>
-          }
-        </div>
-        <div>
-          {!showEditCommentForm ?
-            <div className='comment-update'>
-              {comment.user_id === sessionUser.id && (
-                <div className='edit-delete-button'>
-                  <button id='comment-edit' onClick={() => setShowEditCommentForm(true)}> <i className="fa-solid fa-pen-to-square"></i> </button>
-                  <button id='comment-delete' onClick={() => dispatch(thunkDeleteComment(comment.id))}><i class="fa-solid fa-x "></i></button>
+        <div id="single-comment-container">
+          <NavLink to={`/${comment.user.username}`} className='single-comment-username'>
+            <img id='single-comment-profilePic' src={comment.user.profile_pic} style={{width: 35 ,height: 35}} alt='comment-profile-pic'></img>
+            <div id='single-comment-name'>{comment.user.username}</div>
+          </NavLink>
+          <div className='single-comment-edit'>
+            {!showEditCommentForm ?
+              <div className={comment.comment.includes(' ') ? 'user-comments' : 'user-comment-long-string' }>
+                <p className='user-single-comment'>{comment.comment}</p>
+              </div>
+              :
+              <EditCommentForm postId={postId} currentComment={comment} closeForm={() => setShowEditCommentForm(false)}/>
+            }
+            <div>
+              {!showEditCommentForm ?
+                <div className='comment-update'>
+                  {comment.user_id === sessionUser.id && (
+                    <div className='edit-delete-button'>
+                      <button id='comment-edit' onClick={() => setShowEditCommentForm(true)}> Edit </button>
+                      <button id='comment-delete' onClick={() => dispatch(thunkDeleteComment(comment.id))}>Delete</button>
+                    </div>
+                  )}
                 </div>
-              )}
+                :
+                null
+              }
             </div>
-            :
-            null
-          }
+        </div>
         </div>
       </div>
   )

@@ -54,6 +54,7 @@
 
 #nav-bar-profile-bttn{
   border-radius: 50%;
+  margin-top: 3px;
 }
 
 #nav-bar-profile-bttn:active{

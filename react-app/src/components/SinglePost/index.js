@@ -244,9 +244,9 @@ if(!comments) return null
       <div className='more-posts'>
         {usersPost.length > 0 ?
           <div className='more-posts-section'>
-            <p id="more-post-by">More post by <b>{post.owner.username}</b></p>
+            <p id="more-post-by">More post from <NavLink id="more-post-link" to={`/${post.owner.username}`}><b style={{color: 'black'}}>{post.owner.username}</b></NavLink></p>
             <div id="more-post-images">
-              {usersPost.slice(0, 4).map(post => {
+              {usersPost.slice(0,6).map(post => {
                 return (
                   <div>
                      <ExplorePagePost post={post}/>
