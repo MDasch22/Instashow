@@ -3,34 +3,55 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  /* margin-top: 100px; */
+}
+.create-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  background-color: rgb(241, 241, 241);
 }
 
+
 #create-post-header{
-  padding: 20px 30px 10px 30px;
+  padding: 10px 0;
+  font-size: 18px;
+
+}
+
+.create-post-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 
 }
 
 .creat-post-content{
   border-radius: 8px;
-  border: 2px solid lightgray;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.create-post-form{
+.flex-edit-container {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+
+#create-post-form{
   display: flex;
   flex-direction: column;
-  text-align: center;
   border-radius: 5px;
-  height: 600px;
-  width: auto;
-  width: 368px;
+  height: 500px;
+  width: 100%;
 }
 
 .create-form-post-header{
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -38,19 +59,27 @@
 
 #post-create-img{
   border-radius: 5px;
+  color: rgb(129, 129, 129)
 }
 
 #no-image-create{
   display: flex;
   flex-direction: column;
-  width: 600px;
-  height: 600px;
   text-align: center;
   justify-content: center;
-  color: white;
-  background-color: rgb(129, 129, 129);
+  color: rgb(129, 129, 129);
+
   border-radius: 5px;
 
+}
+
+#no-image-yet{
+  padding: 200px 0 ;
+}
+
+#no-image-yet:hover{
+  color: gray;
+  cursor: pointer;
 }
 
 #no-image-create:hover{
@@ -61,7 +90,7 @@
 #create-post-errors{
   color: rgb(248, 87, 87);
   margin: 5px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 
 }
@@ -81,9 +110,11 @@
   text-align: center;
   align-items: center;
   margin-left: 70px;
-  margin-top: 30px;
 }
 
+#choosepicture2{
+  display: none;
+}
 
 .caption-post-cancel{
   display: flex;
@@ -94,12 +125,11 @@
 
 .form-input-create-post{
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
 #caption-input{
-  height: 200px;
+  height: 250px;
   resize: none;
   padding: 10px;
   border: 1px solid lightgray ;
@@ -162,7 +192,11 @@
   flex-direction: column;
 }
 
-.create-post-form input::file-selector-button{
+#create-post-form input::file-selector-button{
+  display: none;
+}
+
+#choosepicture{
   display: none;
 }
 
@@ -185,23 +219,71 @@
 
 
 #image-selector-button{
-  height: 30px;
-  background-color: rgb(115, 175, 253);
+  background-color: white;
   border: none;
   border-radius: 15px;
   width: 70%;
   color: white;
   transition: .5s;
-  padding-top: 10px;
+  padding: 10px;
   font-size: 14px;
+  color: rgb(115, 175, 253);
 }
 
 #image-selector-button:hover{
-  background-color: rgb(42, 133, 252);
+  color: rgb(42, 133, 252);
   transition: .5s;
   cursor: pointer;
 }
 
 #image-selector-button:active{
   transform: scale(0.9);
+}
+
+.red{
+ transform: translateX(82%);
+ color: red;
+ font-size: 13px;
+ margin-top: -20px;
+}
+
+.normal{
+ transform: translateX(82%);
+ font-size: 13px;
+ color: gray;
+ margin-top: -20px;
+}
+
+.header-button{
+  border: none;
+  background-color: rgb(241, 241, 241);
+  margin-left: 10px;
+  color: rgb(42, 133, 252);
+  font-weight: bold;
+}
+
+.header-button:hover{
+  color: rgb(115, 175, 253);
+  cursor: pointer;
+}
+
+.header-button-submit{
+  border: none;
+  background-color: rgb(241, 241, 241);
+  margin-right: 10px;
+  color: rgb(42, 133, 252);
+  font-weight: bold;
+}
+
+.header-button-submit:hover{
+  color: rgb(115, 175, 253);
+  cursor: pointer;
+}
+
+
+.header-button-submitDs{
+  border: none;
+  background-color: rgb(241, 241, 241);
+  margin-right: 10px;
+  font-weight: bold;
 }

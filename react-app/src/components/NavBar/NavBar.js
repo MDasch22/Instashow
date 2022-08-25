@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import { logout } from '../../store/session';
 import './navbar.css'
+import Modal from 'react-modal'
+import CreatePost from '../CreatePost'
+
 
 
 const NavBar = () => {
@@ -12,6 +15,44 @@ const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
 
   const [open, setOpen] = useState(false)
+  const [showCreate, setShowCreate] = useState(false);
+
+  Modal.setAppElement('body');
+
+  const formStyles = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: '100%',
+      height: '100%',
+      minHeight: '100%',
+      padding: '12px',
+      zIndex: 3,
+      backgroundColor: 'rgba(34, 34, 34, 0.65)'
+    },
+    content: {
+      position: 'relative',
+      margin: 'auto',
+      maxWidth: '870px',
+      width: 'auto',
+      height:'auto',
+      top: '100px',
+      left: '40px',
+      right: '40px',
+      bottom: '40px',
+      border: '1px solid #ccc',
+      background: '#fff',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '5px',
+      outline: 'none',
+      padding: " 0, 20px 0",
+      overflow: 'visibile'
+    }
+  };
 
   const onLogout = async() => {
     await dispatch(logout())
@@ -30,6 +71,15 @@ const NavBar = () => {
     return () => document.body.removeEventListener('click', closeDrop);
 
   }, [])
+
+  function openCreate() {
+    setShowCreate(true)
+  }
+
+  function closeCreate(){
+    setShowCreate(false)
+  }
+
 
   return (
     <nav className='nav'>
@@ -58,9 +108,12 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li id="nav-bar-bttns">
-              <NavLink to='/post/new' exact={true} activeClassName='active'>
-                <button id="create-post-plus"><i class="fas fa-plus fa-xl"></i></button>
-              </NavLink>
+              {/* <NavLink to='/post/new' exact={true} activeClassName='active'> */}
+                <button onClick={openCreate} id="create-post-plus"><i class="fas fa-plus fa-xl"></i></button>
+                <Modal isOpen={showCreate} style={formStyles}>
+                  <CreatePost setTrigger={closeCreate}/>
+                </Modal>
+              {/* </NavLink> */}
             </li>
             <li id="nav-bar-bttns">
               <>
