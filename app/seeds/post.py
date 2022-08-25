@@ -97,7 +97,7 @@ def seed_post():
   )
 
   post28 = Post(
-    user_id=8 , image="https://instashowbucket.s3.us-west-1.amazonaws.com/crunchyroll/download.jpg", caption="Coming soon to Nintendo Switch..."
+    user_id=8 , image="https://instashowbucket.s3.us-west-1.amazonaws.com/crunchyroll/images.jpg", caption="Coming soon to Nintendo Switch..."
   )
 
 #McDaschin
