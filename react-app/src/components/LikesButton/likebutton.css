@@ -10,7 +10,7 @@
 
 #like{
   color: rgb(0, 0, 0);
-  transition: .5s;
+  transition: .2s;
 }
 
 #unlike{
@@ -26,5 +26,5 @@
 #like:hover{
   color: rgb(133, 133, 133);
   cursor: pointer;
-  transition: .5s;
+  transition: .2s;
 }

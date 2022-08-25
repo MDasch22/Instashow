@@ -248,7 +248,7 @@ if(!comments) return null
             <div id="more-post-images">
               {usersPost.slice(0,6).map(post => {
                 return (
-                  <div>
+                    <div>
                      <ExplorePagePost post={post}/>
                     </div>
                   )
