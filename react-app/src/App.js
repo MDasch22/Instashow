@@ -57,9 +57,6 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/post/new' exact={true}>
-          <CreatePost/>
-        </ProtectedRoute>
         <ProtectedRoute path='/post/:post_id' exact={true}>
           <SinglePost />
         </ProtectedRoute>
