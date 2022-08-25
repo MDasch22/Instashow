@@ -11,8 +11,11 @@ export default function LikeButton({post}) {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
+    console.log(post.likes)
     if(post.likes.find(user => user.username === sessionUser.username)){
       setLike(true)
+    } else {
+      setLike(false)
     }
   }, [post.likes, sessionUser.username])
 
@@ -40,17 +43,6 @@ export default function LikeButton({post}) {
         <button className='unlike-button' onClick={unliking}> <i id='unlike' className="fa-solid fa-heart fa-2x"></i></button>
 
       )}
-
-      {/* {post.likes.length === 1 && (
-        <>
-          <div id='post-like'>{post.likes.length} like</div>
-        </>
-      )}
-      {post.likes.length > 1 && (
-        <>
-          <div id='post-likes'>{post.likes.length} likes</div>
-        </>
-      )} */}
     </div>
   )
 }
