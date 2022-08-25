@@ -296,3 +296,29 @@
   margin-right: 10px;
   font-weight: bold;
 }
+
+
+.create-edit-caption{
+  bottom: 5px;
+  position: absolute;
+  font-size: 15px;
+  margin-top: -20px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+
+
+#create-edit-picker{
+  position: absolute;
+  transform: translateY(-110%);
+}
+
+#emoji-icon-edit-post{
+  color: gray;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+}
+
+#emoji-icon-edit-post:hover{
+  color: black;
+}

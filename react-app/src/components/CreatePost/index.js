@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { thunkCreatePost } from '../../store/posts'
+import Picker from 'emoji-picker-react'
 
 import './createpost.css'
 
@@ -9,6 +10,7 @@ export default function CreatePost({setTrigger}) {
   const dispatch = useDispatch()
   const history = useHistory()
 
+  const [showPicker, setShowPicker] = useState(false)
   const [errors, setErrors] = useState([])
   const [image, setImage] = useState(null)
   const [photoUrl, setPhotoUrl] = useState()
@@ -30,6 +32,16 @@ export default function CreatePost({setTrigger}) {
     if(caption.length < 5 || caption.length > 150) err.push("Caption must be between 5 and  100 characters")
     setErrors(err)
   }, [image, caption])
+
+  useEffect(() => {
+    const closeEmoji = (e) => {
+      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
+        setShowPicker(false)
+      }
+    }
+    document.body.addEventListener("click", closeEmoji)
+    return () => document.body.removeEventListener('click', closeEmoji)
+  }, [])
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -61,6 +73,19 @@ export default function CreatePost({setTrigger}) {
 
     setImage(file)
     setPhotoUrl(URL.createObjectURL(file))
+  }
+
+  const emojiClick = (e, emojiObj) => {
+    if(emojiObj.emoji.length){
+      setCaption(caption => caption + emojiObj.emoji);
+      setShowPicker(false)
+    } else {
+      setShowPicker(true)
+    }
+  }
+
+  const openShow = (e) => {
+    setShowPicker(!showPicker)
   }
 
 
@@ -114,8 +139,15 @@ export default function CreatePost({setTrigger}) {
                           placeholder='Caption...'
                           onChange={updateCaption}
                           required
-                          maxLength={150}
                         />
+                        <div className='create-edit-caption'>
+                          <label id="emoji-icon-edit-post" onClick={openShow}> <i class="fa-regular fa-face-smile fa-xl"></i> </label>
+                          {showPicker &&
+                            <div id="create-edit-picker">
+                              <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '15rem'}} onEmojiClick={emojiClick} />
+                            </div>
+                          }
+                        </div>
                         <div className={caption.length >= 140 ? "red" : "normal"}>
                           <p>{caption.length} / 150</p>
                         </div>

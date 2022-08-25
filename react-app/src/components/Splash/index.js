@@ -78,7 +78,6 @@ export default function HomePage() {
 
   const commentsForPost = (postId) => {
     const commentsOnPost = allComments.filter(comment => comment.post_id === postId)
-    console.log(commentsOnPost)
     return (
       <p id="commentspost-container">
         {commentsOnPost.slice(0,2).map(comment => {
@@ -89,11 +88,9 @@ export default function HomePage() {
               </NavLink>
               <p className='splash-card-comment-comment'>{comment.comment}</p>
             </div>
-
           )}
         )}
       </p>
-
       )
   }
 

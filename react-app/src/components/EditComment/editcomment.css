@@ -75,6 +75,13 @@
 .edit-emoji-splash-picker{
   position: absolute;
   padding-left: 5px;
+  color: rgb(109, 109, 109);
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.edit-emoji-splash-picker:hover{
+  color: black;
 }
 
 

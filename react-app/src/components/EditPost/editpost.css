@@ -101,7 +101,8 @@
   width: 97%;
   resize: none;
   height: 17rem;
-  border: 1px solid lightgrey;
+  border: none;
+  border-top: 1px solid lightgray;
   padding-top: 10px;
   padding-left: 5px;
   transition: .3s;
@@ -110,7 +111,7 @@
 .edit-caption:focus{
   transition: .3s;
   outline: none;
-  border: 1px solid rgb(168, 115, 253);
+  border-top: 1px solid rgb(168, 115, 253);
 }
 
 .edit-post-user-info{
@@ -171,4 +172,24 @@
   transform: scale(1.1);
   background-color: rgb(248, 66, 66);
   transition: .5s;
+}
+
+.edit-post-caption-emoji{
+  bottom: 5px;
+  position: absolute;
+  font-size: 15px;
+  margin-top: -20px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+
+#edit-post-emoji-icon{
+  cursor: pointer;
+  color: rgb(109, 109, 109);
+  transition: .3s ease-in-out;
+
+}
+
+#edit-post-emoji-icon:hover{
+  color: black;
 }
