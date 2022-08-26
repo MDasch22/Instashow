@@ -43,6 +43,15 @@ export default function CreatePost({setTrigger}) {
     return () => document.body.removeEventListener('click', closeEmoji)
   }, [])
 
+  const emojiClick = (e, emojiObj) => {
+    if(emojiObj.emoji.length){
+      setCaption(caption => caption + emojiObj.emoji);
+      setShowPicker(false)
+    } else {
+      setShowPicker(true)
+    }
+  }
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     setSubmitted(true)
@@ -64,10 +73,6 @@ export default function CreatePost({setTrigger}) {
   }
 
 
-  const updateCaption = async(e) => {
-    setCaption(e.target.value)
-  }
-
   const updateImage = async(e) => {
     const file = e.target.files[0]
 
@@ -75,15 +80,9 @@ export default function CreatePost({setTrigger}) {
     setPhotoUrl(URL.createObjectURL(file))
   }
 
-  const emojiClick = (e, emojiObj) => {
-    if(emojiObj.emoji.length){
-      setCaption(caption => caption + emojiObj.emoji);
-      setShowPicker(false)
-    } else {
-      setShowPicker(true)
-    }
+  const updateCaption = async(e) => {
+    setCaption(e.target.value)
   }
-
   const openShow = (e) => {
     setShowPicker(!showPicker)
   }
@@ -137,6 +136,7 @@ export default function CreatePost({setTrigger}) {
                         <textarea
                           id="caption-input"
                           placeholder='Caption...'
+                          value={caption}
                           onChange={updateCaption}
                           required
                         />
