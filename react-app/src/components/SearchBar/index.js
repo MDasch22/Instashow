@@ -38,11 +38,12 @@ export default function SearchBar() {
     setWordEntry('')
   }
 
-  const isFollowing = (user) => {
-    if(sessionUser.username.indexOf(user.following)){
+  const isFollowing = (useR) => {
+    for(let i = 0; i < sessionUser.followers.length; i++){
+      if(sessionUser.followers[i].username === useR.username)
       return (
-          <p id="follows-you">Follows you</p>
-        )
+        <p id="follows-you">Follows you</p>
+       )
     }
   }
 
