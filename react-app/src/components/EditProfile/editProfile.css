@@ -199,7 +199,7 @@
 
 .noormal2{
   position: absolute;
-  bottom: 300px;
+  bottom: 280px;
   font-size: 13px;
   color: gray;
   margin-left: 340px;
@@ -208,7 +208,7 @@
 .reed2{
   position: absolute;
   float: right;
-  bottom: 325px;
+  bottom: 280px;
   font-size: 13px;
   margin-left: 340px;
   color: rgb(252, 69, 69);
@@ -218,7 +218,7 @@
 .edit-user-emoji-icon{
   color: gray;
   position: absolute;
-  bottom: 328px;
+  bottom: 280px;
   z-index: 1;
   transform: translateX(-24.5rem);
   transition: .2s ease-in-out;

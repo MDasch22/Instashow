@@ -200,15 +200,15 @@ export default function EditProfile({user}) {
                   onChange={(e) => setBio(e.target.value)}
                   maxLength='155'
                   />
-                  {errors.length ?
+                  {/* {errors.length ? */}
                     <div className={bio.length >= 140 ? "reed2" : "noormal2"}>
                       <p>{bio.length} / 150</p>
                     </div>
-                    :
+                    {/* :
                     <div className={bio.length >= 140 ? "reed" : "noormal"}>
                       <p>{bio.length} / 150</p>
                     </div>
-                  }
+                  } */}
                 <label className='edit-user-emoji-icon' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
               </div>
           </div>
