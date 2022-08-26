@@ -28,7 +28,7 @@ function App() {
       }
       await dispatch(authenticate());
       setLoaded(true);
-    })();
+    }) ();
   }, [dispatch]);
 
   if (!loaded) {

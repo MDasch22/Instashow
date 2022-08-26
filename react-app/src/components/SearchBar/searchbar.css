@@ -1,0 +1,66 @@
+#searched-form{
+  display: flex;
+  flex-direction: row;
+}
+
+.search-icon{
+  padding-top: 2px;
+  transform: translateX(160%);
+}
+
+.search-results{
+  margin-top: 5px;
+  /* padding: 8px; */
+  border: 0.5px solid lightgray;
+  border-radius: 20px;
+  width: 350px;
+  background-color: white;
+  box-shadow: rgba(0,0,0,0.35);
+  overflow:hidden;
+  position: absolute;
+  z-index: 4;
+  transition: .3s;
+  transform: translateX(-6%);
+}
+
+#form-search{
+  width: 260px;
+  padding: 8px 8px 8px 30px;
+  /* transform: translateX(20%); */
+  border-radius: 5px;
+  border: none;
+  background-color:  rgb(238, 238, 238);
+}
+
+#form-search:focus{
+  outline: none;
+}
+
+#link-to-search{
+  padding: 5px 0;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+#link-to-search:hover{
+  background-color: rgb(231, 231, 231);
+}
+
+.results{
+  padding: 7px;
+  margin-left: 4px;
+  margin-top: 5px;
+}
+
+.search-picture{
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.search-username{
+  text-decoration: none;
+  color: black;
+  padding-left: 20px;
+  padding-top: 5px;
+}

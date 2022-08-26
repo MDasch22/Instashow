@@ -1,0 +1,72 @@
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { thunkSearchAllUsers } from '../../store/search';
+
+import './searchbar.css'
+
+
+export default function SearchBar() {
+  const dispatch = useDispatch();
+
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [wordEntry, setWordEntry] = useState("");
+
+  const users = useSelector(state => Object.values(state.search))
+
+  useEffect(() => {
+    dispatch(thunkSearchAllUsers())
+  }, [dispatch]);
+
+  const handleFilter = (e) => {
+    const searchWord = e.target.value;
+    setWordEntry(searchWord);
+    const newFilter = users.filter((value) => {
+        return value.username.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+        setFilteredUsers([])
+    } else {
+        setFilteredUsers(newFilter)
+    }
+  }
+
+  const cancelSearch = () => {
+    setFilteredUsers([])
+    setWordEntry("")
+  }
+
+  const click = () => {
+    setFilteredUsers([])
+    setWordEntry('')
+  }
+
+
+  return (
+    <div>
+      <form id="searched-form">
+        <div className='search-icon'>
+          <svg aria-label="Search" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="16" role="img" viewBox="0 0 24 24" width="16">
+            <path d="M19 10.5A8.5 8.5 0 1110.5 2a8.5 8.5 0 018.5 8.5z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line>
+          </svg>
+        </div>
+        <input id="form-search" value={wordEntry} placeholder="Search" onChange={handleFilter} />
+      </form>
+      {filteredUsers.length !== 0 &&  (
+        <div className='search-results'>
+          <div className='results'><b>Results...</b></div>
+          {filteredUsers.slice(0,5).map(user => {
+            return (
+                <NavLink onClick={click} id="link-to-search" to={`/${user.username}`}>
+                  <img className="search-picture" src={user.profile_pic} style={{width:35, height:35}}></img>
+                  <p className='search-username'>{user.username}</p>
+                </NavLink>
+              )}
+            )}
+        </div>
+      )}
+    </div>
+  )
+}

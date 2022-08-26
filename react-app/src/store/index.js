@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import commentReducer from './comment';
 import postReducer from './posts';
+import searchReducer from './search';
 import session from './session'
 import userReducer from './user';
 
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   post: postReducer,
   user: userReducer,
   comment: commentReducer,
+  search: searchReducer,
 });
 
 
