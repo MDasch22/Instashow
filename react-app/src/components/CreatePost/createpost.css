@@ -73,7 +73,13 @@
 }
 
 #no-image-yet{
-  padding: 200px 0 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: center;
+
+
 }
 
 #no-image-yet:hover{
@@ -131,16 +137,16 @@
   height: 250px;
   resize: none;
   padding: 10px;
-  border: 1px solid lightgray ;
   font-size: 15px;
-  border-radius: 5px;
   transition: .3s;
+  border: none;
+  border-top: 1px solid lightgray;
 }
 
 #caption-input:focus{
   transition: .3s;
   outline: none;
-  border: 1px solid rgb(168, 115, 253);
+  border-top: 1px solid rgb(168, 115, 253);
 }
 
 .create-post-buttons{
@@ -240,17 +246,21 @@
 }
 
 .red{
- transform: translateX(82%);
- color: red;
- font-size: 13px;
- margin-top: -20px;
+  bottom: 5px;
+  right: 2px;
+  position: absolute;
+  color: red;
+  font-size: 15px;
+  margin-top: -20px;
 }
 
 .normal{
- transform: translateX(82%);
- font-size: 13px;
- color: gray;
- margin-top: -20px;
+  bottom: 5px;
+  right: 2px;
+  position: absolute;
+  font-size: 15px;
+  color: gray;
+  margin-top: -20px;
 }
 
 .header-button{
@@ -285,4 +295,30 @@
   background-color: rgb(241, 241, 241);
   margin-right: 10px;
   font-weight: bold;
+}
+
+
+.create-edit-caption{
+  bottom: 5px;
+  position: absolute;
+  font-size: 15px;
+  margin-top: -20px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+
+
+#create-edit-picker{
+  position: absolute;
+  transform: translateY(-110%);
+}
+
+#emoji-icon-edit-post{
+  color: gray;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+}
+
+#emoji-icon-edit-post:hover{
+  color: black;
 }

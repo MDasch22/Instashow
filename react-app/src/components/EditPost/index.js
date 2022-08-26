@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import { thunkEditPost } from '../../store/posts';
+import Picker from 'emoji-picker-react'
 import './editpost.css'
 
 export default function EditPost({setTrigger}) {
@@ -12,6 +13,7 @@ export default function EditPost({setTrigger}) {
 
   const post = useSelector(state => state.post[post_id])
 
+  const [showPicker, setShowPicker] = useState(false)
   const [errors, setErrors] = useState([])
   const [caption, setCaption] = useState(post.caption)
   const [isSubmitted , setIsSubmitted] = useState(false)
@@ -26,7 +28,29 @@ export default function EditPost({setTrigger}) {
     setErrors(err)
   }, [caption])
 
+  useEffect(() => {
+    const closeEmoji = (e) => {
+      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
+        setShowPicker(false)
+      }
+    }
+    document.body.addEventListener("click", closeEmoji)
+    return () => document.body.removeEventListener('click', closeEmoji)
+  }, [])
 
+
+  const emojiClick = (e, emojiObj) => {
+    if(emojiObj.emoji.length){
+      setCaption(caption => caption + emojiObj.emoji);
+      setShowPicker(false)
+    } else {
+      setShowPicker(true)
+    }
+  }
+
+  const openShow = (e) => {
+    setShowPicker(!showPicker)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,6 +116,17 @@ export default function EditPost({setTrigger}) {
                 required
 
               />
+              <div className='edit-post-caption-emoji'>
+                <label id="edit-post-emoji-icon" onClick={openShow}> <i class="fa-regular fa-face-smile fa-xl"></i> </label>
+                {showPicker &&
+                  <div id="create-edit-picker">
+                    <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '15rem'}} onEmojiClick={emojiClick} />
+                  </div>
+                }
+              </div>
+              <div className={caption.length >= 140 ? "red" : "normal"}>
+                <p>{caption.length} / 150</p>
+              </div>
             </form>
           </div>
         </div>
