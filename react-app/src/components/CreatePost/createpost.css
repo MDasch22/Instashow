@@ -76,9 +76,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 500px;
+  text-align: center;
+  height: 600px;
   justify-content: center;
-
+  margin-top: -55px;
 
 }
 
@@ -213,6 +214,24 @@
   text-align: center;
 }
 
+
+#select-picture{
+  margin-left: 3px;
+  color: white;
+  background-color: rgb(42, 133, 252);
+  padding: 6px;
+  font-size: 15px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+}
+
+#select-picture:hover{
+  cursor: pointer;
+}
+
+#select-picture:active{
+  transform: scale(0.97);
+}
 
 #create-form-post-background{
   background-color: grey;
