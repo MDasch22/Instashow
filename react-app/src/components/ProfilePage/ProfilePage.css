@@ -56,6 +56,7 @@
   height: 30px;
   border-radius: 5px;
   border: 1px solid rgb(168, 168, 168);
+  cursor: pointer;
 }
 
 #edit-profile-bttn:hover{
