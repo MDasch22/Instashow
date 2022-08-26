@@ -166,6 +166,7 @@ svg{
   transform: translateX(-75%);
   background-color: rgb(255, 255, 255);
   border: 1px solid lightgray;
+  border-top: none;
   border-radius: 15px;
   overflow: hidden;
   z-index: 1;
@@ -184,13 +185,13 @@ svg{
 }
 
 #dropdown-item:hover{
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(255, 255, 255);
 }
 
 #pointer-arrow{
-  z-index: 2;
+  z-index: 3;
   position: absolute;
-  transform: translateX(30%);
+  transform: translateX(25%);
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom:  10px solid rgb(255, 255, 255);
@@ -241,8 +242,10 @@ svg{
 
 #nav-bar-ll{
   margin: 0 10px;
+  width: 60px;
+
 }
 
 #no-sessionuser-nav-login{
-  padding-left: 40px;
+  padding-left: 20px;
 }
