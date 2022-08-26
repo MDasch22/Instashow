@@ -49,7 +49,7 @@ export default function SearchBar() {
 
   return (
     <div>
-      <form id="searched-form">
+      <form onSubmit={(e) => e.preventDefault()} id="searched-form">
         <input id="form-search" value={wordEntry} placeholder="Search" onChange={handleFilter} />
         <div className='search-icon'>
           {!wordEntry ?
