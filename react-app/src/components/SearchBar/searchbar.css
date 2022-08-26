@@ -1,16 +1,16 @@
 #searched-form{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .search-icon{
   padding-top: 2px;
-  transform: translateX(160%);
+  transform: translateX(-22px);
 }
 
 .search-results{
   margin-top: 5px;
-  /* padding: 8px; */
   border: 0.5px solid lightgray;
   border-radius: 20px;
   width: 350px;
@@ -20,13 +20,12 @@
   position: absolute;
   z-index: 4;
   transition: .3s;
-  transform: translateX(-6%);
+  transform: translateX(20%);
 }
 
 #form-search{
   width: 260px;
-  padding: 8px 8px 8px 30px;
-  /* transform: translateX(20%); */
+  padding: 8px 30px 8px 8px;
   border-radius: 5px;
   border: none;
   background-color:  rgb(238, 238, 238);
@@ -61,6 +60,25 @@
 .search-username{
   text-decoration: none;
   color: black;
-  padding-left: 20px;
+  padding-left: 15px;
   padding-top: 5px;
+  font-size: 14px;
+}
+
+
+.x-search{
+  color: rgb(194, 194, 194) ;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+.x-search:hover{
+  color: rgb(150, 150, 150) ;
+}
+
+
+#follows-you{
+  font-size: 11px;
+  color: rgb(141, 141, 141);
+  padding-left: 15px;
 }

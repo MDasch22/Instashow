@@ -159,7 +159,7 @@ const NavBar = () => {
                   <div className='dropDown'>
                     <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={() => setOpen(!open)}>
                       <i id="profile-icon" className="fa-regular fa-circle-user "></i>
-                      <p id="dropdown-profile"> My Profile </p>
+                      <p id="dropdown-profile"> Profile </p>
                     </NavLink>
                     <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={() => setOpen(!open)}>
                       <i className="fa-solid fa-gears"></i>

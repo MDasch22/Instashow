@@ -13,6 +13,7 @@ export default function SearchBar() {
   const [wordEntry, setWordEntry] = useState("");
 
   const users = useSelector(state => Object.values(state.search))
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(thunkSearchAllUsers())
@@ -32,27 +33,34 @@ export default function SearchBar() {
     }
   }
 
-  const cancelSearch = () => {
-    setFilteredUsers([])
-    setWordEntry("")
-  }
-
   const click = () => {
     setFilteredUsers([])
     setWordEntry('')
+  }
+
+  const isFollowing = (user) => {
+    if(sessionUser.username.indexOf(user.following)){
+      return (
+          <p id="follows-you">Follows you</p>
+        )
+    }
   }
 
 
   return (
     <div>
       <form id="searched-form">
+        <input id="form-search" value={wordEntry} placeholder="Search" onChange={handleFilter} />
         <div className='search-icon'>
+          {!wordEntry ?
           <svg aria-label="Search" class="_ab6-" color="#8e8e8e" fill="#8e8e8e" height="16" role="img" viewBox="0 0 24 24" width="16">
             <path d="M19 10.5A8.5 8.5 0 1110.5 2a8.5 8.5 0 018.5 8.5z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
             <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line>
           </svg>
+          :
+            <div onClick={click} className='x-search'><i className="fa-solid fa-circle-xmark"></i></div>
+          }
         </div>
-        <input id="form-search" value={wordEntry} placeholder="Search" onChange={handleFilter} />
       </form>
       {filteredUsers.length !== 0 &&  (
         <div className='search-results'>
@@ -61,7 +69,11 @@ export default function SearchBar() {
             return (
                 <NavLink onClick={click} id="link-to-search" to={`/${user.username}`}>
                   <img className="search-picture" src={user.profile_pic} style={{width:35, height:35}}></img>
-                  <p className='search-username'>{user.username}</p>
+                  <div>
+                    <p className='search-username'>{user.username}</p>
+                    <p>{isFollowing(user)}</p>
+                  </div>
+
                 </NavLink>
               )}
             )}
