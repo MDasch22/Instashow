@@ -12,8 +12,9 @@ export default function SearchBar() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [wordEntry, setWordEntry] = useState("");
 
-  const users = useSelector(state => Object.values(state.search))
+  const user = useSelector(state => Object.values(state.search))
   const sessionUser = useSelector(state => state.session.user)
+  const users = user.filter(user => user.id !== sessionUser.id)
 
   useEffect(() => {
     dispatch(thunkSearchAllUsers())
