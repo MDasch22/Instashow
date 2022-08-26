@@ -150,6 +150,7 @@
   color: rgb(136, 136, 136);
   font-size: 14px;
   width: 150px;
+  padding: 5px 0;
 }
 
 #view-all-comments:hover{

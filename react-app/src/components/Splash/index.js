@@ -169,10 +169,10 @@ export default function HomePage() {
                   <p className='user-caption-slash-post'>{post.caption}</p>
                 </div>
               </div>
-              <p>{commentsForPost(post.id)}</p>
               <NavLink id="view-all-comments" to={`/post/${post.id}`}>
                 <p>{commentsLength(post.id)}</p>
               </NavLink>
+              <p>{commentsForPost(post.id)}</p>
             <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
             </div>
 
