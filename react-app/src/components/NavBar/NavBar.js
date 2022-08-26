@@ -6,6 +6,8 @@ import { logout } from '../../store/session';
 import './navbar.css'
 import Modal from 'react-modal'
 import CreatePost from '../CreatePost'
+import { thunkSearchAllUsers } from '../../store/search';
+import SearchBar from '../SearchBar';
 
 
 
@@ -16,6 +18,8 @@ const NavBar = () => {
 
   const [open, setOpen] = useState(false)
   const [showCreate, setShowCreate] = useState(false);
+  const [wordEntry, setWordEntry] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([]);
 
   Modal.setAppElement('body');
 
@@ -55,6 +59,13 @@ const NavBar = () => {
     }
   };
 
+
+  const users = useSelector(state => Object.values(state.search))
+
+  useEffect(() => {
+    dispatch(thunkSearchAllUsers())
+  }, [dispatch]);
+
   const onLogout = async() => {
     await dispatch(logout())
   }
@@ -80,6 +91,24 @@ const NavBar = () => {
   function closeCreate(){
     setShowCreate(false)
   }
+  const handleFilter = (e) => {
+    const searchWord = e.target.value;
+    setWordEntry(searchWord);
+    const newFilter = users.filter((value) => {
+        return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+        setFilteredUsers([])
+    } else {
+        setFilteredUsers(newFilter)
+    }
+  }
+
+  const cancelSearch = () => {
+    setFilteredUsers([])
+    setWordEntry("")
+  }
 
 
   return (
@@ -92,10 +121,8 @@ const NavBar = () => {
               <img id='instashow-logged-in'  src='https://instashowbucket.s3.us-west-1.amazonaws.com/Screenshot+2022-08-10+223031.png' style={{width:120, height: 45}}></img>
             </NavLink>
           </li>
-          <li >
-            <div id='empty'>
-              hello
-            </div>
+          <li>
+            <SearchBar />
           </li>
           <li id="nav-bar-content">
             <li id="nav-bar-bttns">
@@ -132,7 +159,7 @@ const NavBar = () => {
                   <div className='dropDown'>
                     <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={() => setOpen(!open)}>
                       <i id="profile-icon" className="fa-regular fa-circle-user "></i>
-                      <p id="dropdown-profile"> My Profile </p>
+                      <p id="dropdown-profile"> Profile </p>
                     </NavLink>
                     <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={() => setOpen(!open)}>
                       <i className="fa-solid fa-gears"></i>
