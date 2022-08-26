@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
   border-radius: 15px;
   margin-top: 40px;
   margin-bottom: 50px;
@@ -25,46 +25,63 @@
 }
 
 .edit-profile-picture-buttons{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#change-profile-pic {
-  width: 150px;
-  height: 30px;
-  margin: 10px 0;
-  color: white;
-  background-color: rgb(62, 135, 245);
-  border: 0;
-  border-radius: 25px;
-  transition: .5s;
-}
-
-#change-profile-pic:hover{
-  transition: .5s;
-  transform: scale(1.1);
-}
-
-.edit-profile-mix{
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+#change-profile-pic {
+  width: 170px;
+  height: 10px;
+  margin: 10px 0;
+  color:rgb(101, 160, 248);
+  background-color: white;
+  border: 0;
+  border-radius: 25px;
+  transition: .5s;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#change-profile-pic:hover{
+  transition: .5s;
+  color:rgb(28, 115, 245);
+  cursor: pointer;
+}
+
+.edit-profile-mix{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translateX(-47%);
+}
+
+.edit-profile-mix-choose{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transform: translateX(-77%);
+}
+
+
 .edit-profile-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 40px;
-
+  margin-top: 20px;
 
 }
 
 /* :root {
   --gradient: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)
 } */
+#username-profile-edit{
+  padding-left: 5px;
+  margin-bottom: -8px;
+  font-size: 20px;
+}
 
 .change-picture{
   display: flex;
@@ -96,15 +113,21 @@
 
 .edit-profile-form input{
   height: 30px;
-  width: 400px;
+  width: 392px;
   margin-left: 20px;
+  border: 1px solid lightgray;
+  padding-left: 10px;
 }
 
 
 #edit-bio-input{
-  width: 400px;
+  width: 381px;
   resize: none;
-  height: 60px;
+  height: 90px;
+  max-height: 85px;
+  border: 1px solid lightgray;
+  padding: 10px;
+
 }
 
 .edit-form-bttns{
@@ -146,4 +169,68 @@
   background-color: rgb(247, 85, 85);
   transition: .5s;
   transform: scale(1.1);
+}
+
+#edit-profile-label{
+  font-weight: bold;
+  padding-top: 8px
+}
+
+.noormal{
+  position: absolute;
+  float: right;
+  bottom: 325px;
+  font-size: 13px;
+  color: gray;
+  margin-left: 340px;
+  z-index: 1;
+
+}
+
+.reed{
+  position: absolute;
+  float: right;
+  bottom: 325px;
+  font-size: 13px;
+  margin-left: 340px;
+  color: rgb(252, 69, 69);
+  z-index: 1;
+}
+
+.noormal2{
+  position: absolute;
+  bottom: 300px;
+  font-size: 13px;
+  color: gray;
+  margin-left: 340px;
+}
+
+.reed2{
+  position: absolute;
+  float: right;
+  bottom: 325px;
+  font-size: 13px;
+  margin-left: 340px;
+  color: rgb(252, 69, 69);
+  z-index: 1;
+}
+
+.edit-user-emoji-icon{
+  color: gray;
+  position: absolute;
+  bottom: 328px;
+  z-index: 1;
+  transform: translateX(-24.5rem);
+  transition: .2s ease-in-out;
+}
+
+.edit-user-emoji-icon:hover{
+  color: #222;
+  cursor: pointer;
+}
+
+#edit-user-emoji-picker{
+  position: absolute;
+  z-index: 2;
+  top: 175px;
 }

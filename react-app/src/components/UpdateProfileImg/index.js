@@ -1,6 +1,7 @@
 import React, { useEffect, useState }from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../store/session'
+import userReducer from '../../store/user'
 
 import './updateProfilepic.css'
 
@@ -58,37 +59,41 @@ export default function UpdateProfileImg({id}) {
 
   return (
     <div className='edit-change-profile-pic'>
-      <form className="edit-profile-pic-form" onSubmit={onSubmit}>
-        <div>
-        {errors.length > 0 && (
-          <div className="errorHandling">
-            <div className="errorTitle">
-              Please fix the following errors before submitting:
-            </div>
-            <ul className="edit-profilepic-errors">
-              {errors.map((error) => (
-                <ul key={error} id="edit-pic-error">
-                  <i className="fas fa-spinner fa-spin" id="spinner"></i>
-                  {error}
-                </ul>
-              ))}
-            </ul>
-          </div>
-        )}
+      {errors.length > 0 && (
+        <div className="errorHandling">
+          <p className="error-Title">
+            Please fix the following errors before submitting:
+          </p>
+          <ul className="edit-profilepic-errors">
+            {errors.map((error) => (
+              <ul key={error} id="edit-pic-error">
+                <i className="fas fa-spinner fa-spin" id="spinner"></i>
+                {error}
+              </ul>
+            ))}
+          </ul>
         </div>
+      )}
+      <form className="edit-profile-pic-form" onSubmit={onSubmit}>
         <div className='edit-choose-photo'>
-          <label for='user-update-img' id="choose-photo">Choose Photo</label>
           <input
             id='user-update-img'
             type='file'
             accept='image/*'
             onChange={updateProfilePic}
-          />
-          {!image && errors.length ?
+            />
+            {!image ?
+              <label for='user-update-img' id="choose-photo">Choose Photo</label>
+              :
+              <>
+                <label for='user-update-img' id="choose-photo2">Change photo</label>
+                <label id="upload-profile-pic" >Upload</label>
+              </>
+            }
+          {/* {submitted && errors.length ?
             <button id="upload-profile-pic-dis" disabled={true}>Upload</button>
             :
-            <button id="upload-profile-pic" >Upload</button>
-          }
+          } */}
         </div>
       </form>
     </div>

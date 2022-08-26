@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { thunkEditUser } from '../../store/session'
 import { thunkLoadAllUsers } from '../../store/user'
 import UpdateProfileImg from '../UpdateProfileImg'
-
+import Picker from 'emoji-picker-react'
 
 import './editProfile.css'
 
@@ -14,6 +14,7 @@ export default function EditProfile({user}) {
 
   const users = useSelector(state => Object.values(state.user))
 
+  const [showPicker, setShowPicker] = useState(false)
   const [errors, setErrors] = useState([])
   const [email , setEmail] = useState(user.email)
   const [fullname , setFullname] = useState(user.fullname)
@@ -63,16 +64,29 @@ export default function EditProfile({user}) {
     if(username.length > 20) {
       error.push("Username cannot exceed 20 characters")
     }
-    if(bio?.length > 150){
-      error.push('Bio cannot exceed 150 characters')
-    }
     setErrors(error)
   }, [email, fullname, username, bio])
 
 
   useEffect(() => {
+    const error= []
+    if(bio?.length > 150){
+      error.push('Bio cannot exceed 150 characters')
+    }
+    setErrors(error)
     dispatch(thunkLoadAllUsers())
+  }, [bio])
+
+  useEffect(() => {
+    const closeEmoji = (e) => {
+      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
+        setShowPicker(false)
+      }
+    }
+    document.body.addEventListener("click", closeEmoji)
+    return () => document.body.removeEventListener('click', closeEmoji)
   }, [])
+
 
 
   const onSubmit = async(e) => {
@@ -95,27 +109,40 @@ export default function EditProfile({user}) {
     return history.push(`/${username}`)
   }
 
+  const emojiClick = (e, emojiObj) => {
+    if(emojiObj.emoji.length){
+      setBio(bio => bio + emojiObj.emoji);
+      setShowPicker(false)
+    } else {
+      setShowPicker(true)
+    }
+  }
+
+  const openShow = (e) => {
+    setShowPicker(!showPicker)
+  }
+
   return (
     <div className='edit-profile'>
       <div className='edit-profile-container'>
-        <h1>Edit Profile</h1>
-        <div className='change-picture'>
-          {/* <div className='colorborder'>
-            <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
-          </div> */}
-          <div className='edit-profile-picture-buttons'>
-              {!showImage ?
-                <div className='edit-profile-mix'>
-                <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
-                <button id="change-profile-pic" onClick={() => setShowImage(true)}>Change profile picture</button>
-                </div>
-                :
-                <div className='edit-profile-mix'>
-                  <img id="edit-image"style={{height:300, width:300}} src={profilePic} alt='profile-pic'></img>
-                  <UpdateProfileImg id={userId}/>
-                </div>
-              }
+        <div className='edit-profile-picture-buttons'>
+        {!showImage ?
+          <div className='edit-profile-mix'>
+            <img id="edit-image"style={{height:100, width:100}} src={profilePic} alt='profile-pic'></img>
+            <div>
+              <p id="username-profile-edit">{user.username}</p>
+              <button id="change-profile-pic" onClick={() => setShowImage(true)}>Change profile picture</button>
+            </div>
           </div>
+          :
+          <div className='edit-profile-mix-choose'>
+            <img id="edit-image"style={{height:100, width:100}} src={profilePic} alt='profile-pic'></img>
+            <div>
+              <p id="username-profile-edit">{user.username}</p>
+              <UpdateProfileImg id={userId}/>
+            </div>
+          </div>
+        }
         </div>
         <form className="edit-profile-form" onSubmit={onSubmit}>
           <div>
@@ -132,7 +159,7 @@ export default function EditProfile({user}) {
             )}
           </div>
           <div className='edit-form-input'>
-              <label>Email: </label>
+              <label id="edit-profile-label">Email </label>
               <input
                 type='text'
                 value={email}
@@ -141,7 +168,7 @@ export default function EditProfile({user}) {
               />
           </div>
           <div className='edit-form-input'>
-              <label>Full name: </label>
+              <label id="edit-profile-label">Full name </label>
               <input
                 type='text'
                 value={fullname}
@@ -150,7 +177,7 @@ export default function EditProfile({user}) {
               />
           </div>
           <div className='edit-form-input'>
-              <label>Username:</label>
+              <label id="edit-profile-label">Username</label>
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -159,12 +186,31 @@ export default function EditProfile({user}) {
               />
           </div>
           <div className='edit-form-input'>
-              <label>Bio: </label>
-              <textarea
-                id='edit-bio-input'
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-              />
+              <label id="edit-profile-label">Bio </label>
+              <div>
+                {showPicker &&
+                  <div id="edit-user-emoji-picker">
+                    <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '20rem'}} onEmojiClick={emojiClick} />
+                  </div>
+
+                }
+                <textarea
+                  id='edit-bio-input'
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  maxLength='155'
+                  />
+                  {errors.length ?
+                    <div className={bio.length >= 140 ? "reed2" : "noormal2"}>
+                      <p>{bio.length} / 150</p>
+                    </div>
+                    :
+                    <div className={bio.length >= 140 ? "reed" : "noormal"}>
+                      <p>{bio.length} / 150</p>
+                    </div>
+                  }
+                <label className='edit-user-emoji-icon' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
+              </div>
           </div>
           <div className='edit-form-bttns'>
             <button id="edit-form-submit" type='submit'>Submit</button>
