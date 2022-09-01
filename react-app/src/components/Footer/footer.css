@@ -1,7 +1,5 @@
 .footer-nav-container{
-  position: absolute;
-  top: 90%;
-  width: 100%;
+  margin-top: 100px;
   border-top: 2px solid lightgray;
 }
 
