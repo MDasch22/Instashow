@@ -13,6 +13,15 @@
   padding-top: 10px;
 }
 
+@media screen and (max-width: 1280px) {
+  .explore-image-card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 #explore-post-div{
   margin: 10px 10px;
   position: relative;
