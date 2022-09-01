@@ -20,7 +20,13 @@
   position: absolute;
   z-index: 4;
   transition: .3s;
-  transform: translateX(20%);
+  transform: translateX(18%);
+}
+
+@media screen and (max-width: 1280px) {
+  .search-results{
+    transform: translateX(-8%);
+  }
 }
 
 #form-search{
