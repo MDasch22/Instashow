@@ -34,6 +34,17 @@ export default function SearchBar() {
     }
   }
 
+  useEffect(() => {
+    const closeSeach = (e) => {
+      if(e.path[0].tagName !== "INPUT"){
+        setFilteredUsers([])
+        setWordEntry('')
+      }
+    }
+    document.body.addEventListener("click", closeSeach)
+    return () => document.body.removeEventListener("click", closeSeach)
+  })
+
   const click = () => {
     setFilteredUsers([])
     setWordEntry('')
@@ -64,23 +75,25 @@ export default function SearchBar() {
           }
         </div>
       </form>
-      {filteredUsers.length !== 0 &&  (
-        <div className='search-results'>
-          <div className='results'><b>Results...</b></div>
-          {filteredUsers.slice(0,5).map(user => {
-            return (
-                <NavLink onClick={click} id="link-to-search" to={`/${user.username}`}>
-                  <img className="search-picture" src={user.profile_pic} style={{width:35, height:35}}></img>
-                  <div>
-                    <p className='search-username'>{user.username}</p>
-                    <p>{isFollowing(user)}</p>
-                  </div>
+      <div className='search-results-container'>
+        {filteredUsers.length !== 0 &&  (
+          <div className='search-results'>
+            <div className='results'><b>Results...</b></div>
+            {filteredUsers.slice(0,5).map(user => {
+              return (
+                  <NavLink onClick={click} id="link-to-search" to={`/${user.username}`}>
+                    <img className="search-picture" src={user.profile_pic} style={{width:35, height:35}}></img>
+                    <div>
+                      <p className='search-username'>{user.username}</p>
+                      <p>{isFollowing(user)}</p>
+                    </div>
 
-                </NavLink>
+                  </NavLink>
+                )}
               )}
-            )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
