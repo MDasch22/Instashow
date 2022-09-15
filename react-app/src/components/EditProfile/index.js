@@ -186,31 +186,25 @@ export default function EditProfile({user}) {
               />
           </div>
           <div className='edit-form-input'>
-              <label id="edit-profile-label">Bio </label>
-              <div>
-                {showPicker &&
-                  <div id="edit-user-emoji-picker">
-                    <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '20rem'}} onEmojiClick={emojiClick} />
-                  </div>
-
-                }
-                <textarea
-                  id='edit-bio-input'
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  maxLength='155'
-                  />
-                  {/* {errors.length ? */}
-                    <div className={bio.length >= 140 ? "reed2" : "noormal2"}>
-                      <p>{bio.length} / 150</p>
-                    </div>
-                    {/* :
-                    <div className={bio.length >= 140 ? "reed" : "noormal"}>
-                      <p>{bio.length} / 150</p>
-                    </div>
-                  } */}
-                <label className='edit-user-emoji-icon' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
+            <label id="edit-profile-label">Bio </label>
+            {showPicker &&
+              <div id="edit-user-emoji-picker">
+                <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '20rem'}} onEmojiClick={emojiClick} />
               </div>
+
+            }
+            <textarea
+              id='edit-bio-input'
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              maxLength='150'
+              />
+          </div>
+          <div class="emoji-bioLength">
+            <label className='edit-user-emoji-icon' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
+            <div className={bio.length >= 140 ? "reed2" : "noormal2"}>
+              <p>{bio.length} / 150</p>
+            </div>
           </div>
           <div className='edit-form-bttns'>
             <button id="edit-form-submit" type='submit'>Submit</button>

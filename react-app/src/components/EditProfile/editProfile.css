@@ -111,6 +111,7 @@
   justify-content: space-between;
 }
 
+
 .edit-profile-form input{
   height: 30px;
   width: 392px;
@@ -176,52 +177,32 @@
   padding-top: 8px
 }
 
-.noormal{
-  position: absolute;
-  float: right;
-  bottom: 325px;
-  font-size: 13px;
-  color: gray;
-  margin-left: 340px;
-  z-index: 1;
-
-}
-
-.reed{
-  position: absolute;
-  float: right;
-  bottom: 325px;
-  font-size: 13px;
-  margin-left: 340px;
-  color: rgb(252, 69, 69);
-  z-index: 1;
+.emoji-bioLength{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .noormal2{
-  position: absolute;
-  bottom: 280px;
+  margin-top: -40px;
   font-size: 13px;
   color: gray;
-  margin-left: 340px;
+  margin-right: 5px;
 }
 
 .reed2{
-  position: absolute;
-  float: right;
-  bottom: 280px;
+  margin-top: -40px;
+  margin-right: 5px;
   font-size: 13px;
   margin-left: 340px;
   color: rgb(252, 69, 69);
-  z-index: 1;
 }
 
 .edit-user-emoji-icon{
   color: gray;
-  position: absolute;
-  bottom: 280px;
-  z-index: 1;
-  transform: translateX(-24.5rem);
   transition: .2s ease-in-out;
+  transform: translateX(6.5rem);
+  margin-top: -45px;
 }
 
 .edit-user-emoji-icon:hover{
@@ -233,4 +214,5 @@
   position: absolute;
   z-index: 2;
   top: 175px;
+  margin-left: 6rem;
 }
