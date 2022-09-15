@@ -11,7 +11,7 @@ import SearchBar from '../SearchBar';
 
 
 
-const NavBar = () => {
+const NavBar = ({posts}) => {
   const dispatch = useDispatch()
 
   const sessionUser = useSelector(state => state.session.user)
