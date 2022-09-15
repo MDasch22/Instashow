@@ -30,13 +30,13 @@ export default function CreateCommentForm({postId}) {
 
   useEffect(() => {
     const closeEmoji = (e) => {
-      if(e.path[0].tagName !== "I"){
+      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
         setShowPicker(false)
       }
     }
     document.body.addEventListener("click", closeEmoji)
     return () => document.body.removeEventListener('click', closeEmoji)
-  })
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault()

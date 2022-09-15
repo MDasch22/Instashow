@@ -60,6 +60,6 @@
 
 #emoji-icon-picker{
   position: absolute;
-  bottom: 35%;
+  top: 20rem;
   z-index: 3;
 }
