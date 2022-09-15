@@ -5,10 +5,15 @@ import ExplorePagePost from '../ExplorePagePostCard'
 
 import './explorepage.css'
 
-export default function ExplorePage({posts}) {
+export default function ExplorePage() {
   const dispatch = useDispatch()
 
   const sessionUser = useSelector(state => state.session.user)
+  const posts = useSelector(state => Object.values(state.post))
+
+  useEffect(() => {
+    dispatch(thunkLoadAllPosts())
+  },[dispatch])
 
   let nonSessionUserPost = posts.filter(post => post.user_id !== sessionUser.id)
 
