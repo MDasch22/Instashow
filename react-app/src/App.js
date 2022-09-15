@@ -20,6 +20,8 @@ function App() {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(state => state.session.user)
+  const posts = useSelector(state => Object.values(state.post))
+
 
   useEffect(() => {
     (async() => {
@@ -35,6 +37,9 @@ function App() {
     return null;
   }
 
+  if (!posts){
+    return null
+  }
   return (
     <BrowserRouter>
       <NavBar />
@@ -49,7 +54,7 @@ function App() {
           <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/explore/posts' exact={true}>
-          <ExplorePage user={sessionUser}/>
+          <ExplorePage user={sessionUser} posts={posts}/>
         </ProtectedRoute>
         <ProtectedRoute path='/:username/edit' exact={true}>
           <EditProfile user={sessionUser}/>
