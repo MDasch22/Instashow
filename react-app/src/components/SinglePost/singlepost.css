@@ -245,3 +245,8 @@
 #more-post-link{
   text-decoration: none;
 }
+
+#singlePost-time{
+  margin-bottom: -10px;
+  margin-left: 5px;
+}

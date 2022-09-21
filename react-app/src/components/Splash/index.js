@@ -8,6 +8,7 @@ import LikeButton from '../LikesButton'
 
 import './splash.css'
 import NewComment from '../CreateCommentSplash'
+import PostTime from '../PostTime'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -173,7 +174,8 @@ export default function HomePage() {
                 <p>{commentsLength(post.id)}</p>
               </NavLink>
               <p>{commentsForPost(post.id)}</p>
-            <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
+            {/* <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div> */}
+            <PostTime post={post} />
             </div>
 
             <NewComment postId={post.id}/>

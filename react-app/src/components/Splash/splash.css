@@ -115,17 +115,27 @@
 }
 
 .splash-caption-container{
-  width: 420px;
+  /* width: 420px; */
   display: flex;
   flex-direction: row ;
   padding-bottom: 5px;
+
+
 }
 
 .splash-username-post-caption{
   width: 420px;
   display: flex;
   flex-direction: row;
+  /* float: left; */
 
+
+}
+
+#splash-card-username-link{
+  text-decoration: none;
+  color: black;
+  height: 15px;
 
 }
 
@@ -140,6 +150,7 @@
 #splash-username-post {
   font-weight: bold;
   margin-right: 10px ;
+  height: 20px;
   font-size: 14px;
   float: left;
 
@@ -262,11 +273,6 @@
 
 }
 
-#splash-card-username-link{
-  text-decoration: none;
-  color: black;
-  float: left;
-}
 
 .splash-card-comment-username{
   font-weight: bold;
