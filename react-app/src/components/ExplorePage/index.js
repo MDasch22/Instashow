@@ -25,7 +25,7 @@ export default function ExplorePage() {
 
   return (
     <div className='explore-container'>
-      <h1>Explore Page</h1>
+      <h1 className='explore-title'>Explore Page</h1>
       <div className='explore-image-card'>
         {shuffledPosts.map(post => {
         return (
