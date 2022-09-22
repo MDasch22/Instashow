@@ -5,10 +5,11 @@ import { thunkGetAllComments } from '../../store/comment'
 import { thunkLoadAllPosts } from '../../store/posts'
 import { thunkLoadAllUsers } from '../../store/user'
 import LikeButton from '../LikesButton'
-
-import './splash.css'
 import NewComment from '../CreateCommentSplash'
 import PostTime from '../PostTime'
+import LikesOnPost from '../LikesOnPost'
+
+import './splash.css'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -131,37 +132,7 @@ export default function HomePage() {
               </NavLink>
             </div>
             <div className='splash-post-content-info'>
-              {post.likes.length === 0 ?
-                  <div className='hidden'> no likes yet </div>
-                :
-                <p>{post.likes.length === 1 ?
-                      <div className='liked-by-container'>
-                        <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                        <p id='liked-by-usernames'>Liked by {post.likes[0].username} </p>
-                      </div>
-                    :
-                      <div>
-                        {post.likes.length === 2 ?
-                          <div className='liked-by-container'>
-                            <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                            <div id='overlapping-pic'>
-                              <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
-                            </div>
-                            <p id='liked-by-usernames'>Liked by {post.likes[0].username} and 1 other</p>
-                          </div >
-                          :
-                          <div className='liked-by-container'>
-                            <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                            <div id='overlapping-pic'>
-                              <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
-                            </div>
-                            <p id='liked-by-usernames'>Liked by {post.likes[0].username} and {post.likes.length - 1} others </p>
-                          </div>
-                        }
-                      </div>
-                    }
-                </p>
-              }
+              <LikesOnPost likes={post.likes} />
               <div className='splash-caption-container'>
                 <div className='splash-username-post-caption'>
                   <NavLink id='splash-card-username-link' to={`/${post.owner.username}`}>

@@ -32,13 +32,8 @@ export default function PostTime({post}) {
   const yearCreated = dateCreated[3]
   const timeCreated = dateCreated[4]
 
-
-
   const dateToday = new Date(`${dayToday}/${monthToday}/${yearToday} ${timeToday}`)
   const datePostCreated = new Date (`${dayCreated}/${monthCreated}/${yearCreated} ${timeCreated}`)
-
-  console.log(dateToday)
-  console.log(datePostCreated)
 
   const timeDiff= Math.abs(dateToday - datePostCreated)
   const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
