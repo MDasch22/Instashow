@@ -202,8 +202,8 @@ export default function EditProfile({user}) {
           </div>
           <div class="emoji-bioLength">
             <label className='edit-user-emoji-icon' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
-            <div className={bio.length >= 140 ? "reed2" : "noormal2"}>
-              <p>{bio.length} / 150</p>
+            <div className={bio?.length >= 140 ? "reed2" : "noormal2"}>
+              <p>{bio?.length} / 150</p>
             </div>
           </div>
           <div className='edit-form-bttns'>

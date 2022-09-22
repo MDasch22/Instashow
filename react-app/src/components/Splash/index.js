@@ -10,6 +10,7 @@ import PostTime from '../PostTime'
 import LikesOnPost from '../LikesOnPost'
 
 import './splash.css'
+import SuggestedFollow from '../SuggestedFollowBttn'
 
 export default function HomePage() {
   const dispatch = useDispatch()
@@ -166,6 +167,7 @@ export default function HomePage() {
             <p id="suggested-for-you">Suggestions For You</p>
             {randomSuggested.slice(0, 4).map(user => {
             return (
+              <div id="suggest-user-container">
                 <NavLink to={`/${user.username}`} className='suggestion-user'>
                   <img id="profile-pic_suggest"src={user.profile_pic} style={{width: 35, height: 35}}></img>
                   <div>
@@ -173,6 +175,8 @@ export default function HomePage() {
                     <p id="fullname-suggest">{user.fullname}</p>
                   </div>
                 </NavLink>
+                <SuggestedFollow sessionUser={sessionUser} username={user.username} userId={user.id}/>
+              </div>
               )
             })}
           </div>
