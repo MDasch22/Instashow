@@ -57,7 +57,8 @@
 
 
 #nav-bar-bttns{
-  margin: 0 15px;
+  /* padding: 0 15px; */
+  width: 3.3rem;
   text-decoration: none;
 }
 
@@ -65,6 +66,7 @@
 #nav-bar-profile-bttn{
   border-radius: 50%;
   margin-top: 3px;
+
 }
 
 #nav-bar-profile-bttn-outline{
@@ -180,7 +182,7 @@ svg{
 
 .dropDown{
   position: absolute;
-  top: 58px;
+  top: 53px;
   width: 230px;
   transform: translateX(-75%);
   background-color: rgb(255, 255, 255);

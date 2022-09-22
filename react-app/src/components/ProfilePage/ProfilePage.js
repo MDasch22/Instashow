@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom';
 import Modal from 'react-modal'
-import { thunkLoadUserPosts } from '../../store/posts';
+import { thunkLoadAllPosts, thunkLoadUserPosts } from '../../store/posts';
 import { thunkGetUser } from '../../store/user';
 import FollowButton from '../FollowButton';
 import Following from '../Following';
@@ -11,6 +11,7 @@ import Followers from '../Followers';
 import './ProfilePage.css';
 import '../Following/followerModal.css'
 import ExplorePagePost from '../ExplorePagePostCard';
+import LikesOnPost from '../LikesOnPost';
 
 function ProfilePage() {
 
@@ -20,12 +21,27 @@ function ProfilePage() {
 
   const sessionUser = useSelector(state => state.session.user)
   const user = useSelector(state => state.user[username])
-  const users_posts = useSelector(state => Object.values(state.post))
+  const allPost = useSelector(state => Object.values(state.post))
+
+  const users_posts = allPost.filter(post => post.owner.username === username)
+
+// GETTING ALL POST THAT USER LIKED
+  const likedPosts = allPost.filter(post => {
+    if(post.likes.map( like => like.username).includes(username)){
+      return post
+    }
+  })
+
+  console.log(likedPosts)
+
   users_posts.reverse()
+
 
 
   const [showFollower, setShowFollowers] = useState(false)
   const [showFollowing, setShowFollowing] = useState(false)
+  const [showPost, setShowPost] = useState(true)
+  const [showLikes, setShowLikes] = useState(false)
 
   Modal.setAppElement('body')
 
@@ -61,7 +77,7 @@ function ProfilePage() {
     content: {
       position: 'relative',
       margin: 'auto',
-      height: '200px',
+      height: 'auto',
       maxWidth: '500px',
       width: '400px',
       top: '300px',
@@ -70,7 +86,7 @@ function ProfilePage() {
       bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
-      borderRadius: '3px',
+      borderRadius: '10px',
       outline: 'none',
       padding: '0',
       overflow: 'auto',
@@ -80,7 +96,7 @@ function ProfilePage() {
   useEffect(() => {
     window.scroll(0, 0)
     dispatch(thunkGetUser(username))
-    dispatch(thunkLoadUserPosts(username))
+    dispatch(thunkLoadAllPosts())
   },[dispatch, username])
 
 
@@ -88,6 +104,15 @@ function ProfilePage() {
       <h1 style={{textAlign: "center", marginTop: 50}}> No user found </h1>
     )
 
+  function showUserPost(){
+    setShowPost(true)
+    setShowLikes(false)
+  }
+
+  function showUserLikes(){
+    setShowLikes(true)
+    setShowPost(false)
+  }
 
   return (
     <div className='profile-container'>
@@ -135,21 +160,65 @@ function ProfilePage() {
       </div>
       <div className="profile-user-posts">
         <>
-        <b><p id="posts-icon"> <svg id="grid" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap" viewBox="0 0 16 16">
-          <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z"/>
-        </svg> Posts</p></b>
-        <div id="profile-posts">
-          {users_posts && users_posts.map(post => {
-            return (
-              <ExplorePagePost  post={post}/>
-            )}
-          )}
-        </div>
-        {users_posts.length === 0 &&
-          <div id="no-posts-yet">
-            <p> No posts yet</p>
+          <div id="posts-icon">
+            <div onClick={showUserPost} className={showPost ? 'posts-icon-likes' : 'posts-icon-likes-no'}>
+              <svg id="grid" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(153, 153, 153)" class="bi bi-grid-3x3-gap" viewBox="0 0 16 16">
+                <path d="M4 2v2H2V2h2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zm0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1zM9 2v2H7V2h2zm5 0v2h-2V2h2zM4 7v2H2V7h2zm5 0v2H7V7h2zm5 0h-2v2h2V7zM4 12v2H2v-2h2zm5 0v2H7v-2h2zm5 0v2h-2v-2h2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-2z"/>
+              </svg>
+              <p>Posts</p>
+            </div>
+            {sessionUser.username === username &&
+              <div onClick={showUserLikes} className={showLikes ? 'posts-icon-likes' : 'posts-icon-likes-no'}>
+                <i className="fa-regular fa-heart fa-lg"></i>
+                <p>Likes</p>
+              </div>
+            }
           </div>
-        }
+          <div id="profile-posts">
+            {showPost ?
+              users_posts.length ?
+                users_posts && users_posts.map(post => {
+                  return (
+                    <>
+                      <ExplorePagePost  post={post}/>
+                    </>
+                  )}
+                )
+                :
+                <>
+                  <div style={{width: 300}}></div>
+                  <div id="no-posts-yet">
+                    <p className='no-posts'> No Posts Yet</p>
+                  </div>
+                  <div style={{width: 300}}></div>
+                </>
+              :
+              null
+            }
+            {showLikes ?
+              likedPosts.length ?
+                <>
+                  <p className='liked-privacy'>Only you can see what you've liked</p>
+                  <div></div>
+                  <div></div>
+                  {likedPosts.map(post => {
+                    return (
+                        <ExplorePagePost post={post} />
+                      )
+                  })}
+                </>
+                :
+                <>
+                  <div style={{width: 300}}></div>
+                  <div id="no-posts-yet">
+                    <p className='no-posts'> No Likes Yet</p>
+                  </div>
+                  <div style={{width: 300}}></div>
+                </>
+              :
+              null
+            }
+          </div>
         </>
       </div>
     </div>

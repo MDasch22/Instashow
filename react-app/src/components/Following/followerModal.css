@@ -3,7 +3,13 @@
   text-align: center;
   width: 100%;
   padding-top: 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgb(143, 143, 143);
+}
+
+.follower-container{
+  height: 175px;
+  overflow: auto;
 }
 
 #modal-user-card:hover{
@@ -24,6 +30,7 @@
 
 #modal-user-info{
   margin-left: 10px;
+
 }
 
 #modal-user-username{
@@ -43,7 +50,7 @@
 #close-modal-followers{
   position: absolute;
   left: 350px;
-  top: 1px;
+  top: 10px;
   width: 30px;
   height: 30px;
   color: #222;
@@ -54,4 +61,5 @@
 
 #close-modal-followers:hover{
   cursor: pointer;
+  color: rgb(82, 82, 82);
 }
