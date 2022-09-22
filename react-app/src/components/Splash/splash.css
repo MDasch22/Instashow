@@ -140,6 +140,8 @@
   color: rgb(136, 136, 136);
 }
 
+/* SUGGESTION USERS */
+
 .suggested-users{
   display: flex;
   flex-direction: column;
@@ -155,6 +157,14 @@
   box-shadow: 2px 2px 4px 2px lightgray;
 
 }
+
+#suggest-user-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .user-info-suggest{
   display: flex;
@@ -194,10 +204,11 @@
   text-decoration: none;
 }
 
-.suggestion-user:hover{
+#suggest-user-container:hover{
   background-color: rgb(241, 241, 241);
   border-radius: 10px;
 }
+
 
 #profile-pic_suggest{
   border-radius: 50%;
@@ -221,7 +232,7 @@
 #suggested-for-you{
   color: rgb(136, 136, 136);
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   padding-left: 10px;
 }
 
@@ -255,6 +266,23 @@
   width: 85%;
   float: left;
 }
+
+.suggested-follow{
+  background-color: transparent;
+  border: 0;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: rgb(145, 192, 253);
+  font-size: 12px;
+}
+
+.suggested-follow:hover{
+  color: #0095f6;
+}
+
+
+/* MINI-FOOTER */
 
 #mini-footer-links{
   color: rgb(139, 139, 139);
