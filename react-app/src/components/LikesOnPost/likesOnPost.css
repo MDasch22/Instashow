@@ -1,0 +1,130 @@
+.liked-by-container{
+  display: flex;
+  flex-direction: row;
+}
+
+#liked-by-pic{
+  margin-top: -4px;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 2;
+}
+
+#overlapping-by-pic{
+  border-radius: 50%;
+}
+
+#overlapping-pic{
+  margin-top: -4px;
+  position: relative;
+  border-radius: 50%;
+  z-index: 1;
+  margin-left: -8px;
+  border: 2px solid white;
+}
+
+#like-by-link{
+  text-decoration: none;
+  color: rgb(58, 58, 58);
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+#like-by-link:hover{
+  color: rgb(0, 0, 0);
+}
+
+#liked-by-usernames {
+  margin-left: 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+}
+
+#liked-by-modal{
+  margin-left: 5px;
+  font-weight: bold;
+  color: rgb(58, 58, 58);
+  cursor: pointer;
+}
+
+#liked-by-modal:hover{
+  color: rgb(0, 0, 0);
+}
+
+.hidden{
+  font-size: 14px;
+  opacity: 0;
+}
+
+/* MODAL */
+
+#close-modal-likes{
+  position: absolute;
+  left: 350px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  color: #222;
+  font-size: 20px;
+  border: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+#likes-modal-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-header-likes{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+  font-size: 18px;
+
+}
+
+.liked-user-info{
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px;
+  transition: .2s ease-in-out;
+  /* cursor: pointer; */
+  text-decoration: none;
+}
+
+.liked-user-info:hover{
+  background-color: rgba(230, 230, 230, 0.685);
+}
+
+#liked-users-container{
+  height: 250px;
+  overflow: auto;
+}
+
+.liked-user-pic{
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#liked-by-userinfo{
+  margin-top: 5px;
+}
+
+.like-username-link{
+  text-decoration: none;
+}
+
+.liked-username{
+  font-size: 14px;
+  color: #222;
+  padding-bottom: 5px;
+}
+
+.liked-name{
+  font-size: 12px;
+  color: rgb(128, 126, 126);
+}

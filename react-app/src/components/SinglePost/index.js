@@ -12,6 +12,7 @@ import LikeButton from '../LikesButton'
 
 import './singlepost.css'
 import ExplorePagePost from '../ExplorePagePostCard'
+import PostTime from '../PostTime'
 
 
 export default function SinglePost() {
@@ -144,10 +145,6 @@ const onDelete = async(e) => {
   history.push(`/${sessionUser.username}`)
 }
 
-// const todaysFullDate = new Date()
-// const todaysDate = (todaysFullDate.getDate() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-// const todaysMonth = (todaysFullDate.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-// const currentYear = todaysFullDate.getFullYear()
 
 
 if(!post) return null
@@ -233,7 +230,9 @@ if(!comments) return null
                   }
               </div>
             </div>
-            <div className='post-created'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div>
+            <div id="singlePost-time">
+              <PostTime post={post} />
+            </div>
             <div className='border-bottom-single-post'> </div>
             <div>
               <CreateCommentForm postId={post_id}/>

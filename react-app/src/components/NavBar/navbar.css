@@ -4,13 +4,16 @@
 }
 
 .nav-bar{
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 5px 200px;
+  padding: 5px 150px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   border-bottom: 2px solid lightgray;
   list-style: none;
-  /* justify-content: space-evenly; */
+
 }
 
 #nav-bar-content{
@@ -18,17 +21,17 @@
   flex-direction: row;
   align-items: center;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 6rem;
 }
 
 .nav-bar-instashow{
-  align-items: right;
-  text-align: right;
-  padding-right: 4rem;
+  margin-right: 8rem;
+
 }
 
 #empty{
   visibility: hidden;
+  width: 20%;
 }
 
 #instashow-logged-in{
@@ -63,6 +66,22 @@
   border-radius: 50%;
   margin-top: 3px;
 }
+
+#nav-bar-profile-bttn-outline{
+  border-radius: 50%;
+  margin-top: 3px;
+  padding: 1px;
+  outline: 1px solid #222;
+}
+
+#nav-bar-profile-bttn-outline:active{
+  filter: brightness(75%);
+}
+
+#nav-bar-profile-bttn-outline:hover{
+  cursor: pointer;
+}
+
 
 #nav-bar-profile-bttn:active{
  filter: brightness(75%);

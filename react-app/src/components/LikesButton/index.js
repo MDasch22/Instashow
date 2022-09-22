@@ -11,7 +11,6 @@ export default function LikeButton({post}) {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    console.log(post.likes)
     if(post.likes.find(user => user.username === sessionUser.username)){
       setLike(true)
     } else {
