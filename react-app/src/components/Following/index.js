@@ -9,19 +9,21 @@ export default function Following({following, closeModal}) {
       {following.length === 0 && (
         <p> Not following anyone yet...</p>
       )}
-      {following.map(user => {
-        return (
-          <div id='modal-user-card' key={user.id}>
-            <NavLink id='modal-user-link' to={`/${user.username}`} onClick={closeModal}>
-              <img id='modal-profile_pic' src={user.profile_pic} style={{width:40, height:40}} alt="following-pic"></img>
-              <div id='modal-user-info'>
-                <div id='modal-user-username'>{user.username}</div>
-                <div id='modal-user-fullname'>{user.name}</div>
-              </div>
-            </NavLink>
-          </div>
-          )
-      })}
+      <div className='follower-container'>
+        {following.map(user => {
+          return (
+            <div id='modal-user-card' key={user.id}>
+              <NavLink id='modal-user-link' to={`/${user.username}`} onClick={closeModal}>
+                <img id='modal-profile_pic' src={user.profile_pic} style={{width:40, height:40}} alt="following-pic"></img>
+                <div id='modal-user-info'>
+                  <div id='modal-user-username'>{user.username}</div>
+                  <div id='modal-user-fullname'>{user.name}</div>
+                </div>
+              </NavLink>
+            </div>
+            )
+        })}
+      </div>
     </div>
   )
 }

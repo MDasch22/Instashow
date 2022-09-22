@@ -25,17 +25,17 @@ const NavBar = ({posts}) => {
   const [profileActive , setProfileActive] = useState(false)
 
   useEffect(() => {
-    if(currentLocation.pathname === '/' && !showCreate){
+    if(currentLocation.pathname === '/' && !showCreate && !open){
       setHomeActive(true)
       setExploreActive(false)
       setProfileActive(false)
       setCreateActive(false)
-    } else if(currentLocation.pathname === '/explore/posts' && !showCreate) {
+    } else if(currentLocation.pathname === '/explore/posts' && !showCreate && !open) {
       setHomeActive(false)
       setExploreActive(true)
       setCreateActive(false)
       setProfileActive(false)
-    } else if(currentLocation.pathname === `/${sessionUser?.username}` && !showCreate){
+    } else if(currentLocation.pathname === `/${sessionUser?.username}` || currentLocation.pathname === `/${sessionUser?.username}/edit` ){
       setHomeActive(false)
       setExploreActive(false)
       setProfileActive(true)
@@ -47,7 +47,7 @@ const NavBar = ({posts}) => {
       setProfileActive(false)
     }
 
-  }, [homeActive, exploreActive, showCreate, profileActive, currentLocation])
+  }, [homeActive, open, exploreActive, showCreate, profileActive, currentLocation])
 
   Modal.setAppElement('body');
 
@@ -117,6 +117,11 @@ const NavBar = ({posts}) => {
     setShowCreate(false)
   }
 
+  function dropDownOpen(){
+    setProfileActive(true)
+    setOpen(!open)
+  }
+
   return (
     <nav className='nav'>
       <ul className='nav-bar'>
@@ -174,18 +179,18 @@ const NavBar = ({posts}) => {
                 </Modal>
               </li>
             <li id="nav-bar-bttns">
-              {profileActive ?
+              {profileActive || open?
                 <>
-                  <img onClick={() => setOpen(!open)} src={sessionUser.profile_pic} id="nav-bar-profile-bttn-outline"style={{width: 27, height: 27}}></img>
+                  <img onClick={dropDownOpen} src={sessionUser.profile_pic} id="nav-bar-profile-bttn-outline"style={{width: 27, height: 27}}></img>
                   {open && (
                   <div >
                     <div id='pointer-arrow'>  </div>
                     <div className='dropDown'>
-                      <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={() => setOpen(!open)}>
+                      <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={dropDownOpen}>
                         <i id="profile-icon" className="fa-regular fa-circle-user "></i>
                         <p id="dropdown-profile"> Profile </p>
                       </NavLink>
-                      <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={() => setOpen(!open)}>
+                      <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={dropDownOpen}>
                         <i className="fa-solid fa-gears"></i>
                         <p id="dropdown-text"> Manage account </p>
                       </NavLink>
@@ -198,16 +203,16 @@ const NavBar = ({posts}) => {
                 </>
                 :
                 <>
-                  <img onClick={() => setOpen(!open)} src={sessionUser.profile_pic} id="nav-bar-profile-bttn"style={{width: 27, height: 27}}></img>
+                  <img onClick={dropDownOpen} src={sessionUser.profile_pic} id="nav-bar-profile-bttn"style={{width: 27, height: 27}}></img>
                   {open && (
                   <div >
                     <div id='pointer-arrow'>  </div>
                     <div className='dropDown'>
-                      <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={() => setOpen(!open)}>
+                      <NavLink id="dropdown-item" to={`/${sessionUser.username}`} onClick={dropDownOpen}>
                         <i id="profile-icon" className="fa-regular fa-circle-user "></i>
                         <p id="dropdown-profile"> Profile </p>
                       </NavLink>
-                      <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={() => setOpen(!open)}>
+                      <NavLink id="dropdown-item" to={`/${sessionUser.username}/edit`} onClick={dropDownOpen}>
                         <i className="fa-solid fa-gears"></i>
                         <p id="dropdown-text"> Manage account </p>
                       </NavLink>

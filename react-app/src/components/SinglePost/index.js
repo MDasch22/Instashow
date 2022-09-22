@@ -8,6 +8,7 @@ import CreateCommentForm from '../CreateComment'
 import { thunkGetComments } from '../../store/comment'
 import Comments from '../Comments'
 import LikeButton from '../LikesButton'
+import LikesOnPost from '../LikesOnPost'
 
 
 import './singlepost.css'
@@ -197,7 +198,8 @@ if(!comments) return null
             <div className='single-post-likes-container'>
               <LikeButton post={post}/>
               <div className='single-post-liked-by'>
-                {post.likes.length === 0 ?
+                <LikesOnPost likes={post.likes}/>
+                {/* {post.likes.length === 0 ?
                     <div className='hidden'> No likes yet</div>
                     :
                     <p>{post.likes.length === 1 ?
@@ -227,7 +229,7 @@ if(!comments) return null
                           </div>
                         }
                     </p>
-                  }
+                  } */}
               </div>
             </div>
             <div id="singlePost-time">

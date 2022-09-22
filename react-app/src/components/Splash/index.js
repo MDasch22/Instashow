@@ -18,9 +18,12 @@ export default function HomePage() {
   const allUsers = useSelector(state => Object.values(state.user))
   const allComments = useSelector(state => Object.values(state.comment))
 
-  // GETTING POST BY USER FOLLOWING
+  // GETTING POST BY USER FOLLOWING AS WELL AS SESSION USER
   let followingPost = allPosts.filter(post => {
     if(sessionUser.following.map(user => user.id).includes(post.user_id)){
+      return post
+    }
+    if(post.user_id === sessionUser.id){
       return post
     }
   })
@@ -51,9 +54,7 @@ export default function HomePage() {
 
   const suggestedFollower = suggested.filter(user => user.username !== sessionUser.username)
 
-  const sf = suggestedFollower.filter(user => `${user.fullname}` !== 'Final Grade')
-
-  const randomSuggested = sf.sort(() => Math.random() - 0.5)
+  const randomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
 
 
   followingPost.reverse()
@@ -145,10 +146,8 @@ export default function HomePage() {
                 <p>{commentsLength(post.id)}</p>
               </NavLink>
               <p>{commentsForPost(post.id)}</p>
-            {/* <div id='created-at-splash'>{post.created_at.split(' ').slice(0, 4).join(' ')}</div> */}
-            <PostTime post={post} />
+              <PostTime post={post} />
             </div>
-
             <NewComment postId={post.id}/>
           </div>
           )
