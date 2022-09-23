@@ -17,19 +17,23 @@
 }
 
 #edit-comment-input{
-  width: 275px;
-  height: 50px;
+  width: 23rem;
+  height: 55px;
   border: 1.5px solid lightgray;
   border-radius: 5px;
   resize: none;
   padding: 5px 0 5px 30px;
+}
 
+#edit-comment-input:focus{
+  outline: none;
 }
 
 .edit-comment-buttons{
   display: flex;
   flex-direction: row;
   padding-top: 5px;
+  justify-content: right;
 }
 
 

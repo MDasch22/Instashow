@@ -177,13 +177,13 @@ if(!comments) return null
             </div>
             <div className='border-bottom-single-post'> </div>
             <div className='single-post-comment-section'>
-              <div className='post-caption'>
+              <span className='post-caption'>
                 <NavLink id='link-caption-user'to={`/${post.owner.username}`}>
-                  <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 30 ,height: 30}} alt='post-profile-pic'></img>
+                  <img id='user-post-profilePic' src={post.owner.profile_pic} style={{width: 32 ,height: 32}} alt='post-profile-pic'></img>
                 </NavLink>
                 <p id='post-owner-username'>{post.owner.username}</p>
                 <p id='user-post-caption'>{post.caption}</p>
-              </div>
+              </span>
               <div>
                 {comments.map(comment => {
                   return(

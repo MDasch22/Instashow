@@ -4,6 +4,7 @@ import { thunkEditComment } from '../../store/comment'
 import Picker from 'emoji-picker-react'
 
 import './editcomment.css'
+import PostTime from '../PostTime'
 
 export default function EditCommentForm({ postId ,currentComment, closeForm}) {
   const dispatch = useDispatch()

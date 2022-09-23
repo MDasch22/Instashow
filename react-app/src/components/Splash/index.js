@@ -86,15 +86,12 @@ export default function HomePage() {
       <>
         {commentsOnPost.slice(0,2).map(comment => {
           return (
-            // <div className='splash-caption-container'>
               <span className='splash-username-post-caption'>
                 <NavLink id="splash-card-username-link" to={`/${comment.user.username}`}>
-                  {/* <p className='splash-card-comment-username'>{comment.user.username}</p> */}
                   {comment.user.username}
                 </NavLink>
                 <p className='user-caption-slash-post'>{comment.comment}</p>
               </span>
-            // </div>
           )}
         )}
       </>
