@@ -18,16 +18,16 @@ export default function Comments({postId, comment}) {
   return (
 
       <div className='single-comment'>
-        <div id="single-comment-container">
+        <span id="single-comment-container">
           <NavLink to={`/${comment.user.username}`} className='single-comment-username'>
             <img id='single-comment-profilePic' src={comment.user.profile_pic} style={{width: 35 ,height: 35}} alt='comment-profile-pic'></img>
             <div id='single-comment-name'>{comment.user.username}</div>
           </NavLink>
           <div className='single-comment-edit'>
             {!showEditCommentForm ?
-              <div className={comment.comment.includes(' ') ? 'user-comments' : 'user-comment-long-string' }>
+              <span className={comment.comment.includes(' ') ? 'user-comments' : 'user-comment-long-string' }>
                 <p className='user-single-comment'>{comment.comment}</p>
-              </div>
+              </span>
               :
               <EditCommentForm postId={postId} currentComment={comment} closeForm={() => setShowEditCommentForm(false)}/>
             }
@@ -45,8 +45,8 @@ export default function Comments({postId, comment}) {
                 null
               }
             </div>
-        </div>
-        </div>
+          </div>
+        </span>
       </div>
   )
 }

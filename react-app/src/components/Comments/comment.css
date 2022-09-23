@@ -1,14 +1,15 @@
 .single-comment{
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: left;
-  padding-top: 5px;
+  padding-top: 5px; */
 }
 
 #single-comment-container{
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
+
 }
 
 .single-comment-username{
@@ -16,7 +17,7 @@
   flex-direction: row;
   text-decoration: none;
   float: left;
-  height: 20px;
+  /* height: 20px; */
 }
 
 #single-comment-profilePic{
@@ -29,14 +30,17 @@
   color: #222;
   font-weight: bold;
   font-size: 13.5px;
-  height: 15px;
+  float: left;
+  line-height: 15px;
+
 }
 
 .single-comment-edit{
   margin-top: 8px;
   margin-left: 5px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  float: left;
 }
 
 .user-single-comment{
@@ -48,15 +52,17 @@
 }
 
 .user-comments{
-  display: inline-flex;
+  /* display: inline-flex;
   flex-direction: row;
-  flex-wrap: row;
+  flex-wrap: row; */
+  float: left;
   width: 270px;
   word-wrap: break-word;
   font-size: 15px;
 }
 
 .user-comment-long-string{
+  float: left;
   width: 250px;
   word-break: break-all;
 }

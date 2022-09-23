@@ -206,7 +206,7 @@ svg{
 }
 
 #dropdown-item:hover{
-  background-color: rgb(245, 245, 245);
+  background-color: rgba(230, 230, 230, 0.685);
 }
 
 #pointer-arrow{
@@ -243,7 +243,7 @@ svg{
 }
 
 #dropdown-logout:hover{
-  background-color: rgb(245, 245, 245);
+  background-color: rgba(230, 230, 230, 0.685);
   cursor: pointer;
 }
 

@@ -81,37 +81,33 @@
 
 
 .splash-caption-container{
-  /* width: 420px; */
-  display: flex;
-  flex-direction: row ;
+  width: 450px;
+  float: left;
   padding-bottom: 5px;
-
-
-}
-
-.splash-username-post-caption{
-  width: 420px;
-  display: flex;
-  flex-direction: row;
-  /* float: left; */
-
-
 }
 
 #splash-card-username-link{
   text-decoration: none;
   color: black;
-  height: 15px;
+  float: left;
+  font-weight: bold;
+  font-size: 15px;
+  margin-right: 7px;
+  line-height: 15px;
 
 }
 
 .user-caption-slash-post{
-  width: 90%;
+  /* width: 90%; */
+  width: 420px;
   word-wrap: break-word;
-  font-size: 14px;
-  float: left;
+  font-size: 13.5px;
+  /* float: left; */
 }
 
+.splash-username-post-caption{
+  margin-bottom: 10px;
+}
 
 #splash-username-post {
   font-weight: bold;
@@ -205,8 +201,8 @@
 }
 
 #suggest-user-container:hover{
-  background-color: rgb(241, 241, 241);
-  border-radius: 10px;
+  background-color: rgba(230, 230, 230, 0.685);
+  border-radius: 7px;
 }
 
 
@@ -232,8 +228,9 @@
 #suggested-for-you{
   color: rgb(136, 136, 136);
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
   padding-left: 10px;
+  padding-top: 5px;
 }
 
 #commentspost-container{

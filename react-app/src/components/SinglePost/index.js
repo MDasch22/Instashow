@@ -199,37 +199,6 @@ if(!comments) return null
               <LikeButton post={post}/>
               <div className='single-post-liked-by'>
                 <LikesOnPost likes={post.likes}/>
-                {/* {post.likes.length === 0 ?
-                    <div className='hidden'> No likes yet</div>
-                    :
-                    <p>{post.likes.length === 1 ?
-                          <div className='liked-by-container'>
-                            <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                            <p id='liked-by-usernames'>Liked by {post.likes[0].username} </p>
-                          </div>
-                        :
-                          <div>
-                            {post.likes.length === 2 ?
-                              <div className='liked-by-container'>
-                                <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                                <div id='overlapping-pic'>
-                                  <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
-                                </div>
-                                <p id='liked-by-usernames'>Liked by {post.likes[0].username} and 1 other</p>
-                              </div >
-                              :
-                              <div className='liked-by-container'>
-                                <img id='liked-by-pic' src={post.likes[0].profile_pic} style={{height:20, width: 20}}></img>
-                                <div id='overlapping-pic'>
-                                  <img id='overlapping-by-pic' src={post.likes[1].profile_pic} style={{height:20, width: 20}}></img>
-                                </div>
-                                <p id='liked-by-usernames'>Liked by {post.likes[0].username} and {post.likes.length - 1} others </p>
-                              </div>
-                            }
-                          </div>
-                        }
-                    </p>
-                  } */}
               </div>
             </div>
             <div id="singlePost-time">
