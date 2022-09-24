@@ -182,6 +182,12 @@
   cursor: pointer;
   margin-top: 5px;
   font-size: 15px;
+  color: rgb(131, 131, 131);
+}
+
+#single-post-edit:hover{
+  color: rgb(61, 138, 253);
+
 }
 
 #single-post-delete{

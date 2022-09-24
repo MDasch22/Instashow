@@ -76,7 +76,7 @@ export default function EditCommentForm({ postId ,currentComment, closeForm}) {
           <label className='edit-emoji-splash-picker' onClick={openShow}> <i class="fa-regular fa-face-smile fa-lg"></i> </label>
             {showPicker &&
               <div id="editcomment-splash-emoji-picker">
-                <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '15rem'}} onEmojiClick={emojiClick} />
+                <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '17rem'}} onEmojiClick={emojiClick} />
               </div>
 
             }
@@ -85,6 +85,7 @@ export default function EditCommentForm({ postId ,currentComment, closeForm}) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Edit your comment..."
+            maxLength={155}
             required
           />
           </div>
