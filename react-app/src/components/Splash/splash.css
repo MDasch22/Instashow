@@ -98,11 +98,9 @@
 }
 
 .user-caption-slash-post{
-  /* width: 90%; */
-  width: 420px;
+  width: 430px;
   word-wrap: break-word;
   font-size: 13.5px;
-  /* float: left; */
 }
 
 .splash-username-post-caption{
@@ -225,13 +223,6 @@
   font-size: 12.5px;
 }
 
-#suggested-for-you{
-  color: rgb(136, 136, 136);
-  font-weight: bold;
-  font-size: 14px;
-  padding-left: 10px;
-  padding-top: 5px;
-}
 
 #commentspost-container{
   display: flex;
@@ -256,6 +247,18 @@
 
 }
 
+#suggested-followsYou{
+  margin-left: 15px;
+  font-size: 13px;
+  color: rgb(175, 175, 175);
+}
+
+#suggested-followsYou-plus{
+  margin-left: 15px;
+  font-size: 11px;
+  color: #9dd5fa;
+}
+
 .splash-card-comment-comment{
   font-size: 13.5px;
   padding: 5px;
@@ -264,18 +267,30 @@
   float: left;
 }
 
+#suggested-for-you{
+  margin-left: 10px;
+  font-size: 15px;
+  color: rgb(139, 139, 139);
+}
+
+.suggested-secondUsername{
+  font-size: 13px;
+  color: rgb(175, 175, 175);
+}
+
 .suggested-follow{
   background-color: transparent;
   border: 0;
   padding: 5px;
   margin-right: 10px;
   cursor: pointer;
-  color: rgb(145, 192, 253);
+  color: #84caf8;
   font-size: 12px;
+  transition: .2s ease-in-out;
 }
 
 .suggested-follow:hover{
-  color: #0095f6;
+  color: #35abfa;
 }
 
 

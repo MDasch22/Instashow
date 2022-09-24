@@ -57,6 +57,21 @@ export default function HomePage() {
 
   const randomSuggested = suggestedFollower.sort(() => Math.random() - 0.5)
 
+// CHECKING TO SEE IF SUGGESTED USERS FOLLOW SESSION USER
+  const isFollowing = (user) => {
+    for(let i = 0; i < sessionUser.followers.length; i++){
+      if(sessionUser.followers[i].username === user.username) {
+        return (
+            <span id="suggested-followsYou-plus"><span className='suggested-secondUsername'>{user.username}</span> follows you</span>
+          )
+      } else {
+        return(
+            <span id="suggested-followsYou"> {user.username}</span>
+          )
+      }
+    }
+  }
+
 
   followingPost.reverse()
 
@@ -172,7 +187,8 @@ export default function HomePage() {
                   <img id="profile-pic_suggest"src={user.profile_pic} style={{width: 35, height: 35}}></img>
                   <div>
                     <p id="username-suggest">{user.username}</p>
-                    <p id="fullname-suggest">{user.fullname}</p>
+                    {isFollowing(user)}
+                    {/* <p id="fullname-suggest">{user.fullname}</p> */}
                   </div>
                 </NavLink>
                 <SuggestedFollow sessionUser={sessionUser} username={user.username} userId={user.id}/>
