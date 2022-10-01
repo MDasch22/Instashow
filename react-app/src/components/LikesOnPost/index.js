@@ -26,7 +26,7 @@ export default function LikesOnPost({likes}) {
       height: '100%',
       minHeight: '100%',
       padding: '12px',
-      zIndex: '5',
+      zIndex: '12',
       backgroundColor: 'rgba(34, 34, 34, 0.65)',
       overflowY: 'hidden'
     },

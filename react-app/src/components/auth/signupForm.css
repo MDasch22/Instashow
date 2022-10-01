@@ -51,16 +51,18 @@
   padding: 10px;
   transform: translateY(-2.5rem);
   pointer-events: none;
-  transition: .5s;
+  transition: .3s;
   font-size: .8em;
   color: rgb(134, 134, 134);
 }
 
 .signup-input input:valid ~ span,
 .signup-input input:focus ~ span {
-  transform: translateX(10px) translateY(-3.8rem);
+  transform: translateX(7px) translateY(-3.8rem);
   background-color: rgb(255, 255, 255);
   font-size: .7em;
+  height: 2px;
+  color: rgb(168, 115, 253);
 
 }
 
@@ -104,6 +106,7 @@
   padding: 15px 0;
   border-radius: 5px;
   box-shadow: 2px 2px 4px 2px lightgray;
+  margin-bottom: -10px;
 }
 
 #link-to-login{

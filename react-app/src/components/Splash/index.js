@@ -172,7 +172,7 @@ export default function HomePage() {
       <div className='suggested-users'>
         <div className='border'>
           <NavLink to={`/${sessionUser.username}`} className='user-info-suggest'>
-              <img id="user-profile-pic-suggest" src={sessionUser.profile_pic} style={{width:60, height: 60}}></img>
+              <img id="user-profile-pic-suggest" src={sessionUser.profile_pic} style={{width:55, height: 55}}></img>
               <div>
                 <p id="user-username-suggest" >{sessionUser.username}</p>
                 <p id="user-fullname-suggest">{sessionUser.fullname}</p>
@@ -188,7 +188,6 @@ export default function HomePage() {
                   <div>
                     <p id="username-suggest">{user.username}</p>
                     {isFollowing(user)}
-                    {/* <p id="fullname-suggest">{user.fullname}</p> */}
                   </div>
                 </NavLink>
                 <SuggestedFollow sessionUser={sessionUser} username={user.username} userId={user.id}/>

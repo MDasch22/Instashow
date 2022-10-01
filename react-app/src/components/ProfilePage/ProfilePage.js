@@ -71,6 +71,7 @@ function ProfilePage() {
       width: '100%',
       height: '100%',
       minHeight: '100%',
+      zIndex: '12',
       padding: '12px',
       backgroundColor: 'rgba(34, 34, 34, 0.65)'
     },
@@ -101,7 +102,7 @@ function ProfilePage() {
 
 
   if(!user) return (
-      <h1 style={{textAlign: "center", marginTop: 50}}> No user found </h1>
+      <h1 style={{textAlign: "center", marginTop: 80}}> No user found </h1>
     )
 
   function showUserPost(){
