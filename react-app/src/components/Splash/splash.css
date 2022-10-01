@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  padding-top: 50px;
 }
 
 .splash-container{
@@ -19,7 +20,7 @@
 
 
 .splash-page-postCard{
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
   margin: 15px 0;
   border-radius: 8px;
   box-shadow: 2px 2px 4px 2px lightgray;
@@ -136,6 +137,7 @@
 
 /* SUGGESTION USERS */
 
+
 .suggested-users{
   display: flex;
   flex-direction: column;
@@ -145,10 +147,16 @@
   width: 290px;
 }
 
+@media screen and (max-width: 1000px) {
+  .suggested-users{
+    display: none;
+  }
+}
+
 .border{
-  border: 2px solid lightgray;
+  /* border: 2px solid lightgray; */
   border-radius: 8px;
-  box-shadow: 2px 2px 4px 2px lightgray;
+  /* box-shadow: 2px 2px 4px 2px lightgray; */
 
 }
 
@@ -199,7 +207,6 @@
 }
 
 #suggest-user-container:hover{
-  background-color: rgba(230, 230, 230, 0.685);
   border-radius: 7px;
 }
 
@@ -270,7 +277,8 @@
 #suggested-for-you{
   margin-left: 10px;
   font-size: 15px;
-  color: rgb(139, 139, 139);
+  color: rgb(165, 165, 165);
+  font-weight: 550;
 }
 
 .suggested-secondUsername{

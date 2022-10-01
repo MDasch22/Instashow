@@ -1,4 +1,6 @@
 .footer-nav-container{
+  bottom: 5px;
+  width: 100%;
   margin-top: 100px;
   border-top: 2px solid lightgray;
 }
@@ -51,4 +53,5 @@
 #app-academy{
   color: grey;
   margin-left: 8px;
+  padding-bottom: 10px;
 }

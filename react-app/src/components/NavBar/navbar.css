@@ -1,6 +1,9 @@
 .nav{
   margin: 0;
   width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
 }
 
 .nav-bar{
@@ -13,6 +16,7 @@
   align-items: center;
   border-bottom: 2px solid lightgray;
   list-style: none;
+  background-color: white;
 
 }
 
