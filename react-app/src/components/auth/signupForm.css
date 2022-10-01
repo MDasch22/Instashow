@@ -41,6 +41,27 @@
   border: 1px solid rgb(139, 139, 139);
   padding-left: 5px;
   transition: .3s;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: .9em;
+}
+
+.signup-input span{
+  position: absolute;
+  padding: 10px;
+  transform: translateY(-2.5rem);
+  pointer-events: none;
+  transition: .5s;
+  font-size: .8em;
+  color: rgb(134, 134, 134);
+}
+
+.signup-input input:valid ~ span,
+.signup-input input:focus ~ span {
+  transform: translateX(10px) translateY(-3.8rem);
+  background-color: rgb(255, 255, 255);
+  font-size: .7em;
+
 }
 
 .signup-input input:focus{

@@ -126,47 +126,50 @@ const SignUpForm = () => {
                   type='text'
                   name='fullname'
                   onChange={updateFullname}
-                  placeholder="Fullname"
                   value={fullname}
+                  required="required"
                 ></input>
+                <span>Fullname</span>
               </div>
               <div className='signup-input'>
                 <input
-                  className='login-input'
                   type='text'
                   name='username'
-                  placeholder='Username'
                   onChange={updateUsername}
                   value={username}
+                  required="required"
                 ></input>
+                <span>Username</span>
               </div>
               <div className='signup-input'>
                 <input
                   type='text'
                   name='email'
-                  placeholder='Email'
                   onChange={updateEmail}
                   value={email}
+                  required="required"
                 ></input>
+                <span>Email</span>
               </div>
               <div className='signup-input'>
                 <input
-                  placeholder='Password'
                   type='password'
                   name='password'
                   onChange={updatePassword}
                   value={password}
+                  required="required"
                 ></input>
+                <span>Password</span>
               </div>
               <div className='signup-input'>
                 <input
                   type='password'
                   name='repeat_password'
-                  placeholder='Confirm Password'
                   onChange={updateRepeatPassword}
                   value={repeatPassword}
-                  required={true}
+                  required="required"
                 ></input>
+                <span>Confirm Password</span>
               </div>
               <button id="signup-page-bttn" type='submit'>Sign Up</button>
             </form>
