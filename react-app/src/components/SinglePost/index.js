@@ -84,7 +84,7 @@ export default function SinglePost() {
       height: '100%',
       minHeight: '100%',
       padding: '12px',
-      zIndex: 3,
+      zIndex: 12,
       backgroundColor: 'rgba(34, 34, 34, 0.65)'
     },
     content: {
@@ -118,7 +118,7 @@ export default function SinglePost() {
       height: '100%',
       minHeight: '100%',
       padding: '12px',
-      zIndex: 3,
+      zIndex: 12,
       backgroundColor: 'rgba(34, 34, 34, 0.65)'
     },
     content: {

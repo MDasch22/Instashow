@@ -87,7 +87,7 @@ export default function UpdateProfileImg({id}) {
               :
               <>
                 <label for='user-update-img' id="choose-photo2">Change photo</label>
-                <label id="upload-profile-pic" >Upload</label>
+                <label id="upload-profile-pic" onClick={onSubmit}>Upload</label>
               </>
             }
           {/* {submitted && errors.length ?

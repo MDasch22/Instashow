@@ -62,7 +62,7 @@ export default function HomePage() {
     for(let i = 0; i < sessionUser.followers.length; i++){
       if(sessionUser.followers[i].username === user.username) {
         return (
-            <span id="suggested-followsYou-plus"><span className='suggested-secondUsername'>{user.username}</span> follows you</span>
+            <span id="suggested-followsYou-plus"> Follows you</span>
           )
       } else {
         return(
