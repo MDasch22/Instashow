@@ -6,8 +6,6 @@ import './likesOnPost.css'
 
 export default function LikesOnPost({likes}) {
 
-  console.log(likes)
-
   const [showLikes, setShowLikes] = useState(false)
 
   function openCloseLikes() {

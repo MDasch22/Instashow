@@ -9,10 +9,12 @@ export default function NewComment({postId}) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user)
 
-  const [showPicker, setShowPicker] = useState(false)
+
   const [errors , setErrors] = useState([])
   const [comment, setComment] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [showPicker, setShowPicker] = useState(false)
+  const [eventListener, setEventListener] = useState(false)
 
   useEffect(() => {
     const errs = []
@@ -27,13 +29,9 @@ export default function NewComment({postId}) {
   },[comment])
 
   useEffect(() => {
-    const closeEmoji = (e) => {
-      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
-        setShowPicker(false)
-      }
+    return () => {
+      setShowPicker(false)
     }
-    document.body.addEventListener("click", closeEmoji)
-    return () => document.body.removeEventListener('click', closeEmoji)
   }, [])
 
   const onSubmit = (e) => {
@@ -52,24 +50,46 @@ export default function NewComment({postId}) {
     if(newComment){
       reset()
     }
-  }
+  };
 
   const reset = () => {
     setComment('')
     setSubmitted(false)
     setErrors([])
-  }
+  };
 
-  const emojiClick = (e, emojiObj) => {
+  const handleDocumentClick = (e) => {
+    let isEmojiClassFound = false;
+    e &&
+    e.composedPath() &&
+    e.composedPath().forEach(ele => {
+      if (ele && ele.classList) {
+        const data = ele.classList.value;
+        if (data.includes("emoji")) {
+          isEmojiClassFound = true;
+        }
+      }
+    });
+    if (isEmojiClassFound === false && e.target.id !== "emojis-btn"){
+      setShowPicker(false)
+      setEventListener(false);
+      document.removeEventListener("click", handleDocumentClick)
+    }
+  };
+
+
+  const emojiClick = (emojiObj) => {
     if(emojiObj.emoji.length){
       setComment(comment => comment + emojiObj.emoji);
-      setShowPicker(false)
-    } else {
-      setShowPicker(true)
     }
   }
 
   const openShow = (e) => {
+    e.preventDefault();
+    if (showPicker === false && !eventListener) {
+      document.addEventListener("click", handleDocumentClick, false)
+      setEventListener(true)
+    }
     setShowPicker(!showPicker)
   }
 

@@ -36,13 +36,15 @@ export default function SearchBar() {
 
   useEffect(() => {
     const closeSeach = (e) => {
-      if(e.path[0].tagName !== "INPUT"){
-        setFilteredUsers([])
-        setWordEntry('')
-      }
+      console.log("THIS IS THE EPATH!!!!!             " + e)
+      // if(e.path[0].tagName !== "INPUT"){
+      //   setFilteredUsers([])
+      //   setWordEntry('')
+      // }
     }
-    document.body.addEventListener("click", closeSeach)
-    return () => document.body.removeEventListener("click", closeSeach)
+    // document.body.addEventListener("click", closeSeach)
+    // return () => document.body.removeEventListener("click", closeSeach)
+
   })
 
   const click = () => {

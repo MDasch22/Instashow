@@ -214,6 +214,7 @@
 #edit-user-emoji-picker{
   position: absolute;
   z-index: 2;
-  top: 175px;
+  left: 120px;
+  top: 280px;
   margin-left: 6rem;
 }

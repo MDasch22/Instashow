@@ -100,9 +100,9 @@ const NavBar = ({posts}) => {
       }
     }
 
-    document.body.addEventListener('click', closeDrop )
+    // document.body.addEventListener('click', closeDrop )
 
-    return () => document.body.removeEventListener('click', closeDrop);
+    // return () => document.body.removeEventListener('click', closeDrop);
 
   }, [])
 

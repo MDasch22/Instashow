@@ -39,8 +39,8 @@ export default function CreatePost({setTrigger}) {
         setShowPicker(false)
       }
     }
-    document.body.addEventListener("click", closeEmoji)
-    return () => document.body.removeEventListener('click', closeEmoji)
+    // document.body.addEventListener("click", closeEmoji)
+    // return () => document.body.removeEventListener('click', closeEmoji)
   }, [])
 
   const emojiClick = (e, emojiObj) => {

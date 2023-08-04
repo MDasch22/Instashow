@@ -14,7 +14,7 @@ export default function EditProfile({user}) {
 
   const users = useSelector(state => Object.values(state.user))
 
-  const [showPicker, setShowPicker] = useState(false)
+
   const [errors, setErrors] = useState([])
   const [email , setEmail] = useState(user.email)
   const [fullname , setFullname] = useState(user.fullname)
@@ -22,6 +22,10 @@ export default function EditProfile({user}) {
   const [bio, setBio] = useState(user?.bio)
   const [showImage , setShowImage] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [showPicker, setShowPicker] = useState(false)
+  const [eventListener, setEventListener] = useState(false)
+
+
 
   const userId = user.id
   const profilePic = user.profile_pic
@@ -77,17 +81,6 @@ export default function EditProfile({user}) {
     dispatch(thunkLoadAllUsers())
   }, [bio])
 
-  useEffect(() => {
-    const closeEmoji = (e) => {
-      if(e.path[0].tagName !== "I" && e.path[0].tagName !== "BUTTON" && e.path[0].tagName !== "INPUT"){
-        setShowPicker(false)
-      }
-    }
-    document.body.addEventListener("click", closeEmoji)
-    return () => document.body.removeEventListener('click', closeEmoji)
-  }, [])
-
-
 
   const onSubmit = async(e) => {
     e.preventDefault()
@@ -109,16 +102,39 @@ export default function EditProfile({user}) {
     return history.push(`/${username}`)
   }
 
-  const emojiClick = (e, emojiObj) => {
-    if(emojiObj.emoji.length){
-      setBio(bio => bio + emojiObj.emoji);
+  const handleDocumentClick = (e) => {
+    let isEmojiClassFound = false;
+    e &&
+    e.composedPath() &&
+    e.composedPath().forEach(ele => {
+      if (ele && ele.classList) {
+        const data = ele.classList.value;
+        if (data.includes("emoji")) {
+          isEmojiClassFound = true;
+        }
+      }
+    });
+    if (isEmojiClassFound === false && e.target.id !== "emojis-btn"){
       setShowPicker(false)
-    } else {
-      setShowPicker(true)
+      setEventListener(false);
+      document.removeEventListener("click", handleDocumentClick)
+    }
+  };
+
+
+
+  const emojiClick = (e, emojiObj) => {
+    if(emojiObj.emoji){
+      setBio(bio => bio + emojiObj.emoji);
     }
   }
 
   const openShow = (e) => {
+    e.preventDefault();
+    if (showPicker === false && !eventListener) {
+      document.addEventListener("click", handleDocumentClick, false)
+      setEventListener(true)
+    }
     setShowPicker(!showPicker)
   }
 
@@ -191,7 +207,6 @@ export default function EditProfile({user}) {
               <div id="edit-user-emoji-picker">
                 <Picker onClick={showPicker} pickerStyle={{width: '17rem' , height: '20rem'}} onEmojiClick={emojiClick} />
               </div>
-
             }
             <textarea
               id='edit-bio-input'

@@ -43,15 +43,15 @@ export default function SinglePost() {
   },[dispatch, post_id])
 
 
-  useEffect(() => {
-    const closeEllipsisModal = (e) => {
-      if(e.path[0].tagName === 'DIV' ){
-        setShowEllipsis(false)
-      }
-    }
-    document.body.addEventListener("click",  closeEllipsisModal)
-    return () => document.body.removeEventListener("click", closeEllipsisModal)
-  }, [])
+  // useEffect(() => {
+  //   const closeEllipsisModal = (e) => {
+  //     if(e.path[0].tagName === 'DIV' ){
+  //       setShowEllipsis(false)
+  //     }
+  //   }
+  //   // document.body.addEventListener("click",  closeEllipsisModal)
+  //   // return () => document.body.removeEventListener("click", closeEllipsisModal)
+  // }, [])
 
 
   Modal.setAppElement('body');
@@ -92,19 +92,18 @@ export default function SinglePost() {
       margin: 'auto',
       maxWidth: '300px',
       width: '300px',
-      top: '200px',
-      height: '100px' ,
+      top: '350px',
+      height: 'auto' ,
       left: '40px',
       right: '40px',
       bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
-      overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       borderRadius: '5px',
       outline: 'none',
-      overflow: 'visibile'
-    }
+      overflow: 'hidden',
+    },
 };
 
   const formStyles = {
@@ -126,18 +125,16 @@ export default function SinglePost() {
       margin: 'auto',
       maxWidth: '800px',
       width: '800px',
-      top: '100px',
+      top: '200px',
       left: '40px',
       right: '40px',
       bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
-      overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       borderRadius: '5px',
       outline: 'none',
       padding: " 0, 20px 0",
-      overflow: 'visibile'
     }
 };
 
@@ -168,6 +165,7 @@ if(!comments) return null
                   <Modal className='single-post-edit-modal' isOpen={showEllipsis} style={formStyles2}>
                     <button id="single-post-delete" onClick={onDelete}> Delete </button>
                     <button id="single-post-edit" onClick={openEditPostForm}>Edit</button>
+                    <button id="single-post-edit" onClick={()=> setShowEllipsis(false)}>Cancel</button>
                   </Modal>
                   <Modal isOpen={showEditPost} style={formStyles}>
                     <EditPost setTrigger={closeEditPostForm}/>

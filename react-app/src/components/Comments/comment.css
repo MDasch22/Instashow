@@ -97,7 +97,17 @@
   transition: .3s;
   padding: 15px;
   font-size: 15px;
+  border-bottom: 1px solid lightgray;
+}
 
+#comment-cancel{
+  color: rgb(131, 131, 131);
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  transition: .3s;
+  padding: 15px;
+  font-size: 15px;
 }
 
 #comment-delete{
@@ -112,8 +122,12 @@
 
 }
 
-
 #comment-edit:hover{
+  transition: .3s;
+  color: rgb(61, 138, 253);
+}
+
+#comment-cancel:hover{
   transition: .3s;
   color: rgb(61, 138, 253);
 }

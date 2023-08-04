@@ -24,20 +24,22 @@ export default function Comments({postId, comment}) {
     setShowModal(false)
   }
 
-  useEffect(() => {
-      const closeModal = (e) => {
-        if(e.path[0].tagName !== 'I'  ){
-          setShowModal(false)
-        }
-      }
-      document.body.addEventListener("click", closeModal)
-      return () => document.body.removeEventListener("click", closeModal)
+  // useEffect(() => {
+  //     const closeModal = (e) => {
+  //       console.log( "Look Here!!!!"      + e.composedPath())
+  //       // if(e.path[0].tagName !== 'I'  ){
+  //         // setShowModal(false)
+  //       // }
+  //     }
+  //     document.body.addEventListener("click", closeModal)
+  //     return () => document.body.removeEventListener("click", closeModal)
 
-  }, [showModal])
+  // }, [showModal])
 
   const formStyles2 = {
     overlay: {
       position: 'fixed',
+      // overflow: 'hidden',
       top: 0,
       left: 0,
       right: 0,
@@ -47,7 +49,8 @@ export default function Comments({postId, comment}) {
       minHeight: '100%',
       padding: '12px',
       zIndex: 12,
-      backgroundColor: 'rgba(34, 34, 34, 0.65)'
+      backgroundColor: 'rgba(34, 34, 34, 0.65)',
+
     },
     content: {
       position: 'relative',
@@ -55,18 +58,18 @@ export default function Comments({postId, comment}) {
       maxWidth: '300px',
       width: '300px',
       top: '350px',
-      height: '100px' ,
+      height: 'auto' ,
       left: '40px',
       right: '40px',
       bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
-      overflow: 'auto',
       WebkitOverflowScrolling: 'touch',
       borderRadius: '5px',
       outline: 'none',
-      overflow: 'visibile'
-    }
+      overflow: 'hidden',
+    },
+
 };
 
 
@@ -91,9 +94,10 @@ export default function Comments({postId, comment}) {
                   {comment.user_id === sessionUser.id && (
                   <>
                     <button id="show-comment-modal" onClick={() => setShowModal(!showModal)}> <i className="fa-solid fa-ellipsis"></i> </button>
-                    <Modal isOpen={showModal} className='edit-delete-button' style={formStyles2}>
+                    <Modal onClick={!showModal} isOpen={showModal} className='edit-delete-button' style={formStyles2}>
                       <button id='comment-delete' onClick={() => dispatch(thunkDeleteComment(comment.id))}>Delete</button>
                       <button id='comment-edit' onClick={() => setShowEditCommentForm(true)}> Edit </button>
+                      <button id='comment-cancel' onClick={() => setShowModal(false)}> Cancel </button>
                     </Modal>
                   </>
                   )}

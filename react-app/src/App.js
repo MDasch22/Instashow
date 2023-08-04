@@ -6,7 +6,6 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
-import CreatePost from './components/CreatePost';
 import HomePage from './components/Splash';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import EditPost from './components/EditPost';
