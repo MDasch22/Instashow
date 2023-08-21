@@ -78,8 +78,9 @@ export default function NewComment({postId}) {
   };
 
 
-  const emojiClick = (emojiObj) => {
-    if(emojiObj.emoji.length){
+  const emojiClick = (e, emojiObj) => {
+    console.log(emojiObj.emoji)
+    if(emojiObj.emoji){
       setComment(comment => comment + emojiObj.emoji);
     }
   }
